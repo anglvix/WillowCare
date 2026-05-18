@@ -8,3 +8,61 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     
+    <!-- Barra de navegação fixa no topo -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <!-- Container da navbar -->
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+        <!-- Logo e links -->
+        <div class="flex items-center gap-6">
+        <!-- Logo -->
+        <a href="/home" class="flex items-center gap-3">
+            <img src="{{ url_for('static', filename='images/Spotify_icon.png') }}" alt="Spotify Insight" class="h-8 w-auto">
+            <h1 class="text-2xl font-semibold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">Spotify Insight</h1>
+        </a>
+
+        <!-- Menu de navegação -->
+        <nav class="hidden md:flex gap-6">
+            <a href="/home" class="text-white/90 hover:text-white transition">Home</a>
+            <a href="/dashboard" class="text-white/80 hover:text-white transition">Dashboard</a>
+            {% if session.get('user') %}
+            <a href="/favourites" class="text-white/80 hover:text-white transition">Favoritos</a>
+            <a href="/chat" class="text-white/80 hover:text-white transition">Chat</a>
+            {% endif %}
+            {% if session.get('role') == 'admin' %}
+            <a href="/admin" id="admin-link" class="text-white/80 hover:text-white transition">Admin</a>
+            {% endif %}
+        </nav>
+        </div>
+
+        <!-- Área de utilizador -->
+        <div class="flex items-center gap-4">
+        {% if session.get('user') %}
+        <!-- Se está logado -->
+        <div class="hidden md:flex items-center gap-4">
+            <span class="text-white/90">Olá, <span class="font-semibold">{{ session['user'] }}</span></span>
+            <a href="/logout" id="logout-btn" class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-black font-semibold hover:opacity-95">Sair</a>
+        </div>
+        {% else %}
+        <a href="/login" id="login-btn" class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-black font-semibold hover:opacity-95">Entrar</a>
+        {% endif %}
+        </div>
+    </div>
+    </header>
+
+    <!-- Menu mobile -->
+    <nav class="md:hidden fixed top-16 left-0 right-0 bg-black/70 border-b border-white/5 z-40">
+    <div class="px-4 py-2">
+        <ul class="flex gap-4">
+        <li><a href="/home" class="text-white/90">Home</a></li>
+        <li><a href="/dashboard" class="text-white/80">Dashboard</a></li>
+        {% if session.get('user') %}
+        <li><a href="/favourites" class="text-white/80">Favoritos</a></li>
+        <li><a href="/chat" class="text-white/80">Chat</a></li>
+        <li><a href="/logout" class="text-white/80">Logout</a></li>
+        {% else %}
+        <li><a href="/login" class="text-white/80">Login</a></li>
+        <li><a href="/register" class="text-white/80">Register</a></li>
+        {% endif %}
+        </ul>
+    </div>
+    </nav>

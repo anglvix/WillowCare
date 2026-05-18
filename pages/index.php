@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include 'head.php';?>
+    <?php include 'includes\head.php';?>
     <title>WillowCare</title>
 </head>
 <body>
     <header>
-        <?php include 'navbar.php';?>
+        <?php include 'includes\navbar.php';?>
     </header>
 
     <main>
@@ -14,7 +14,7 @@
     </main>
 
     <footer>
-        <?php include 'footer.php';?>
+        <?php include 'includes\footer.php';?>
     </footer>
 </body>
 </html>
