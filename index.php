@@ -2,19 +2,19 @@
 // O index.php inicia aqui.
 $page_title = 'Willow Care - Landing Page';
 $html_lang = 'pt';
-$base_path = '../';
-include '../includes/head.php';
+$base_path = '';
+include 'includes/head.php';
 ?>
 <body class="bg-white font-sans antialiased text-gray-900 min-h-screen flex flex-col">
 
-    <?php include '../includes/navbar.php'; ?>
+    <?php include 'includes/navbar.php'; ?>
 
     <main class="flex-grow">
         
         <section class="relative bg-willow-cream overflow-hidden pt-24 pb-44 px-6 min-h-[420px] flex items-center">
             
             <div class="absolute inset-y-0 right-0 w-full md:w-1/2 pointer-events-none z-0">
-                <img src="../images/banner 1.png" alt="Árvore Decorativa" class="w-full h-full object-cover object-right-top">
+                <img src="images/banner 1.png" alt="Árvore Decorativa" class="w-full h-full object-cover object-right-top">
             </div>
             
             <div class="max-w-6xl mx-auto w-full relative z-10 text-center md:text-left">
@@ -174,7 +174,7 @@ include '../includes/head.php';
 
     </main>
 
-    <?php include '../includes/footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 
 </body>
 </html>

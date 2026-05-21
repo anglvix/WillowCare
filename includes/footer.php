@@ -9,14 +9,16 @@
 <footer class="bg-willow-dark text-white pt-8 pb-14 px-8 w-full relative">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
         <div>
-            <h2 class="text-xl font-serif font-bold mb-1 tracking-tight">Willow Care</h2>
+            <h2 class="text-xl font-serif font-bold mb-1 tracking-tight">
+                <a href="<?php echo isset($base_path) ? $base_path : ''; ?>index.php" class="hover:opacity-90">Willow Care</a>
+            </h2>
             <p class="text-[10px] text-gray-400">© 2025 - 2026</p>
         </div>
         
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-[11px]">
             <div>
                 <h4 class="font-bold text-gray-300 uppercase tracking-wider text-[9px] mb-2 opacity-70">Personal Page</h4>
-                <ul><li><a href="#" class="text-gray-200 hover:text-white transition">Log in</a></li></ul>
+                <ul><li><a href="<?php echo isset($base_path) ? $base_path : ''; ?>index.php" class="text-gray-200 hover:text-white transition">Log in</a></li></ul>
             </div>
             <div>
                 <h4 class="font-bold text-gray-300 uppercase tracking-wider text-[9px] mb-2 opacity-70">Search</h4>
@@ -35,7 +37,7 @@
             </div>
             <div>
                 <h4 class="font-bold text-gray-300 uppercase tracking-wider text-[9px] mb-2 opacity-70">WillowCare</h4>
-                <ul><li><a href="#" class="text-gray-200 hover:text-white transition">Our Mission</a></li></ul>
+                <ul><li><a href="<?php echo isset($base_path) ? $base_path : ''; ?>index.php" class="text-gray-200 hover:text-white transition">Our Mission</a></li></ul>
             </div>
         </div>
     </div>
