@@ -1,4 +1,5 @@
 <?php
+// O index.php inicia aqui.
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -13,11 +14,11 @@
                 extend: {
                     colors: {
                         willow: {
-                            dark: '#465E4B',      /* Verde escuro principal */
-                            mid: '#69B87B',       /* Verde intermédio */
-                            accent: '#91E6A2',    /* Verde folha claro */
-                            light: '#C2EDA6',     /* Verde alface suave */
-                            cream: '#F4F5DA'      /* Creme de fundo */
+                            dark: '#465E4B',
+                            mid: '#69B87B',
+                            accent: '#91E6A2',
+                            light: '#C2EDA6',
+                            cream: '#F4F5DA'
                         }
                     },
                     fontFamily: {
@@ -37,14 +38,14 @@
 </head>
 <body class="bg-white font-sans antialiased text-gray-900 min-h-screen flex flex-col">
 
-    <?php include 'includes/navbar.php'; ?>
+    <?php include '../includes/navbar.php'; ?>
 
     <main class="flex-grow">
         
         <section class="relative bg-willow-cream overflow-hidden pt-24 pb-44 px-6 min-h-[420px] flex items-center">
             
             <div class="absolute inset-y-0 right-0 w-full md:w-1/2 pointer-events-none z-0">
-                <img src="images/banner 1.png" alt="Árvore Decorativa" class="w-full h-full object-cover object-right-top">
+                <img src="../images/banner 1.png" alt="Árvore Decorativa" class="w-full h-full object-cover object-right-top">
             </div>
             
             <div class="max-w-6xl mx-auto w-full relative z-10 text-center md:text-left">
@@ -204,7 +205,7 @@
 
     </main>
 
-    <?php include 'includes/footer.php'; ?>
+    <?php include '../includes/footer.php'; ?>
 
 </body>
 </html>
