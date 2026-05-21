@@ -20,7 +20,7 @@ if (!isset($html_lang)) $html_lang = 'pt';
             theme: {
                 extend: {
                     fontFamily: {
-                        serif: ['Georgia', 'Times New Roman', 'serif'],
+                        serif: ['Switzer', 'sans-serif'],
                         sans: ['Switzer', 'sans-serif'],
                         gaming: ['Boska', 'sans-serif'],
                     },
