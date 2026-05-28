@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 $page_title = 'Willow Care - Passeio em Valongo';
 $html_lang = 'pt';
@@ -5,6 +6,35 @@ $base_path = '../';
 $page_script = 'selected-activity-view.js';
 include '../includes/head.php';
 ?>
+=======
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willow Care - Passeio em Valongo</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        willow: {
+                            dark: '#465E4B',
+                            mid: '#69B87B',
+                            accent: '#91E6A2',
+                            light: '#C2EDA6',
+                            cream: '#F4F5DA'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+>>>>>>> 68b4539efca11b6061c9f23b27fb10070d972755
 
 <body class="bg-white font-sans antialiased text-gray-900 min-h-screen flex flex-col">
 
@@ -15,7 +45,11 @@ include '../includes/head.php';
     <div class="md:col-span-2 space-y-6">
 
         <div class="h-64 bg-gray-100 rounded-3xl overflow-hidden shadow-inner">
+<<<<<<< HEAD
             <img
+=======
+            <img 
+>>>>>>> 68b4539efca11b6061c9f23b27fb10070d972755
                 src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1000&q=80"
                 class="w-full h-full object-cover"
                 alt="Passeio em Valongo"
@@ -50,7 +84,11 @@ include '../includes/head.php';
             Register Attendance
         </h3>
 
+<<<<<<< HEAD
         <form id="booking-form" class="space-y-3">
+=======
+        <form class="space-y-3" action="voucher_page.php" method="POST">
+>>>>>>> 68b4539efca11b6061c9f23b27fb10070d972755
 
             <div>
                 <label class="block text-[10px] uppercase font-bold text-gray-500 mb-1">
@@ -82,6 +120,7 @@ include '../includes/head.php';
                 >
             </div>
 
+<<<<<<< HEAD
             <p id="booking-error" class="hidden text-xs text-red-500">
                 Erro ao criar reserva. Tenta novamente.
             </p>
@@ -90,6 +129,11 @@ include '../includes/head.php';
                 id="book-btn"
                 type="submit"
                 class="w-full bg-willow-dark text-white rounded-xl py-2.5 text-xs font-semibold hover:bg-willow-mid transition disabled:opacity-50"
+=======
+            <button
+                type="submit"
+                class="w-full bg-willow-dark text-white rounded-xl py-2.5 text-xs font-semibold hover:bg-willow-mid transition"
+>>>>>>> 68b4539efca11b6061c9f23b27fb10070d972755
             >
                 Book Ticket
             </button>
@@ -101,7 +145,13 @@ include '../includes/head.php';
 </main>
 
 <?php include '../includes/footer.php'; ?>
+<<<<<<< HEAD
 <?php include '../includes/scripts.php'; ?>
 
 </body>
 </html>
+=======
+
+</body>
+</html>
+>>>>>>> 68b4539efca11b6061c9f23b27fb10070d972755

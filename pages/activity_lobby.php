@@ -1,9 +1,40 @@
+<<<<<<< HEAD
 <?php
 $page_title = 'Willow Care - Activities Lobby';
 $html_lang = 'pt';
 $base_path = '../';
 include '../includes/head.php';
 ?>
+=======
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willow Care - Activities Lobby</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        willow: {
+                            dark: '#465E4B',
+                            mid: '#69B87B',
+                            accent: '#91E6A2',
+                            light: '#C2EDA6',
+                            cream: '#F4F5DA'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+>>>>>>> 68b4539efca11b6061c9f23b27fb10070d972755
 
 <body class="bg-white font-sans antialiased text-gray-900 min-h-screen flex flex-col">
 
@@ -86,7 +117,10 @@ include '../includes/head.php';
     </main>
 
     <?php include '../includes/footer.php'; ?>
+<<<<<<< HEAD
     <?php include '../includes/scripts.php'; ?>
+=======
+>>>>>>> 68b4539efca11b6061c9f23b27fb10070d972755
 
 </body>
 
