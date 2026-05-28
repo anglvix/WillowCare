@@ -1,0 +1,13 @@
+{
+  "name": "willowcare",
+  "version": "1.0.0",
+  "description": "WillowCare - Plataforma de apoio a cuidadores de pessoas com Síndrome de Williams",
+  "scripts": {
+    "server": "json-server --watch db.json --port 3001 --middlewares ./node_modules/json-server-auth",
+    "start": "php -S localhost:8000 router.php"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0"
+  }
+}

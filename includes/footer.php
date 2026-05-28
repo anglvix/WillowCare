@@ -10,34 +10,43 @@
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
         <div>
             <h2 class="text-xl font-serif font-bold mb-1 tracking-tight">
-                <a href="<?php echo isset($base_path) ? $base_path : ''; ?>index.php" class="hover:opacity-90">Willow Care</a>
+                <a href="index.php" class="hover:opacity-90">Willow Care</a>
             </h2>
             <p class="text-[10px] text-gray-400">© 2025 - 2026</p>
         </div>
-        
+
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-[11px]">
             <div>
                 <h4 class="font-bold text-gray-300 uppercase tracking-wider text-[9px] mb-2 opacity-70">Personal Page</h4>
-                <ul><li><a href="<?php echo isset($base_path) ? $base_path : ''; ?>index.php" class="text-gray-200 hover:text-white transition">Log in</a></li></ul>
+                <ul id="footer-personal-list"><li><a href="login.php" class="text-gray-200 hover:text-white transition">Log in</a></li></ul>
+            <script>
+            (function () {
+              const token = localStorage.getItem('token')
+              if (token) {
+                document.getElementById('footer-personal-list').innerHTML =
+                  '<li><a href="account_page.php" class="text-gray-200 hover:text-white transition">My Account</a></li>'
+              }
+            })()
+            </script>
             </div>
             <div>
                 <h4 class="font-bold text-gray-300 uppercase tracking-wider text-[9px] mb-2 opacity-70">Search</h4>
                 <ul class="space-y-1">
-                    <li><a href="#" class="text-gray-200 hover:text-white transition">Doctors</a></li>
-                    <li><a href="#" class="text-gray-200 hover:text-white transition">Schools</a></li>
+                    <li><a href="doctor_search.php" class="text-gray-200 hover:text-white transition">Doctors</a></li>
+                    <li><a href="school_search.php" class="text-gray-200 hover:text-white transition">Schools</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-bold text-gray-300 uppercase tracking-wider text-[9px] mb-2 opacity-70">Resources</h4>
                 <ul class="space-y-1">
-                    <li><a href="#" class="text-gray-200 hover:text-white transition">Activities</a></li>
-                    <li><a href="#" class="text-gray-200 hover:text-white transition">Community</a></li>
-                    <li><a href="#" class="text-gray-200 hover:text-white transition">Organizations</a></li>
+                    <li><a href="activity_lobby.php" class="text-gray-200 hover:text-white transition">Activities</a></li>
+                    <li><a href="forum.php" class="text-gray-200 hover:text-white transition">Community</a></li>
+                    <li><a href="organizations.php" class="text-gray-200 hover:text-white transition">Organizations</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-bold text-gray-300 uppercase tracking-wider text-[9px] mb-2 opacity-70">WillowCare</h4>
-                <ul><li><a href="<?php echo isset($base_path) ? $base_path : ''; ?>index.php" class="text-gray-200 hover:text-white transition">Our Mission</a></li></ul>
+                <ul><li><a href="about_us.php" class="text-gray-200 hover:text-white transition">Our Mission</a></li></ul>
             </div>
         </div>
     </div>
