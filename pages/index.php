@@ -34,11 +34,9 @@ include '../includes/head.php';
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <a href="doctor_search.php" class="block bg-willow-cream/40 border border-willow-cream p-1 rounded-2xl shadow-[0_8px_30px_rgba(70,94,75,0.05)] hover:shadow-md transition-shadow">
-                    <div class="bg-white figma-card-shape pt-10 pb-8 px-6 text-center flex flex-col items-center">
+                    <div class="bg-white rounded-2xl pt-10 pb-8 px-6 text-center flex flex-col items-center h-56 justify-center">
                         <div class="mb-4 text-willow-dark">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 14.25l6-6m4.5-3.5A2.25 2.25 0 1113.5 9.25M6 14.25a3 3 0 100-6 3 3 0 0 0 0 6zm0 0v6m0-6h6m6-3.5V21" />
-                            </svg>
+                            <img src="../images/stethoscope.png" alt="Stethoscope" class="w-8 h-8 object-contain">
                         </div>
                         <h3 class="font-bold text-[15px] text-willow-dark mb-2">Specialized Doctors</h3>
                         <p class="text-[11px] text-gray-500 leading-normal max-w-[190px]">Filter professionals experienced with Williams Syndrome and related needs.</p>
@@ -46,11 +44,9 @@ include '../includes/head.php';
                 </a>
 
                 <a href="school_search.php" class="block bg-willow-cream/40 border border-willow-cream p-1 rounded-2xl shadow-[0_8px_30px_rgba(70,94,75,0.05)] hover:shadow-md transition-shadow">
-                    <div class="bg-white figma-card-shape pt-10 pb-8 px-6 text-center flex flex-col items-center">
+                    <div class="bg-white rounded-2xl pt-10 pb-8 px-6 text-center flex flex-col items-center h-56 justify-center">
                         <div class="mb-4 text-willow-dark">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21V10.5m0 0L7.5 13.5m4.5-3l4.5 3M3 13.5h18M5.25 13.5v7.5m13.5-7.5v7.5M2 9.5l10-6 10 6" />
-                            </svg>
+                            <img src="../images/open-book.png" alt="Open book" class="w-8 h-8 object-contain">
                         </div>
                         <h3 class="font-bold text-[15px] text-willow-dark mb-2">Supportive Schools</h3>
                         <p class="text-[11px] text-gray-500 leading-normal max-w-[190px]">Find inclusive schools with the right support systems.</p>
@@ -58,11 +54,9 @@ include '../includes/head.php';
                 </a>
 
                 <a href="forum.php" class="block bg-willow-cream/40 border border-willow-cream p-1 rounded-2xl shadow-[0_8px_30px_rgba(70,94,75,0.05)] hover:shadow-md transition-shadow">
-                    <div class="bg-white figma-card-shape pt-10 pb-8 px-6 text-center flex flex-col items-center">
+                    <div class="bg-white rounded-2xl pt-10 pb-8 px-6 text-center flex flex-col items-center h-56 justify-center">
                         <div class="mb-4 text-willow-dark">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.336 9.336 0 002.668-.135m-1.958-3.166a4.8 4.8 0 00-.696-2.138m-1.589-2.141a3 3 0 11-4.5 0M6.613 14.6a4.115 4.115 0 00-.182 1.935m4.894-1.438a3.41" />
-                            </svg>
+                            <img src="../images/hand-shake.png" alt="Handshake" class="w-8 h-8 object-contain">
                         </div>
                         <h3 class="font-bold text-[15px] text-willow-dark mb-2">Community Support</h3>
                         <p class="text-[11px] text-gray-500 leading-normal max-w-[190px]">Connect with other caregivers, associations, and events.</p>
