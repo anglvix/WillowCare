@@ -14,9 +14,12 @@ include '../includes/head.php';
         
         <section class="relative bg-willow-cream overflow-hidden pt-24 pb-44 px-6 min-h-[420px] flex items-center">
             
-            <div class="absolute inset-y-0 right-0 w-full md:w-1/2 pointer-events-none z-0">
-                <img src="../images/banner 1.png" alt="Árvore Decorativa" class="w-full h-full object-cover object-right-top">
+            <div class="absolute inset-y-0 right-0 w-full md:w-2/3 pointer-events-none z-0">
+                <img src="../images/banner.jpg" alt="Árvore Decorativa" class="w-full h-full object-cover object-top">
             </div>
+
+            <!-- full-section overlay to extend white fade across the yellow area -->
+            <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to bottom, rgba(244,245,218,0) 60%, rgba(255,255,255,1) 95%); z-index:5;"></div>
             
             <div class="max-w-6xl mx-auto w-full relative z-10 text-center md:text-left">
                 <div class="max-w-xl bg-willow-cream/80 md:bg-transparent p-6 md:p-0 rounded-2xl inline-block">
@@ -30,7 +33,7 @@ include '../includes/head.php';
             </div>
         </section>
 
-        <section class="max-w-5xl mx-auto px-6 -mt-20 relative z-20">
+        <section class="max-w-5xl mx-auto px-6 -mt-16 relative z-20">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <a href="doctor_search.php" class="block bg-willow-cream/40 border border-willow-cream p-1 rounded-2xl shadow-[0_8px_30px_rgba(70,94,75,0.05)] hover:shadow-md transition-shadow">
@@ -42,7 +45,6 @@ include '../includes/head.php';
                         <p class="text-[11px] text-gray-500 leading-normal max-w-[190px]">Filter professionals experienced with Williams Syndrome and related needs.</p>
                     </div>
                 </a>
-
                 <a href="school_search.php" class="block bg-willow-cream/40 border border-willow-cream p-1 rounded-2xl shadow-[0_8px_30px_rgba(70,94,75,0.05)] hover:shadow-md transition-shadow">
                     <div class="bg-white rounded-2xl pt-10 pb-8 px-6 text-center flex flex-col items-center h-56 justify-center">
                         <div class="mb-4 text-willow-dark">
@@ -71,7 +73,7 @@ include '../includes/head.php';
                     Join us
                 </a>
             </div>
-            <hr class="border-gray-100">
+            <hr class="border-transparent">
         </section>
 
         <section class="max-w-5xl mx-auto px-6 py-10">

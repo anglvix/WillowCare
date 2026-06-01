@@ -24,7 +24,8 @@
       "savedDoctors": [],
       "savedSchools": [],
       "achievements": [
-        "registered"
+        "registered",
+        "first_booking"
       ],
       "id": 4
     }
@@ -254,6 +255,24 @@
       "authorName": "Misha Santos",
       "createdAt": "2026-06-01T15:57:02.278Z",
       "replies": []
+    },
+    {
+      "id": "65e03ab9-a11f-468c-ae7e-652eefb4cda2",
+      "title": "memememee",
+      "category": "Support",
+      "content": "aaa",
+      "authorId": 4,
+      "authorName": "Misha Santos",
+      "createdAt": "2026-06-01T17:53:05.313Z",
+      "replies": [
+        {
+          "id": 1,
+          "authorId": 4,
+          "authorName": "Misha Santos",
+          "content": "maaa",
+          "createdAt": "2026-06-01T17:53:09.899Z"
+        }
+      ]
     }
   ],
   "reviews": [
@@ -298,6 +317,17 @@
       "code": "WLC-6I7LNT",
       "status": "active",
       "id": 2
+    },
+    {
+      "id": "38a9af2b-af86-45b5-be13-bd0c73b4f9f6",
+      "userId": 4,
+      "activityId": "excursion-valongo",
+      "activityType": "excursion",
+      "activityTitle": "Passeio em Valongo",
+      "date": "2026-05-14",
+      "location": "Valongo Nature Trails, Porto",
+      "code": "WLC-04V535",
+      "status": "active"
     }
   ]
 }
