@@ -25,7 +25,7 @@ export async function getTopicById(id) {
 
 export async function createTopic({ title, category, content }) {
   const user = getSession();
-  if (!user) return { ok: false, error: "Não autenticado" };
+  if (!user) return { ok: false, error: "Not authenticated" };
 
   const topic = new ForumTopic(title, category, content, user.id, user.name)
 
@@ -38,10 +38,10 @@ export async function createTopic({ title, category, content }) {
   return { ok: res.ok };
 }
 
-// Respostas embutidas no tópico - PATCH ao array de replies
+// Nested replies in the topic - PATCH the replies array
 export async function addReply(topicId, content) {
   const user = getSession();
-  if (!user) return { ok: false, error: "Não autenticado" };
+  if (!user) return { ok: false, error: "Not authenticated" };
 
   const topic = await getTopicById(topicId);
   if (!topic) return { ok: false };

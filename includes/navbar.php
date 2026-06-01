@@ -2,7 +2,7 @@
     <div class="max-w-6xl mx-auto h-20 px-8 flex justify-between items-center">
 
         <a href="index.php" class="h-9 flex items-center hover:opacity-90 transition-opacity">
-            <img src="../images/willow care2 3.jpg" alt="Willow Care" class="h-full w-auto object-contain">
+            <img src="../images/willow_care.png" alt="Willow Care" class="h-10 w-auto object-contain">
         </a>
 
         <nav class="hidden md:flex items-center space-x-6 text-[13px] font-medium text-gray-600">

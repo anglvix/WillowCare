@@ -15,6 +15,18 @@
         "first_booking"
       ],
       "id": 3
+    },
+    {
+      "email": "misha@gmail.com",
+      "password": "$2a$10$jb6mRDa4fHIXFB2KksXNNe9b1gMVzFvbZX0zlC14h93no6LAAEn2q",
+      "name": "Misha Santos",
+      "role": "caregiver",
+      "savedDoctors": [],
+      "savedSchools": [],
+      "achievements": [
+        "registered"
+      ],
+      "id": 4
     }
   ],
   "doctors": [
@@ -191,7 +203,7 @@
     {
       "id": 1,
       "title": "Recommendations for Speech Therapists in Porto?",
-      "category": "Healthcare Chat",
+      "category": "Health",
       "content": "Olá a todos, procurava recomendações de profissionais com experiência clínica dedicada à SW na zona do Porto.",
       "authorId": 1,
       "authorName": "Ana Martins",
@@ -203,17 +215,44 @@
           "authorName": "Admin",
           "content": "Recomendo contactar a APSW - têm uma lista actualizada de profissionais certificados.",
           "createdAt": "2026-05-25T11:00:00Z"
+        },
+        {
+          "id": 2,
+          "authorId": 4,
+          "authorName": "Misha Santos",
+          "content": "nyanyanya",
+          "createdAt": "2026-06-01T15:58:44.945Z"
         }
       ]
     },
     {
       "id": 2,
       "title": "Best schools with sensory support programs?",
-      "category": "School Inclusion",
+      "category": "Support",
       "content": "Estamos a procurar escolas inclusivas na zona norte com apoio cognitivo estruturado.",
       "authorId": 1,
       "authorName": "Ana Martins",
       "createdAt": "2026-05-24T08:00:00Z",
+      "replies": []
+    },
+    {
+      "id": "e011290c-773d-4702-97e8-354a6649ba3b",
+      "title": "Meow",
+      "category": "Community",
+      "content": "preciso de ajuda comblabla",
+      "authorId": 4,
+      "authorName": "Misha Santos",
+      "createdAt": "2026-06-01T15:35:59.256Z",
+      "replies": []
+    },
+    {
+      "id": "35ee97cf-913e-4d22-af38-569b2047c4e5",
+      "title": "Misha",
+      "category": "Support",
+      "content": "aaa",
+      "authorId": 4,
+      "authorName": "Misha Santos",
+      "createdAt": "2026-06-01T15:57:02.278Z",
       "replies": []
     }
   ],

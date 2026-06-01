@@ -1,6 +1,6 @@
 <?php
 $page_title = 'Willow Care - Caregiver Forum';
-$html_lang = 'pt';
+$html_lang = 'en';
 $base_path = '../';
 $page_script = 'forum-view.js';
 include '../includes/head.php';
@@ -9,6 +9,7 @@ include '../includes/head.php';
 <body class="bg-white font-sans antialiased text-gray-900 min-h-screen flex flex-col">
 
     <?php include '../includes/navbar.php'; ?>
+
 
     <main class="max-w-4xl mx-auto w-full px-6 py-12 flex-grow space-y-6">
 
@@ -27,21 +28,106 @@ include '../includes/head.php';
 
             </div>
 
-            <button
-                class="bg-willow-dark text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-willow-mid transition">
+            <div class="flex items-center gap-2">
+                <select id="category-filter"
+                    class="select-field text-xs border border-gray-200 rounded-xl px-3 py-2 text-gray-700 bg-white focus:outline-none focus:border-willow-mid">
+                    <option value="all">All categories</option>
+                    <option value="Caregiving">Caregiving</option>
+                    <option value="Support">Support</option>
+                    <option value="Health">Health</option>
+                    <option value="Community">Community</option>
+                </select>
+                <button
+                    id="btn-new-topic"
+                    class="bg-willow-dark text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-willow-mid transition">
 
-                New Topic
+                    New Topic
 
-            </button>
+                </button>
+            </div>
 
         </div>
 
-        <!-- Forum Topics - preenchido pelo forum-view.js -->
+        <!-- Forum Topics - filled by forum-view.js -->
         <section id="topic-list" class="space-y-4">
-            <p class="text-sm text-gray-400">A carregar tópicos...</p>
+            <p class="text-sm text-gray-400">Loading topics...</p>
         </section>
 
     </main>
+
+    <!-- New Topic Modal -->
+    <div id="topic-modal" class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4 z-[100]">
+        <form id="topic-form" class="bg-white rounded-2xl w-full max-w-lg p-6 space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-lg font-serif font-bold text-willow-dark">New topic</h2>
+                <button type="button" id="topic-cancel" class="text-xs text-gray-500 hover:text-gray-700">Close</button>
+            </div>
+
+            <div class="space-y-1">
+                <label class="text-[11px] font-bold text-gray-600">Title</label>
+                <input name="title" type="text" maxlength="80" required
+                    class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-willow-mid" />
+            </div>
+
+            <div class="space-y-1">
+                <label class="text-[11px] font-bold text-gray-600">Category</label>
+                <select name="category" required
+                    class="select-field w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-willow-mid">
+                    <option value="Caregiving">Caregiving</option>
+                    <option value="Support">Support</option>
+                    <option value="Health">Health</option>
+                    <option value="Community">Community</option>
+                </select>
+            </div>
+
+            <div class="space-y-1">
+                <label class="text-[11px] font-bold text-gray-600">Content</label>
+                <textarea name="content" rows="4" maxlength="400" required
+                    class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-willow-mid"></textarea>
+            </div>
+
+            <p id="topic-error" class="text-xs text-red-500 hidden">Something went wrong. Please try again.</p>
+
+            <div class="flex justify-end gap-2">
+                <button type="button" id="topic-cancel-secondary"
+                    class="text-xs px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-50">Cancel</button>
+                <button type="submit" id="topic-submit"
+                    class="bg-willow-dark text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-willow-mid transition">Publish</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Replies Modal -->
+    <div id="reply-modal" class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4 z-[100]">
+        <div class="bg-white rounded-2xl w-full max-w-xl p-6 space-y-4">
+            <div class="flex items-start justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-serif font-bold text-willow-dark">Replies</h2>
+                    <p id="reply-topic-title" class="text-xs text-gray-500 mt-1"></p>
+                </div>
+                <button type="button" id="reply-close" class="text-xs text-gray-500 hover:text-gray-700">Close</button>
+            </div>
+
+            <div id="reply-list" class="space-y-3 max-h-[45vh] overflow-y-auto"></div>
+
+            <form id="reply-form" class="space-y-3">
+                <div class="space-y-1">
+                    <label class="text-[11px] font-bold text-gray-600">Add a reply</label>
+                    <textarea id="reply-content" rows="3" maxlength="300" required
+                        class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-willow-mid"></textarea>
+                </div>
+
+                <p id="reply-error" class="text-xs text-red-500 hidden">Unable to post reply. Please try again.</p>
+
+                <div class="flex justify-end gap-2">
+                    <button type="button" id="reply-cancel"
+                        class="text-xs px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-50">Cancel</button>
+                    <button type="submit" id="reply-submit"
+                        class="bg-willow-dark text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-willow-mid transition">Reply</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <?php include '../includes/footer.php'; ?>
     <?php include '../includes/scripts.php'; ?>
