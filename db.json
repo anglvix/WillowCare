@@ -216,13 +216,6 @@
           "authorName": "Admin",
           "content": "Recomendo contactar a APSW - têm uma lista actualizada de profissionais certificados.",
           "createdAt": "2026-05-25T11:00:00Z"
-        },
-        {
-          "id": 2,
-          "authorId": 4,
-          "authorName": "Misha Santos",
-          "content": "nyanyanya",
-          "createdAt": "2026-06-01T15:58:44.945Z"
         }
       ]
     },
@@ -235,44 +228,6 @@
       "authorName": "Ana Martins",
       "createdAt": "2026-05-24T08:00:00Z",
       "replies": []
-    },
-    {
-      "id": "e011290c-773d-4702-97e8-354a6649ba3b",
-      "title": "Meow",
-      "category": "Community",
-      "content": "preciso de ajuda comblabla",
-      "authorId": 4,
-      "authorName": "Misha Santos",
-      "createdAt": "2026-06-01T15:35:59.256Z",
-      "replies": []
-    },
-    {
-      "id": "35ee97cf-913e-4d22-af38-569b2047c4e5",
-      "title": "Misha",
-      "category": "Support",
-      "content": "aaa",
-      "authorId": 4,
-      "authorName": "Misha Santos",
-      "createdAt": "2026-06-01T15:57:02.278Z",
-      "replies": []
-    },
-    {
-      "id": "65e03ab9-a11f-468c-ae7e-652eefb4cda2",
-      "title": "memememee",
-      "category": "Support",
-      "content": "aaa",
-      "authorId": 4,
-      "authorName": "Misha Santos",
-      "createdAt": "2026-06-01T17:53:05.313Z",
-      "replies": [
-        {
-          "id": 1,
-          "authorId": 4,
-          "authorName": "Misha Santos",
-          "content": "maaa",
-          "createdAt": "2026-06-01T17:53:09.899Z"
-        }
-      ]
     }
   ],
   "reviews": [

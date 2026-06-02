@@ -53,6 +53,26 @@ include '../includes/head.php';
             <p class="text-sm text-gray-400">Loading topics...</p>
         </section>
 
+        <section class="pt-8 pb-4">
+            <div class="max-w-4xl mx-auto rounded-[2rem] border border-willow-cream bg-willow-cream/40 p-1 shadow-[0_8px_30px_rgba(70,94,75,0.06)]">
+                <div class="rounded-[1.75rem] bg-white px-6 py-10 sm:px-10 sm:py-12 text-center relative overflow-hidden">
+                    <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-willow-light via-willow-mid to-willow-accent"></div>
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.25em] text-willow-mid">Need more help?</p>
+                    <h2 class="mt-4 text-3xl sm:text-4xl font-serif font-bold text-willow-dark leading-tight">
+                        Contact an organization
+                    </h2>
+                    <p class="mt-3 max-w-2xl mx-auto text-sm sm:text-[15px] text-gray-500 leading-relaxed">
+                        If you need more guidance, connect with groups and associations that can point you toward support, answers, and next steps.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+                        <a href="organizations.php" class="inline-flex items-center justify-center rounded-full bg-willow-dark px-7 py-3 text-sm font-semibold text-white transition hover:bg-willow-mid">
+                            Explore organizations
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- New Topic Modal -->
