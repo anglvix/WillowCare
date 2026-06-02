@@ -13,14 +13,25 @@ export async function getSchoolById(id) {
 }
 
 // district filtrado no servidor; features (array) filtrado client-side com AND - json-server não suporta arrays
-export async function searchSchools({ district, features = [] } = {}) {
-  const params = new URLSearchParams();
-  if (district) params.set("district", district);
-  const res = await fetch(`${BASE}/schools?${params}`);
+export async function searchSchools({ district = '', features = [] } = {}) {
+  // Fetch all schools and perform client-side filtering so district
+  // matching can be done case-insensitively and without relying on server behavior.
+  const res = await fetch(`${BASE}/schools`);
   if (!res.ok) return [];
   const data = await res.json();
-  if (!features.length) return data;
-  return data.filter((s) =>
+
+  const districtQuery = (district || '').trim().toLowerCase();
+  let filtered = data;
+
+  if (districtQuery) {
+    filtered = filtered.filter((s) =>
+      (s.district || '').toLowerCase().includes(districtQuery),
+    );
+  }
+
+  if (!features.length) return filtered;
+
+  return filtered.filter((s) =>
     features.every((f) => s.supportFeatures.includes(f)),
   );
 }

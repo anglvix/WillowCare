@@ -49,11 +49,28 @@ async function load(filters = {}) {
   listEl.innerHTML = schools.map(renderCard).join('')
 }
 
-formEl?.addEventListener('submit', async (e) => {
-  e.preventDefault()
-  const district = formEl.querySelector('[name="district"]')?.value.trim() || ''
-  const features = [...formEl.querySelectorAll('input[type="checkbox"]:checked')].map(cb => cb.name)
-  await load({ district, features })
-})
+formEl?.addEventListener('submit', (e) => e.preventDefault())
 
-load()
+const districtInput = formEl?.querySelector('[name="district"]')
+const checkboxes = formEl ? [...formEl.querySelectorAll('input[type="checkbox"]')] : []
+
+function getFilters() {
+  const district = districtInput?.value.trim() || ''
+  const features = checkboxes.filter(cb => cb.checked).map(cb => cb.name)
+  return { district, features }
+}
+
+function debounce(fn, wait = 300) {
+  let t
+  return (...args) => {
+    clearTimeout(t)
+    t = setTimeout(() => fn(...args), wait)
+  }
+}
+
+const triggerSearch = debounce(() => load(getFilters()), 300)
+
+districtInput?.addEventListener('input', triggerSearch)
+checkboxes.forEach(cb => cb.addEventListener('change', () => load(getFilters())))
+
+load(getFilters())

@@ -68,12 +68,7 @@ include '../includes/head.php';
                     </label>
                 </div>
 
-                <button
-                    type="submit"
-                    class="w-full bg-willow-dark text-white py-2.5 rounded-xl text-xs font-semibold hover:bg-willow-mid transition">
-                    Search Schools
-                </button>
-
+                
             </form>
 
         </aside>
