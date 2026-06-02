@@ -24,11 +24,28 @@ export function logout() {
   localStorage.removeItem('user')
 }
 
-export async function register({ name, email, password }) {
+export async function register({ name, email, password, role = 'caregiver', specialty, certification }) {
+  const payload = {
+    name,
+    email,
+    password,
+    role
+  }
+
+  if (role === 'doctor') {
+    payload.specialty = specialty || ''
+    if (certification) payload.certification = certification
+    payload.approvalStatus = 'pending'
+  } else {
+    payload.savedDoctors = []
+    payload.savedSchools = []
+    payload.achievements = ['registered']
+  }
+
   const res = await fetch(`${BASE}/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, password, role: 'caregiver', savedDoctors: [], savedSchools: [], achievements: ['registered'] })
+    body: JSON.stringify(payload)
   })
 
   if (!res.ok) {
@@ -53,6 +70,26 @@ export async function login({ email, password }) {
   }
 
   const data = await res.json()
+  saveSession(data.accessToken, data.user)
+  return { ok: true, user: data.user }
+}
+
+export async function loginDoctor({ email, password }) {
+  const res = await fetch(`${BASE}/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  })
+
+  if (!res.ok) {
+    return { ok: false, error: 'Credenciais inválidas' }
+  }
+
+  const data = await res.json()
+  if (data.user.role !== 'doctor') {
+    return { ok: false, error: 'Esta área é apenas para médicos. Por favor use o login normal ou crie conta de médico.' }
+  }
+
   saveSession(data.accessToken, data.user)
   return { ok: true, user: data.user }
 }

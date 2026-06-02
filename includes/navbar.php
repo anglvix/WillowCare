@@ -35,7 +35,10 @@
     })
   } else {
     area.innerHTML =
-      '<a href="login.php" class="border border-gray-300 text-gray-700 px-5 py-1.5 rounded-full text-[12px] font-medium hover:bg-gray-50 transition">Log in</a>'
+      '<div class="flex items-center gap-3">' +
+        '<a href="doctor_login.php" class="border border-gray-300 text-gray-700 px-5 py-1.5 rounded-full text-[12px] font-medium hover:bg-gray-50 transition">For doctors</a>' +
+        '<a href="login.php" class="border border-gray-300 text-gray-700 px-5 py-1.5 rounded-full text-[12px] font-medium hover:bg-gray-50 transition">Log in</a>' +
+      '</div>'
   }
 })()
 </script>
