@@ -2,6 +2,8 @@
 $page_title = 'Willow Care - Admin Dashboard';
 $html_lang = 'pt';
 $base_path = '../';
+$page_script = 'admin-view.js';
+
 include '../includes/head.php';
 ?>
 
@@ -22,37 +24,8 @@ include '../includes/head.php';
             </p>
         </div>
        
-        <!-- User Management Table -->
-        <div class="overflow-x-auto">
-            <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            User ID
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Name
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Email
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Role
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Actions
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="user-table-body" class="bg-white divide-y divide-gray-200">
-                    <!-- User rows will be populated here by admin.js -->
-                    <tr>
-                        <td colspan="5" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                            Loading users...
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div id="admin-stats"
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         </div>
     </main>
 
