@@ -24,9 +24,18 @@ include '../includes/head.php';
             </p>
         </div>
        
-        <div id="admin-stats"
-            class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="user-table-body"></tbody>
+        </table>
     </main>
 
     <?php include '../includes/footer.php'; ?>
