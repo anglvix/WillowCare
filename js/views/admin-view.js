@@ -1,11 +1,21 @@
 console.log('ADMIN LOADED');
 
 import { getUsers } from '../services/admin-service.js';
+import { getSession } from '../services/auth-service.js';
+
+const session = getSession();
+
+if (!session || session.role !== 'admin') {
+    window.location.href = 'login.php';
+}
 
 const tableBody =
     document.querySelector('#user-table-body');
 
 async function loadUsers() {
+    if (!session || session.role !== 'admin') {
+        return;
+    }
 
     try {
 

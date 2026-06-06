@@ -28,6 +28,30 @@
         "first_booking"
       ],
       "id": 4
+    },
+    {
+      "email": "joana@gmail.com",
+      "password": "$2a$10$xYjZqTqvkwafR4rg2.rzheOJw2/0V7BETiXGnjD0Drs86mo235Cjy",
+      "name": "joana",
+      "role": "caregiver",
+      "savedDoctors": [],
+      "savedSchools": [],
+      "achievements": [
+        "registered"
+      ],
+      "id": 5
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$HJvdQuxZ1UztcukuuS.FWeG4KjEi3UbGyAtM.JbdILB/xYNuYrus2",
+      "name": "admin",
+      "role": "admin",
+      "savedDoctors": [],
+      "savedSchools": [],
+      "achievements": [
+        "registered"
+      ],
+      "id": 6
     }
   ],
   "doctors": [

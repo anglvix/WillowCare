@@ -47,8 +47,12 @@
   const area = document.getElementById('nav-auth-area')
   if (token && user) {
     const name = (user.name || 'Conta').split(' ')[0]
+    const adminLink = user.role === 'admin'
+      ? '<a href="admin.php" class="border border-willow-dark/20 bg-willow-cream text-willow-dark px-4 py-1.5 rounded-full text-[12px] font-semibold hover:bg-willow-cream/80 transition">Admin</a>'
+      : ''
     area.innerHTML =
       '<div class="flex items-center gap-3">' +
+        adminLink +
         '<a href="account_page.php" class="text-[12px] font-medium text-willow-dark hover:opacity-80 transition">' + name + '</a>' +
         '<button id="logout-btn-sync" class="border border-gray-300 text-gray-700 px-5 py-1.5 rounded-full text-[12px] font-medium hover:bg-gray-50 transition">Log out</button>' +
       '</div>'

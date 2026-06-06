@@ -19,6 +19,11 @@ export function isLoggedIn() {
   return !!getToken()
 }
 
+export function isAdmin() {
+  const user = getSession()
+  return user?.role === 'admin'
+}
+
 export function logout() {
   localStorage.removeItem('token')
   localStorage.removeItem('user')
