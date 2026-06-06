@@ -10,15 +10,36 @@ const errorEl = document.querySelector('#login-error')
 
 formEl?.addEventListener('submit', async (e) => {
   e.preventDefault()
+
   const email = formEl.querySelector('[name="email"]').value.trim()
   const password = formEl.querySelector('[name="password"]').value
 
-  const result = await login({ email, password })
-
-  if (!result.ok) {
-    if (errorEl) errorEl.textContent = 'Email ou password incorrectos.'
-    return
+  if (errorEl) {
+    errorEl.textContent = ''
+    errorEl.classList.add('hidden')
   }
 
-  window.location.href = 'account_page.php'
+  try {
+    const result = await login({ email, password })
+
+    if (!result.ok) {
+      if (errorEl) {
+        errorEl.textContent = result.error || 'Email ou password incorrectos.'
+        errorEl.classList.remove('hidden')
+      }
+      return
+    }
+
+    if (result.user?.role === 'admin') {
+      window.location.href = 'admin.php'
+      return
+    }
+
+    window.location.href = 'account_page.php'
+  } catch (err) {
+    if (errorEl) {
+      errorEl.textContent = 'Não foi possível ligar ao servidor. Inicia o backend primeiro.'
+      errorEl.classList.remove('hidden')
+    }
+  }
 })
