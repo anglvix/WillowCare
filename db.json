@@ -52,6 +52,42 @@
         "registered"
       ],
       "id": 6
+    },
+    {
+      "email": "doctor@willowcare.com",
+      "password": "$2a$10$BeiVszPLOWpXP4drLUW/heezspxaVKOVtKPyL2lpv2Y6OoknHCi.y",
+      "name": "Dr. Sample Doctor",
+      "role": "doctor",
+      "savedDoctors": [],
+      "savedSchools": [],
+      "achievements": [
+        "registered"
+      ],
+      "id": 7
+    },
+    {
+      "email": "school@willowcare.com",
+      "password": "$2a$10$PsqnTUV/T/rrz.0XfzOuour8TEqsjmts.z5XJ5/thELdQjokpDVJq",
+      "name": "Sample School",
+      "role": "school",
+      "savedDoctors": [],
+      "savedSchools": [],
+      "achievements": [
+        "registered"
+      ],
+      "id": 8
+    },
+    {
+      "email": "organization@willowcare.com",
+      "password": "$2a$10$q0MhenMXsk5xZ1ZY2aOeGei4.4/jLGzK5c4n.LtdtF4/GZ/nGLRru",
+      "name": "Sample Organization",
+      "role": "organization",
+      "savedDoctors": [],
+      "savedSchools": [],
+      "achievements": [
+        "registered"
+      ],
+      "id": 9
     }
   ],
   "doctors": [
@@ -150,6 +186,9 @@
       "ageGroup": "4-7",
       "image": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=500&q=80",
       "category": "Interactive Workshop",
+      "hostName": "Escola EB1 da Maia",
+      "hostType": "school",
+      "hostId": 1,
       "enrolledUsers": []
     },
     {
@@ -184,6 +223,9 @@
       "description": "Caminhada suave em ambiente natural com foco sensorial e integração em grupo.",
       "sensoryFocus": "nature",
       "image": "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=500&q=80",
+      "hostName": "Associação Portuguesa Síndrome de Williams",
+      "hostType": "organization",
+      "hostId": 1,
       "enrolledUsers": []
     },
     {

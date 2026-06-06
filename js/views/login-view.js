@@ -35,6 +35,11 @@ formEl?.addEventListener('submit', async (e) => {
       return
     }
 
+    if (result.user?.role === 'doctor') {
+      window.location.href = 'doctor_area.php'
+      return
+    }
+
     window.location.href = 'account_page.php'
   } catch (err) {
     if (errorEl) {

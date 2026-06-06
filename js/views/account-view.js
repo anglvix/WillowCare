@@ -1,4 +1,4 @@
-import { getSession, isLoggedIn, logout } from "../services/auth-service.js";
+import { getSession, isLoggedIn, logout, getRoleLabel } from "../services/auth-service.js";
 import { getVouchers, getProfile } from "../services/user-service.js";
 import Voucher from "../models/Voucher.js";
 
@@ -8,6 +8,15 @@ if (!isLoggedIn()) {
 }
 
 const session = getSession();
+
+if (session) {
+  document.querySelector("#user-role-badge")?.replaceWith(
+    Object.assign(document.querySelector("#user-role-badge") ?? document.createElement("p"), {
+      textContent: getRoleLabel(session.role),
+      className: "text-[10px] bg-willow-light text-willow-dark px-2 py-0.5 rounded-full inline-block mt-1 font-semibold uppercase",
+    }),
+  );
+}
 
 // Preenche dados do perfil
 document

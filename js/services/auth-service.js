@@ -24,6 +24,18 @@ export function isAdmin() {
   return user?.role === 'admin'
 }
 
+export function getRoleLabel(role) {
+  const labels = {
+    admin: 'Admin',
+    doctor: 'Doctor',
+    caregiver: 'Family Member',
+    school: 'School',
+    organization: 'Organization'
+  }
+
+  return labels[role] || 'User'
+}
+
 export function logout() {
   localStorage.removeItem('token')
   localStorage.removeItem('user')
@@ -71,7 +83,7 @@ export async function login({ email, password }) {
   })
 
   if (!res.ok) {
-    return { ok: false, error: 'Credenciais inválidas' }
+    return { ok: false, error: 'Email or password is incorrect. Please try again.' }
   }
 
   const data = await res.json()
@@ -87,12 +99,12 @@ export async function loginDoctor({ email, password }) {
   })
 
   if (!res.ok) {
-    return { ok: false, error: 'Credenciais inválidas' }
+    return { ok: false, error: 'Email or password is incorrect. Please try again.' }
   }
 
   const data = await res.json()
   if (data.user.role !== 'doctor') {
-    return { ok: false, error: 'Esta área é apenas para médicos. Por favor use o login normal ou crie conta de médico.' }
+    return { ok: false, error: 'This area is only for doctors. Please use the regular login or create a doctor account.' }
   }
 
   saveSession(data.accessToken, data.user)

@@ -22,5 +22,5 @@ formEl?.addEventListener('submit', async (e) => {
     return
   }
 
-  window.location.href = 'account_page.php'
+  window.location.href = 'doctor_area.php'
 })

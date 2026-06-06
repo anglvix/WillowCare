@@ -26,20 +26,13 @@ include '../includes/head.php';
                     Interactive Workshop
                 </span>
 
-                <h1 class="text-3xl font-serif font-bold text-willow-dark mt-3 mb-2">
-                    Leitura Infantil
-                </h1>
+                <h1 id="workshop-title" class="text-3xl font-serif font-bold text-willow-dark mt-3 mb-2">A carregar...</h1>
 
-                <p class="text-xs text-gray-400 flex items-center gap-1">
-                    📍 Biblioteca Municipal da Maia |
-                    📅 14 Maio 2026
-                </p>
+                <p id="workshop-meta" class="text-xs text-gray-400 flex items-center gap-1">A carregar...</p>
+                <p id="workshop-host" class="text-xs text-gray-500 mt-2"></p>
             </div>
 
-            <p class="text-sm text-gray-600 leading-relaxed">
-                Sessão estruturada por terapeutas profissionais focada no reforço cognitivo
-                através de contos visuais adaptados e dinâmicas sonoras calmas.
-            </p>
+            <p id="workshop-description" class="text-sm text-gray-600 leading-relaxed">A carregar...</p>
 
         </div>
 

@@ -2,6 +2,7 @@
 $page_title = 'Willow Care - School Integration Profile';
 $html_lang = 'pt';
 $base_path = '../';
+$page_script = 'school-account-view.js';
 include '../includes/head.php';
 ?>
 
@@ -28,13 +29,9 @@ include '../includes/head.php';
                 Public Institution
             </span>
 
-            <h1 class="text-2xl font-serif font-bold text-willow-dark mt-2">
-                Escola Básica D. Manuel II
-            </h1>
+            <h1 id="school-name" class="text-2xl font-serif font-bold text-willow-dark mt-2">A carregar...</h1>
 
-            <p class="text-xs text-gray-400 mt-1">
-                Porto District • Inclusive Educational Program
-            </p>
+            <p id="school-location" class="text-xs text-gray-400 mt-1">A carregar...</p>
 
         </div>
 
@@ -47,45 +44,14 @@ include '../includes/head.php';
                 Special Education Infrastructure
             </h3>
 
-            <p class="text-xs text-gray-600 leading-relaxed">
-                A escola dispõe de salas multissensoriais estruturadas e equipas
-                fixas formadas em apoio cognitivo individualizado.
-            </p>
+            <p id="school-description" class="text-xs text-gray-600 leading-relaxed">A carregar...</p>
 
         </section>
 
         <!-- Features -->
         <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
-            <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm text-center">
-
-                <span class="text-xl">🧠</span>
-
-                <h4 class="text-xs font-bold text-willow-dark mt-2 uppercase">
-                    Cognitive Support
-                </h4>
-
-            </div>
-
-            <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm text-center">
-
-                <span class="text-xl">🎨</span>
-
-                <h4 class="text-xs font-bold text-willow-dark mt-2 uppercase">
-                    Sensory Rooms
-                </h4>
-
-            </div>
-
-            <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm text-center">
-
-                <span class="text-xl">👩‍🏫</span>
-
-                <h4 class="text-xs font-bold text-willow-dark mt-2 uppercase">
-                    Specialized Staff
-                </h4>
-
-            </div>
+            <div id="school-features" class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full"></div>
 
         </section>
 

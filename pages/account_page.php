@@ -26,7 +26,7 @@ include '../includes/head.php';
                 -
             </h2>
 
-            <p class="text-[10px] bg-willow-light text-willow-dark px-2 py-0.5 rounded-full inline-block mt-1 font-semibold uppercase">
+            <p id="user-role-badge" class="text-[10px] bg-willow-light text-willow-dark px-2 py-0.5 rounded-full inline-block mt-1 font-semibold uppercase">
                 Family Member
             </p>
 

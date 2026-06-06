@@ -27,20 +27,13 @@ include '../includes/head.php';
                 Excursion Plan
             </span>
 
-            <h1 class="text-3xl font-serif font-bold text-willow-dark mt-3 mb-2">
-                Passeio em Valongo
-            </h1>
+            <h1 id="excursion-title" class="text-3xl font-serif font-bold text-willow-dark mt-3 mb-2">A carregar...</h1>
 
-            <p class="text-xs text-gray-400 flex items-center gap-1">
-                📍 Valongo Nature Trails, Porto |
-                📅 14 Maio 2026
-            </p>
+            <p id="excursion-meta" class="text-xs text-gray-400 flex items-center gap-1">A carregar...</p>
+            <p id="excursion-host" class="text-xs text-gray-500 mt-2"></p>
         </div>
 
-        <p class="text-sm text-gray-600 leading-relaxed">
-            Este passeio ao ar livre foi desenhado especificamente para proporcionar
-            estímulo sensorial adaptado e socialização segura de forma calma e estruturada.
-        </p>
+        <p id="excursion-description" class="text-sm text-gray-600 leading-relaxed">A carregar...</p>
 
     </div>
 
