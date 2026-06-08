@@ -225,6 +225,116 @@
       "image": "",
       "category": "Interactive Workshop",
       "enrolledUsers": []
+    },
+    {
+      "id": 4,
+      "title": "Jogo das Cadeiras",
+      "date": "2026-07-05",
+      "location": "Porto",
+      "description": "Objetivo: atenção, coordenação, integração social. Cadeiras em círculo (menos 1). Ninguém sai do jogo.",
+      "ageGroup": "4-12",
+      "image": "",
+      "category": "Atividade Dinâmica",
+      "enrolledUsers": []
+    },
+    {
+      "id": 5,
+      "title": "Imitar Ritmos",
+      "date": "2026-07-06",
+      "location": "Porto",
+      "description": "Objetivo: memória auditiva e coordenação. Facilitador cria um ritmo, grupo repete.",
+      "ageGroup": "4-12",
+      "image": "",
+      "category": "Atividade Dinâmica",
+      "enrolledUsers": []
+    },
+    {
+      "id": 6,
+      "title": "Dança Guiada",
+      "date": "2026-07-07",
+      "location": "Porto",
+      "description": "Objetivo: coordenação motora. Um líder faz movimentos, grupo imita.",
+      "ageGroup": "4-12",
+      "image": "",
+      "category": "Atividade Dinâmica",
+      "enrolledUsers": []
+    },
+    {
+      "id": 7,
+      "title": "Jogo do Nome + Gesto",
+      "date": "2026-07-08",
+      "location": "Porto",
+      "description": "Objetivo: memória e interação. Cada pessoa diz nome + gesto.",
+      "ageGroup": "4-12",
+      "image": "",
+      "category": "Atividade Dinâmica",
+      "enrolledUsers": []
+    },
+    {
+      "id": 8,
+      "title": "Passa a Bola com Perguntas",
+      "date": "2026-07-09",
+      "location": "Porto",
+      "description": "Objetivo: comunicação. Passar bola e responder perguntas.",
+      "ageGroup": "4-12",
+      "image": "",
+      "category": "Atividade Dinâmica",
+      "enrolledUsers": []
+    },
+    {
+      "id": 9,
+      "title": "História em Cadeia",
+      "date": "2026-07-10",
+      "location": "Porto",
+      "description": "Objetivo: criatividade. Cada pessoa acrescenta uma frase.",
+      "ageGroup": "4-12",
+      "image": "",
+      "category": "Atividade Dinâmica",
+      "enrolledUsers": []
+    },
+    {
+      "id": 10,
+      "title": "Associação de Imagens",
+      "date": "2026-07-11",
+      "location": "Porto",
+      "description": "Objetivo: compreensão. Associar imagens (ex: animal → som).",
+      "ageGroup": "4-12",
+      "image": "",
+      "category": "Atividade Dinâmica",
+      "enrolledUsers": []
+    },
+    {
+      "id": 11,
+      "title": "Circuito Simples",
+      "date": "2026-07-12",
+      "location": "Porto",
+      "description": "Objetivo: motricidade. Percurso com tarefas (andar, saltar, contornar).",
+      "ageGroup": "4-12",
+      "image": "",
+      "category": "Atividade Dinâmica",
+      "enrolledUsers": []
+    },
+    {
+      "id": 12,
+      "title": "Lançar e Apanhar Bola",
+      "date": "2026-07-13",
+      "location": "Porto",
+      "description": "Objetivo: coordenação. Lançar bola entre participantes.",
+      "ageGroup": "4-12",
+      "image": "",
+      "category": "Atividade Dinâmica",
+      "enrolledUsers": []
+    },
+    {
+      "id": 13,
+      "title": "Pintura e Artes Manuais",
+      "date": "2026-07-14",
+      "location": "Porto",
+      "description": "Objetivo: expressão emocional, criatividade e motricidade fina. Pintura, colagem ou modelagem.",
+      "ageGroup": "4-12",
+      "image": "",
+      "category": "Atividade Dinâmica",
+      "enrolledUsers": []
     }
   ],
   "excursions": [
@@ -249,6 +359,58 @@
       "description": "Concerto adaptado para crianças sensíveis ao som, com volume reduzido e espaço de descanso.",
       "sensoryFocus": "music",
       "image": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=500&q=80",
+      "enrolledUsers": []
+    },
+    {
+      "id": 3,
+      "title": "Passeios na Natureza",
+      "date": "2026-07-15",
+      "location": "Parque da Cidade do Porto / Jardim do Palácio de Cristal",
+      "description": "Caminhada curta com pausas para observar plantas, animais e sons da natureza.",
+      "sensoryFocus": "nature",
+      "image": "",
+      "hostName": "Associação Portuguesa Síndrome de Williams",
+      "hostType": "organization",
+      "hostId": 1,
+      "enrolledUsers": []
+    },
+    {
+      "id": 4,
+      "title": "Visita ao Aquário",
+      "date": "2026-07-16",
+      "location": "Sea Life Porto",
+      "description": "Visita tranquila focada em alguns animais para estimular curiosidade e atenção visual.",
+      "sensoryFocus": "visual",
+      "image": "",
+      "hostName": "Associação Portuguesa Síndrome de Williams",
+      "hostType": "organization",
+      "hostId": 1,
+      "enrolledUsers": []
+    },
+    {
+      "id": 5,
+      "title": "Dia na Praia Tranquila",
+      "date": "2026-07-17",
+      "location": "Praia de Matosinhos",
+      "description": "Tempo livre supervisionado para caminhar, brincar na areia e estimulação sensorial.",
+      "sensoryFocus": "sensorial",
+      "image": "",
+      "hostName": "Associação Portuguesa Síndrome de Williams",
+      "hostType": "organization",
+      "hostId": 1,
+      "enrolledUsers": []
+    },
+    {
+      "id": 6,
+      "title": "Quinta Pedagógica",
+      "date": "2026-07-18",
+      "location": "Quinta Pedagógica (Porto ou arredores)",
+      "description": "Contacto com animais e participação em tarefas simples do quotidiano.",
+      "sensoryFocus": "nature",
+      "image": "",
+      "hostName": "Associação Portuguesa Síndrome de Williams",
+      "hostType": "organization",
+      "hostId": 1,
       "enrolledUsers": []
     }
   ],
