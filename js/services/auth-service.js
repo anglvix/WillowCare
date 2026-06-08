@@ -53,6 +53,9 @@ export async function register({ name, email, password, role = 'caregiver', spec
     payload.specialty = specialty || ''
     if (certification) payload.certification = certification
     payload.approvalStatus = 'pending'
+    payload.savedDoctors = []
+    payload.savedSchools = []
+    payload.achievements = ['registered']
   } else {
     payload.savedDoctors = []
     payload.savedSchools = []
@@ -108,5 +111,5 @@ export async function loginDoctor({ email, password }) {
   }
 
   saveSession(data.accessToken, data.user)
-  return { ok: true, user: data.user }
+  return { ok: true, user: data.user, pending: (data.user.approvalStatus || 'approved') === 'pending' }
 }

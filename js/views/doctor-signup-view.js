@@ -1,7 +1,8 @@
-import { register, isLoggedIn } from '../services/auth-service.js'
+import { register, isLoggedIn, getSession } from '../services/auth-service.js'
 
 if (isLoggedIn()) {
-  window.location.href = 'account_page.php'
+  const session = getSession()
+  window.location.href = session?.role === 'doctor' ? 'doctor_area.php' : 'account_page.php'
 }
 
 const formEl = document.querySelector('#doctor-signup-form')
@@ -57,5 +58,6 @@ formEl?.addEventListener('submit', async (e) => {
     return
   }
 
-  window.location.href = 'doctor_area.php'
+  window.alert('Your doctor account has been created and is now waiting for admin verification. You will be notified once it is approved.')
+  window.location.href = 'doctor_login.php'
 })

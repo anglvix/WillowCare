@@ -21,6 +21,10 @@ include '../includes/head.php';
                 style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80');">
             </div>
 
+            <div id="doctor-review-alert" class="hidden rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-left text-[11px] text-amber-800 shadow-sm">
+                Your doctor account is still under admin review. Once approved, the full doctor portal will become active.
+            </div>
+
             <!-- Basic Info -->
             <div>
 

@@ -1,9 +1,18 @@
 import Doctor from '../models/Doctor.js'
 import { getDoctorById } from '../services/doctor-service.js'
 import { saveDoctor } from '../services/user-service.js'
-import { isLoggedIn } from '../services/auth-service.js'
+import { getSession, isLoggedIn } from '../services/auth-service.js'
 
 const id = new URLSearchParams(location.search).get('id')
+
+const session = getSession()
+
+if (session?.role === 'doctor' && (session.approvalStatus || 'approved') === 'pending') {
+  const alertBox = document.querySelector('#doctor-review-alert')
+  if (alertBox) {
+    alertBox.classList.remove('hidden')
+  }
+}
 
 async function load() {
   if (!id) {

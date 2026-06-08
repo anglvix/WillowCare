@@ -24,18 +24,23 @@ include '../includes/head.php';
             </p>
         </div>
        
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="user-table-body"></tbody>
-        </table>
+        <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm bg-white">
+            <table class="min-w-full text-left text-sm">
+                <thead class="bg-gray-50 text-[10px] uppercase tracking-[0.25em] text-gray-500">
+                    <tr>
+                        <th class="px-4 py-3">ID</th>
+                        <th class="px-4 py-3">Name</th>
+                        <th class="px-4 py-3">Email</th>
+                        <th class="px-4 py-3">Role</th>
+                        <th class="px-4 py-3">Specialty</th>
+                        <th class="px-4 py-3">Status</th>
+                        <th class="px-4 py-3">Certification</th>
+                        <th class="px-4 py-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="user-table-body" class="divide-y divide-gray-100"></tbody>
+            </table>
+        </div>
     </main>
 
     <?php include '../includes/footer.php'; ?>

@@ -46,10 +46,13 @@
       "password": "$2a$10$HJvdQuxZ1UztcukuuS.FWeG4KjEi3UbGyAtM.JbdILB/xYNuYrus2",
       "name": "admin",
       "role": "admin",
-      "savedDoctors": [],
+      "savedDoctors": [
+        1
+      ],
       "savedSchools": [],
       "achievements": [
-        "registered"
+        "registered",
+        "saved_doctor"
       ],
       "id": 6
     },
