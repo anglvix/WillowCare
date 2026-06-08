@@ -22,7 +22,11 @@ function renderCertification(user) {
         return '<span class="text-gray-400">No image uploaded</span>';
     }
 
-    return `<img src="${user.certification}" alt="Certification for ${user.name}" class="h-16 w-16 rounded-xl border border-gray-200 object-cover" />`;
+    return `
+        <a href="${user.certification}" target="_blank" rel="noopener noreferrer" class="inline-block rounded-xl border border-gray-200 bg-white p-1 shadow-sm hover:border-willow-mid transition">
+            <img src="${user.certification}" alt="Certification for ${user.name}" class="h-24 w-24 rounded-lg object-cover md:h-28 md:w-28" />
+        </a>
+    `;
 }
 
 function renderAction(user) {
