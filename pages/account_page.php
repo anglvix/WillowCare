@@ -42,7 +42,7 @@ include '../includes/head.php';
                 </a>
 
                 <a
-                    href="doctor_search.php"
+                    href="saved_doctors.php"
                     class="block bg-white p-3 rounded-xl border border-gray-200 text-gray-600 font-medium hover:border-willow-mid hover:text-willow-dark transition">
 
                     👨‍⚕️ Saved Doctors
