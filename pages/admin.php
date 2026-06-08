@@ -24,6 +24,13 @@ include '../includes/head.php';
             </p>
         </div>
        
+        <section class="mb-8 rounded-3xl border border-amber-100 bg-amber-50 p-6 shadow-sm">
+            <p class="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-semibold">Doctor review queue</p>
+            <h2 class="mt-2 text-xl font-serif font-bold text-willow-dark">Pending doctor applications</h2>
+            <p class="mt-2 text-sm text-gray-600">Review each doctor's submitted information and certification image, then accept the account when ready.</p>
+            <div id="pending-doctors-list" class="mt-5 space-y-4"></div>
+        </section>
+
         <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm bg-white">
             <table class="min-w-full text-left text-sm">
                 <thead class="bg-gray-50 text-[10px] uppercase tracking-[0.25em] text-gray-500">

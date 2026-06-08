@@ -7,6 +7,7 @@ if (!session || session.role !== 'admin') {
     window.location.href = 'login.php';
 }
 
+const pendingList = document.querySelector('#pending-doctors-list');
 const tableBody = document.querySelector('#user-table-body');
 
 function renderStatus(user) {
@@ -32,6 +33,11 @@ function renderAction(user) {
     return `<button data-action="approve-doctor" data-user-id="${user.id}" class="rounded-xl bg-willow-dark px-3 py-1.5 text-[10px] font-semibold text-white hover:bg-willow-mid transition">Approve</button>`;
 }
 
+async function approveDoctor(userId) {
+    await updateDoctorApproval(userId, 'approved');
+    await loadUsers();
+}
+
 async function loadUsers() {
     if (!session || session.role !== 'admin') {
         return;
@@ -39,6 +45,33 @@ async function loadUsers() {
 
     try {
         const users = await getUsers();
+        const pendingDoctors = users.filter((user) => user.role === 'doctor' && (user.approvalStatus || 'approved') === 'pending');
+
+        pendingList.innerHTML = pendingDoctors.length
+            ? pendingDoctors.map((user) => `
+                <article class="rounded-2xl border border-amber-100 bg-amber-50 p-5 shadow-sm">
+                    <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                        <div class="space-y-1 text-sm text-gray-700">
+                            <p class="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-semibold">Doctor application</p>
+                            <h3 class="text-base font-semibold text-willow-dark">${user.name}</h3>
+                            <p class="text-xs text-gray-500">${user.email}</p>
+                            <p class="text-xs text-gray-500">Specialty: ${user.specialty || 'Not provided'}</p>
+                            <p class="text-[11px] text-gray-400">Password is hidden from the admin view.</p>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            ${renderCertification(user)}
+                            <button data-action="approve-doctor" data-user-id="${user.id}" class="rounded-xl bg-willow-dark px-4 py-2 text-[11px] font-semibold text-white hover:bg-willow-mid transition">Accept Doctor Account</button>
+                        </div>
+                    </div>
+                </article>
+            `).join('')
+            : '<p class="text-sm text-gray-400">No pending doctor applications right now.</p>';
+
+        pendingList.querySelectorAll('[data-action="approve-doctor"]').forEach((button) => {
+            button.addEventListener('click', async () => {
+                await approveDoctor(Number(button.dataset.userId));
+            });
+        });
 
         tableBody.innerHTML = users.map((user) => `
             <tr class="border-b border-gray-100 align-top">
@@ -55,9 +88,7 @@ async function loadUsers() {
 
         tableBody.querySelectorAll('[data-action="approve-doctor"]').forEach((button) => {
             button.addEventListener('click', async () => {
-                const userId = Number(button.dataset.userId);
-                await updateDoctorApproval(userId, 'approved');
-                await loadUsers();
+                await approveDoctor(Number(button.dataset.userId));
             });
         });
 

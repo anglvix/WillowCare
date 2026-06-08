@@ -110,6 +110,10 @@ export async function loginDoctor({ email, password }) {
     return { ok: false, error: 'This area is only for doctors. Please use the regular login or create a doctor account.' }
   }
 
+  if ((data.user.approvalStatus || 'approved') === 'pending') {
+    return { ok: false, error: 'Your doctor account is still under admin review. Please wait for approval before logging in.' }
+  }
+
   saveSession(data.accessToken, data.user)
-  return { ok: true, user: data.user, pending: (data.user.approvalStatus || 'approved') === 'pending' }
+  return { ok: true, user: data.user }
 }
