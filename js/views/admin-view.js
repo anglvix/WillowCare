@@ -1,4 +1,4 @@
-import { getUsers, updateDoctorApproval } from '../services/admin-service.js';
+﻿import { getUsers, deleteUser, updateUser, updateDoctorApproval, createSchool, createWorkshop, createExcursion } from '../services/admin-service.js';
 import { getSession } from '../services/auth-service.js';
 
 const session = getSession();
@@ -9,6 +9,18 @@ if (!session || session.role !== 'admin') {
 
 const pendingList = document.querySelector('#pending-doctors-list');
 const tableBody = document.querySelector('#user-table-body');
+const schoolForm = document.querySelector('#school-form');
+const activityForm = document.querySelector('#activity-form');
+const schoolStatus = document.querySelector('#school-form-status');
+const activityStatus = document.querySelector('#activity-form-status');
+
+const roleOptions = [
+    { value: 'caregiver', label: 'Caregiver' },
+    { value: 'doctor', label: 'Doctor' },
+    { value: 'school', label: 'School' },
+    { value: 'organization', label: 'Organization' },
+    { value: 'admin', label: 'Admin' }
+];
 
 function renderStatus(user) {
     const status = user.approvalStatus || 'approved';
@@ -29,16 +41,86 @@ function renderCertification(user) {
     `;
 }
 
-function renderAction(user) {
-    if (user.role !== 'doctor' || (user.approvalStatus || 'approved') === 'approved') {
-        return '<span class="text-[11px] text-gray-400">Approved</span>';
-    }
+function renderRoleEditor(user) {
+    return `
+        <div class="space-y-2">
+            <label class="block text-[11px] font-semibold text-gray-500 uppercase">Role</label>
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+                <select data-action="role-select" data-user-id="${user.id}" class="grow rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs text-gray-700 shadow-sm focus:border-willow-mid focus:ring-2 focus:ring-willow-100">
+                    ${roleOptions
+                        .map((role) => `<option value="${role.value}" ${role.value === user.role ? 'selected' : ''}>${role.label}</option>`)
+                        .join('')}
+                </select>
+                <button data-action="update-role" data-user-id="${user.id}" class="rounded-xl bg-willow-dark px-3 py-2 text-[10px] font-semibold text-white hover:bg-willow-mid transition">Save</button>
+            </div>
+        </div>
+    `;
+}
 
-    return `<button data-action="approve-doctor" data-user-id="${user.id}" class="rounded-xl bg-willow-dark px-3 py-1.5 text-[10px] font-semibold text-white hover:bg-willow-mid transition">Approve</button>`;
+function renderUserActions(user) {
+    const approveButton = user.role === 'doctor' && (user.approvalStatus || 'approved') === 'pending'
+        ? `<button data-action="approve-doctor" data-user-id="${user.id}" class="rounded-xl bg-willow-dark px-3 py-2 text-[10px] font-semibold text-white hover:bg-willow-mid transition">Approve</button>`
+        : '<span class="text-[11px] text-gray-400">No pending actions</span>';
+
+    const deleteButton = user.id === session.id
+        ? '<span class="text-[11px] text-gray-400">Current admin</span>'
+        : `<button data-action="delete-user" data-user-id="${user.id}" class="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-[10px] font-semibold text-red-700 hover:bg-red-100 transition">Delete</button>`;
+
+    return `
+        <div class="space-y-3">
+            ${renderRoleEditor(user)}
+            <div class="flex flex-wrap gap-2">
+                ${approveButton}
+                ${deleteButton}
+            </div>
+        </div>
+    `;
+}
+
+function showMessage(element, message, isError = false) {
+    if (!element) return;
+    element.textContent = message;
+    element.classList.toggle('text-red-600', isError);
+    element.classList.toggle('text-emerald-600', !isError);
+    element.classList.remove('hidden');
+}
+
+function clearMessage(element) {
+    if (!element) return;
+    element.textContent = '';
+    element.classList.add('hidden');
 }
 
 async function approveDoctor(userId) {
     await updateDoctorApproval(userId, 'approved');
+    await loadUsers();
+}
+
+async function deleteUserHandler(userId) {
+    if (!confirm('Delete this user account? This action cannot be undone.')) return;
+    await deleteUser(userId);
+    await loadUsers();
+}
+
+async function updateUserRoleHandler(userId) {
+    const select = tableBody.querySelector(`[data-action="role-select"][data-user-id="${userId}"]`);
+    if (!select) return;
+    const newRole = select.value;
+    const row = select.closest('tr');
+
+    if (userId === session.id && newRole !== 'admin') {
+        alert('You cannot demote yourself from the current admin account while signed in.');
+        select.value = 'admin';
+        return;
+    }
+
+    const patch = { role: newRole };
+    if (newRole === 'doctor') {
+        patch.approvalStatus = 'approved';
+        patch.specialty = row?.dataset.userSpecialty || 'General';
+    }
+
+    await updateUser(userId, patch);
     await loadUsers();
 }
 
@@ -78,7 +160,7 @@ async function loadUsers() {
         });
 
         tableBody.innerHTML = users.map((user) => `
-            <tr class="border-b border-gray-100 align-top">
+            <tr class="border-b border-gray-100 align-top" data-user-specialty="${user.specialty || ''}" data-user-role="${user.role}">
                 <td class="px-4 py-4 text-xs text-gray-700">${user.id}</td>
                 <td class="px-4 py-4 text-xs text-gray-700">${user.name}</td>
                 <td class="px-4 py-4 text-xs text-gray-700">${user.email}</td>
@@ -86,7 +168,7 @@ async function loadUsers() {
                 <td class="px-4 py-4 text-xs text-gray-700">${user.specialty || '-'}</td>
                 <td class="px-4 py-4">${renderStatus(user)}</td>
                 <td class="px-4 py-4">${renderCertification(user)}</td>
-                <td class="px-4 py-4">${renderAction(user)}</td>
+                <td class="px-4 py-4">${renderUserActions(user)}</td>
             </tr>
         `).join('');
 
@@ -96,6 +178,17 @@ async function loadUsers() {
             });
         });
 
+        tableBody.querySelectorAll('[data-action="update-role"]').forEach((button) => {
+            button.addEventListener('click', async () => {
+                await updateUserRoleHandler(Number(button.dataset.userId));
+            });
+        });
+
+        tableBody.querySelectorAll('[data-action="delete-user"]').forEach((button) => {
+            button.addEventListener('click', async () => {
+                await deleteUserHandler(Number(button.dataset.userId));
+            });
+        });
     } catch (error) {
         console.error(error);
 
@@ -108,5 +201,79 @@ async function loadUsers() {
         `;
     }
 }
+
+schoolForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!schoolForm) return;
+    clearMessage(schoolStatus);
+
+    const formData = new FormData(schoolForm);
+    const name = formData.get('school-name')?.toString().trim();
+    const district = formData.get('school-district')?.toString().trim();
+    const location = formData.get('school-location')?.toString().trim();
+    const type = formData.get('school-type')?.toString().trim();
+    const description = formData.get('school-description')?.toString().trim();
+    const features = formData.get('school-features')?.toString().trim();
+
+    if (!name || !district || !location) {
+        showMessage(schoolStatus, 'Please fill in the school name, district, and location.', true);
+        return;
+    }
+
+    try {
+        await createSchool({
+            name,
+            district,
+            location,
+            type,
+            description,
+            supportFeatures: features ? features.split(',').map((item) => item.trim()).filter(Boolean) : []
+        });
+        showMessage(schoolStatus, 'School created successfully.');
+        schoolForm.reset();
+    } catch (error) {
+        showMessage(schoolStatus, 'Unable to create school. Please try again.', true);
+        console.error(error);
+    }
+});
+
+activityForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!activityForm) return;
+    clearMessage(activityStatus);
+
+    const formData = new FormData(activityForm);
+    const type = formData.get('activity-type')?.toString();
+    const title = formData.get('activity-title')?.toString().trim();
+    const date = formData.get('activity-date')?.toString();
+    const location = formData.get('activity-location')?.toString().trim();
+    const description = formData.get('activity-description')?.toString().trim();
+    const category = formData.get('activity-category')?.toString().trim();
+    const ageGroup = formData.get('activity-age-group')?.toString().trim();
+    const sensoryFocus = formData.get('activity-sensory-focus')?.toString().trim();
+    const image = formData.get('activity-image')?.toString().trim();
+    const hostName = formData.get('activity-host-name')?.toString().trim();
+    const hostType = formData.get('activity-host-type')?.toString();
+    const hostIdValue = formData.get('activity-host-id')?.toString().trim();
+    const hostId = hostIdValue ? Number(hostIdValue) : null;
+
+    if (!type || !title || !date || !location || !description || !category) {
+        showMessage(activityStatus, 'Please fill in the required activity fields.', true);
+        return;
+    }
+
+    try {
+        if (type === 'workshop') {
+            await createWorkshop({ title, date, location, description, category, ageGroup: ageGroup || 'All ages', image, hostName, hostType, hostId });
+        } else {
+            await createExcursion({ title, date, location, description, sensoryFocus: sensoryFocus || 'general', image, hostName, hostType, hostId });
+        }
+        showMessage(activityStatus, `${type === 'workshop' ? 'Workshop' : 'Excursion'} created successfully.`);
+        activityForm.reset();
+    } catch (error) {
+        showMessage(activityStatus, 'Unable to create activity. Please try again.', true);
+        console.error(error);
+    }
+});
 
 loadUsers();

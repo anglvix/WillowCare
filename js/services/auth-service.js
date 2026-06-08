@@ -15,6 +15,10 @@ export function getSession() {
   return raw ? JSON.parse(raw) : null
 }
 
+export function saveSessionData(user) {
+  localStorage.setItem('user', JSON.stringify(user))
+}
+
 export function isLoggedIn() {
   return !!getToken()
 }
@@ -28,7 +32,7 @@ export function getRoleLabel(role) {
   const labels = {
     admin: 'Admin',
     doctor: 'Doctor',
-    caregiver: 'Family Member',
+    caregiver: 'Caregiver',
     school: 'School',
     organization: 'Organization'
   }

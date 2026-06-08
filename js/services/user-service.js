@@ -88,3 +88,17 @@ export async function createVoucher({ activityId, activityType, activityTitle, d
   if (res.ok) await unlockAchievement('first_booking')
   return { ok: res.ok }
 }
+
+export async function updateProfile(userId, patch) {
+  const res = await fetch(`${BASE}/users/${userId}`, {
+    method: 'PATCH',
+    headers: authHeaders(),
+    body: JSON.stringify(patch)
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to update profile')
+  }
+
+  return res.json()
+}

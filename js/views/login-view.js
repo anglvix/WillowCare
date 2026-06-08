@@ -2,7 +2,14 @@ import { login, isLoggedIn } from '../services/auth-service.js'
 
 // Redireciona se já autenticado
 if (isLoggedIn()) {
-  window.location.href = 'account_page.php'
+  const session = JSON.parse(localStorage.getItem('user') || 'null')
+  if (session?.role === 'admin') {
+    window.location.href = 'admin.php'
+  } else if (session?.role === 'doctor') {
+    window.location.href = 'doctor_area.php'
+  } else {
+    window.location.href = 'account_page.php'
+  }
 }
 
 const formEl = document.querySelector('#login-form')

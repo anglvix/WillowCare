@@ -7,7 +7,7 @@ function updateNavbar() {
   const user = getSession()
   const firstName = user?.name?.split(' ')[0] ?? 'Conta'
   const adminLink = isAdmin()
-    ? '<a href="admin.php" class="border border-willow-dark/20 bg-willow-cream text-willow-dark px-4 py-1.5 rounded-full text-[12px] font-semibold hover:bg-willow-cream/80 transition">Admin</a>'
+    ? '<a href="admin.php" class="border border-willow-dark/20 bg-willow-cream text-willow-dark px-4 py-1.5 rounded-full text-[12px] font-semibold hover:bg-willow-cream/80 transition">Admin Dashboard</a>'
     : ''
 
   area.innerHTML = `

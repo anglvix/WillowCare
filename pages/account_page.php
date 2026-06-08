@@ -17,9 +17,21 @@ include '../includes/head.php';
 
             <!-- Avatar -->
             <div
+                id="profile-avatar"
                 class="w-24 h-24 bg-gray-300 rounded-full mx-auto bg-cover bg-center shadow-inner"
                 style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80');">
             </div>
+
+            <form id="avatar-form" class="mt-4 space-y-3 text-left">
+                <label for="avatar-file" class="block text-[10px] font-semibold uppercase tracking-[0.25em] text-gray-500">Profile picture</label>
+                <input id="avatar-file" name="avatar-file" type="file" accept="image/*"
+                    class="block w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 shadow-sm" />
+                <button type="submit"
+                    class="w-full rounded-xl bg-willow-dark px-3 py-2 text-[11px] font-semibold text-white hover:bg-willow-mid transition">
+                    Upload photo
+                </button>
+                <p id="avatar-status" class="hidden text-[11px] text-gray-500"></p>
+            </form>
 
             <!-- User Info -->
             <h2 id="user-name" class="text-lg font-serif font-bold text-willow-dark mt-4">

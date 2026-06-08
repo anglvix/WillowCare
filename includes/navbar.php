@@ -48,7 +48,7 @@
   if (token && user) {
     const name = (user.name || 'Conta').split(' ')[0]
     const adminLink = user.role === 'admin'
-      ? '<a href="admin.php" class="border border-willow-dark/20 bg-willow-cream text-willow-dark px-4 py-1.5 rounded-full text-[12px] font-semibold hover:bg-willow-cream/80 transition">Admin</a>'
+      ? '<a href="admin.php" class="border border-willow-dark/20 bg-willow-cream text-willow-dark px-4 py-1.5 rounded-full text-[12px] font-semibold hover:bg-willow-cream/80 transition">Admin Dashboard</a>'
       : ''
     area.innerHTML =
       '<div class="flex items-center gap-3">' +
