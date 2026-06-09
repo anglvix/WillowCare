@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Willow Care - Leitura Infantil';
+$page_title = 'Willow Care - Workshop';
 $html_lang = 'pt';
 $base_path = '../';
 $page_script = 'selected-workshop-view.js';
@@ -8,85 +8,94 @@ include '../includes/head.php';
 
 <body class="bg-white font-sans antialiased text-gray-900 min-h-screen flex flex-col">
 
-    <?php include '../includes/navbar.php'; ?>
+<?php include '../includes/navbar.php'; ?>
 
-    <main class="max-w-5xl mx-auto w-full px-6 py-12 flex-grow grid grid-cols-1 md:grid-cols-3 gap-8">
+<main class="max-w-5xl mx-auto w-full px-6 py-12 flex-grow grid grid-cols-1 md:grid-cols-3 gap-8">
 
-        <div class="md:col-span-2 space-y-6">
+    <div class="md:col-span-2 space-y-6">
 
-            <div class="h-64 bg-gray-100 rounded-3xl overflow-hidden shadow-inner">
-                <img
-                    src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1000&q=80"
-                    alt="Leitura Infantil"
-                    class="w-full h-full object-cover">
-            </div>
+        <!-- IMAGE (DINÂMICA) -->
+        <div class="h-64 bg-gray-100 rounded-3xl overflow-hidden shadow-inner">
+            <img
+                id="workshop-image"
+                src="https://via.placeholder.com/1000x600?text=Loading..."
+                alt="Workshop image"
+                class="w-full h-full object-cover">
+        </div>
+
+        <!-- INFO -->
+        <div>
+            <span class="text-xs bg-willow-light text-willow-dark px-3 py-1 rounded-full font-bold uppercase tracking-wider">
+                Interactive Workshop
+            </span>
+
+            <h1 id="workshop-title"
+                class="text-3xl font-serif font-bold text-willow-dark mt-3 mb-2">
+                A carregar...
+            </h1>
+
+            <p id="workshop-meta"
+                class="text-xs text-gray-400 flex items-center gap-1">
+                A carregar...
+            </p>
+
+            <p id="workshop-host"
+                class="text-xs text-gray-500 mt-2"></p>
+        </div>
+
+        <p id="workshop-description"
+            class="text-sm text-gray-600 leading-relaxed">
+            A carregar...
+        </p>
+
+    </div>
+
+    <!-- BOOKING -->
+    <div class="bg-willow-cream/40 border border-willow-cream p-6 rounded-3xl h-fit">
+
+        <h3 class="font-bold text-gray-800 text-sm mb-4">
+            Secure Workshop Slot
+        </h3>
+
+        <form id="booking-form" class="space-y-3">
 
             <div>
-                <span class="text-xs bg-willow-light text-willow-dark px-3 py-1 rounded-full font-bold uppercase tracking-wider">
-                    Interactive Workshop
-                </span>
+                <label class="block text-[10px] uppercase font-bold text-gray-500 mb-1">
+                    Child's Age Group
+                </label>
 
-                <h1 id="workshop-title" class="text-3xl font-serif font-bold text-willow-dark mt-3 mb-2">A carregar...</h1>
+                <select
+                    name="age_group"
+                    required
+                    class="w-full bg-white border border-gray-200 rounded-xl px-3 py-2 text-xs">
 
-                <p id="workshop-meta" class="text-xs text-gray-400 flex items-center gap-1">A carregar...</p>
-                <p id="workshop-host" class="text-xs text-gray-500 mt-2"></p>
+                    <option value="4-7">4 - 7 Years old</option>
+                    <option value="8-12">8 - 12 Years old</option>
+
+                </select>
             </div>
 
-            <p id="workshop-description" class="text-sm text-gray-600 leading-relaxed">A carregar...</p>
+            <p id="booking-error" class="hidden text-xs text-red-500">
+                Erro ao criar reserva. Tenta novamente.
+            </p>
 
-        </div>
+            <button
+                id="book-btn"
+                type="submit"
+                class="w-full bg-willow-mid text-white rounded-xl py-2.5 text-xs font-semibold hover:bg-willow-dark transition">
 
-        <div class="bg-willow-cream/40 border border-willow-cream p-6 rounded-3xl h-fit">
+                Claim Free Seat
 
-            <h3 class="font-bold text-gray-800 text-sm mb-4">
-                Secure Workshop Slot
-            </h3>
+            </button>
 
-            <form id="booking-form" class="space-y-3">
+        </form>
 
-                <div>
-                    <label class="block text-[10px] uppercase font-bold text-gray-500 mb-1">
-                        Child's Age Group
-                    </label>
+    </div>
 
-                    <select
-                        name="age_group"
-                        required
-                        class="w-full bg-white border border-gray-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-willow-mid">
+</main>
 
-                        <option value="4-7">
-                            4 - 7 Years old
-                        </option>
-
-                        <option value="8-12">
-                            8 - 12 Years old
-                        </option>
-
-                    </select>
-                </div>
-
-                <p id="booking-error" class="hidden text-xs text-red-500">
-                    Erro ao criar reserva. Tenta novamente.
-                </p>
-
-                <button
-                    id="book-btn"
-                    type="submit"
-                    class="w-full bg-willow-mid text-white rounded-xl py-2.5 text-xs font-semibold hover:bg-willow-dark transition disabled:opacity-50">
-
-                    Claim Free Seat
-
-                </button>
-
-            </form>
-
-        </div>
-
-    </main>
-
-    <?php include '../includes/footer.php'; ?>
-    <?php include '../includes/scripts.php'; ?>
+<?php include '../includes/footer.php'; ?>
+<?php include '../includes/scripts.php'; ?>
 
 </body>
-
 </html>
