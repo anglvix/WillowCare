@@ -19,8 +19,9 @@ if (session) {
 }
 
 const avatarContainer = document.querySelector('#profile-avatar');
-const avatarForm = document.querySelector('#avatar-form');
 const avatarFileInput = document.querySelector('#avatar-file');
+const avatarUploadButton = document.querySelector('#avatar-upload-button');
+const avatarFileName = document.querySelector('#avatar-file-name');
 const avatarStatus = document.querySelector('#avatar-status');
 const defaultAvatarUrl = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';
 
@@ -92,7 +93,15 @@ async function handleAvatarUpload(event) {
   }
 }
 
-avatarForm?.addEventListener('submit', handleAvatarUpload);
+avatarFileInput?.addEventListener('change', () => {
+  if (!avatarFileInput?.files?.length) {
+    if (avatarFileName) avatarFileName.textContent = 'No file selected';
+    return;
+  }
+  if (avatarFileName) avatarFileName.textContent = avatarFileInput.files[0].name;
+});
+
+avatarUploadButton?.addEventListener('click', handleAvatarUpload);
 
 async function loadDashboard() {
   const profile = await getProfile(session.id);
@@ -144,4 +153,84 @@ loadDashboard();
 document.querySelector("#btn-logout")?.addEventListener("click", () => {
   logout();
   window.location.href = "index.php";
+});
+
+const settingsButton = document.querySelector('#open-settings-button');
+const settingsModal = document.querySelector('#account-settings-modal');
+const settingsOverlay = document.querySelector('#account-settings-overlay');
+const settingsForm = document.querySelector('#account-settings-form');
+const settingsStatus = document.querySelector('#settings-status');
+const closeSettingsButton = document.querySelector('#close-settings-button');
+const cancelSettingsButton = document.querySelector('#cancel-settings-button');
+const settingsNameInput = document.querySelector('#settings-name');
+const settingsEmailInput = document.querySelector('#settings-email');
+const settingsPasswordInput = document.querySelector('#settings-password');
+
+function setSettingsStatus(message, isError = false) {
+  if (!settingsStatus) return;
+  settingsStatus.textContent = message;
+  settingsStatus.classList.toggle('text-red-600', isError);
+  settingsStatus.classList.toggle('text-emerald-600', !isError);
+}
+
+function openSettingsModal() {
+  if (!settingsModal || !settingsOverlay) return;
+  settingsModal.classList.remove('hidden');
+  settingsModal.classList.add('flex');
+  settingsOverlay.classList.remove('hidden');
+  settingsNameInput.value = session.name || '';
+  settingsEmailInput.value = session.email || '';
+  settingsPasswordInput.value = '';
+  setSettingsStatus('');
+}
+
+function closeSettingsModal() {
+  if (!settingsModal || !settingsOverlay) return;
+  settingsModal.classList.add('hidden');
+  settingsModal.classList.remove('flex');
+  settingsOverlay.classList.add('hidden');
+}
+
+settingsButton?.addEventListener('click', openSettingsModal);
+closeSettingsButton?.addEventListener('click', closeSettingsModal);
+cancelSettingsButton?.addEventListener('click', closeSettingsModal);
+settingsOverlay?.addEventListener('click', closeSettingsModal);
+
+settingsForm?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  setSettingsStatus('Saving changes...', false);
+
+  const updatedName = settingsNameInput.value.trim();
+  const updatedEmail = settingsEmailInput.value.trim();
+  const newPassword = settingsPasswordInput.value;
+
+  const patch = {};
+  if (updatedName && updatedName !== session.name) patch.name = updatedName;
+  if (updatedEmail && updatedEmail !== session.email) patch.email = updatedEmail;
+  if (newPassword) patch.password = newPassword;
+
+  if (!Object.keys(patch).length) {
+    setSettingsStatus('No changes were made.', true);
+    return;
+  }
+
+  try {
+    const updatedProfile = await updateProfile(session.id, patch);
+    session = { ...session, ...updatedProfile };
+    saveSessionData(session);
+
+    document.querySelector('#user-name')?.replaceWith(
+      Object.assign(document.createElement('h2'), {
+        id: 'user-name',
+        className: 'text-lg font-serif font-bold text-willow-dark mt-4',
+        textContent: session.name,
+      }),
+    );
+
+    setSettingsStatus('Your account settings were updated successfully.', false);
+    setTimeout(closeSettingsModal, 1200);
+  } catch (error) {
+    console.error(error);
+    setSettingsStatus('Unable to save changes. Please try again.', true);
+  }
 });
