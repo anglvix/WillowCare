@@ -35,3 +35,66 @@ export async function searchSchools({ district = '', features = [] } = {}) {
     features.every((f) => s.supportFeatures.includes(f)),
   );
 }
+
+export async function updateSchool(schoolId, patch) {
+  const res = await fetch(`${BASE}/schools/${schoolId}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(patch)
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to update school profile');
+  }
+
+  return res.json();
+}
+
+export async function createSchool(school) {
+  const res = await fetch(`${BASE}/schools`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      ...school,
+      initials: school.initials || (school.name || '').slice(0, 3).toUpperCase(),
+      supportFeatures: school.supportFeatures || []
+    })
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to create school profile');
+  }
+
+  return res.json();
+}
+
+export async function getOwnSchool(user) {
+  const res = await fetch(`${BASE}/schools`);
+  if (!res.ok) return null;
+
+  const schools = await res.json();
+  let school = schools.find((s) => s.ownerUserId === user.id);
+
+  if (!school) {
+    school = schools.find((s) =>
+      s.name?.trim().toLowerCase() === user.name?.trim().toLowerCase(),
+    );
+    if (school) {
+      school = await updateSchool(school.id, { ownerUserId: user.id });
+    }
+  }
+
+  if (!school) {
+    school = await createSchool({
+      name: user.name,
+      district: '',
+      location: '',
+      description: '',
+      type: 'public',
+      ownerUserId: user.id,
+      supportFeatures: []
+    });
+  }
+
+  return school;
+}

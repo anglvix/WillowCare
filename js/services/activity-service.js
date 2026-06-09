@@ -56,3 +56,57 @@ export async function enroll(activityType, activityId) {
 
   return { ok: updated.ok }
 }
+
+export async function getWorkshopsByHost(hostType, hostId) {
+  const res = await fetch(`${BASE}/workshops?hostType=${encodeURIComponent(hostType)}&hostId=${encodeURIComponent(hostId)}`)
+  if (!res.ok) return []
+  return res.json()
+}
+
+export async function getExcursionsByHost(hostType, hostId) {
+  const res = await fetch(`${BASE}/excursions?hostType=${encodeURIComponent(hostType)}&hostId=${encodeURIComponent(hostId)}`)
+  if (!res.ok) return []
+  return res.json()
+}
+
+export async function createWorkshop(workshop) {
+  const res = await fetch(`${BASE}/workshops`, {
+    method: 'POST',
+    headers: authHeaders(),
+    body: JSON.stringify({
+      ...workshop,
+      enrolledUsers: [],
+      image: workshop.image || '',
+      hostName: workshop.hostName || '',
+      hostType: workshop.hostType || '',
+      hostId: workshop.hostId || null
+    })
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to create workshop')
+  }
+
+  return res.json()
+}
+
+export async function createExcursion(excursion) {
+  const res = await fetch(`${BASE}/excursions`, {
+    method: 'POST',
+    headers: authHeaders(),
+    body: JSON.stringify({
+      ...excursion,
+      enrolledUsers: [],
+      image: excursion.image || '',
+      hostName: excursion.hostName || '',
+      hostType: excursion.hostType || '',
+      hostId: excursion.hostId || null
+    })
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to create excursion')
+  }
+
+  return res.json()
+}
