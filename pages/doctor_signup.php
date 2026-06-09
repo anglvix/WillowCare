@@ -34,6 +34,14 @@ include '../includes/head.php';
                         <input type="password" name="password" required class="w-full border border-gray-200 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-willow-mid" placeholder="••••••••">
                     </div>
                     <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">Phone</label>
+                        <input type="text" name="phone" class="w-full border border-gray-200 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-willow-mid" placeholder="+351 912 345 678">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">Address</label>
+                        <input type="text" name="address" class="w-full border border-gray-200 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-willow-mid" placeholder="Street, city, postal code">
+                    </div>
+                    <div>
                         <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">Specialty</label>
                         <input type="text" name="specialty" class="w-full border border-gray-200 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-willow-mid" placeholder="Pediatrics, Cardiology, Neurology">
                     </div>

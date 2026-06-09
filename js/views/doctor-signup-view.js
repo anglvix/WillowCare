@@ -34,6 +34,8 @@ formEl?.addEventListener('submit', async (e) => {
   const name = formEl.querySelector('[name="fullname"]').value.trim()
   const email = formEl.querySelector('[name="email"]').value.trim()
   const password = formEl.querySelector('[name="password"]').value
+  const phone = formEl.querySelector('[name="phone"]').value.trim()
+  const address = formEl.querySelector('[name="address"]').value.trim()
   const specialty = formEl.querySelector('[name="specialty"]').value.trim()
   const certificationFile = formEl.querySelector('[name="certification"]').files?.[0]
 
@@ -48,7 +50,9 @@ formEl?.addEventListener('submit', async (e) => {
     password,
     role: 'doctor',
     specialty,
-    certification
+    certification,
+    phone,
+    address
   })
 
   if (!result.ok) {

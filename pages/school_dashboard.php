@@ -65,6 +65,22 @@ include '../includes/head.php';
                         <textarea id="school-profile-description" name="description" rows="4" class="w-full rounded-2xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="A short description of the school"></textarea>
                     </div>
 
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <div class="grid gap-2">
+                            <label for="school-profile-phone" class="text-[11px] font-semibold text-gray-600">Contact phone</label>
+                            <input id="school-profile-phone" name="contactPhone" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="+351 912 345 678">
+                        </div>
+                        <div class="grid gap-2">
+                            <label for="school-profile-email" class="text-[11px] font-semibold text-gray-600">Contact email</label>
+                            <input id="school-profile-email" name="contactEmail" type="email" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="contact@school.pt">
+                        </div>
+                    </div>
+
+                    <div class="grid gap-2">
+                        <label for="school-profile-address" class="text-[11px] font-semibold text-gray-600">Address</label>
+                        <input id="school-profile-address" name="address" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="Street, city, postal code">
+                    </div>
+
                     <div class="grid gap-2">
                         <label for="school-profile-features" class="text-[11px] font-semibold text-gray-600">Support features</label>
                         <input id="school-profile-features" name="supportFeatures" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="Separate features with commas">

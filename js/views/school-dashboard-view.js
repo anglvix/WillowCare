@@ -53,6 +53,9 @@ function populateProfileForm(data) {
   profileForm.querySelector('#school-profile-location').value = data.location || ''
   profileForm.querySelector('#school-profile-type').value = data.type || ''
   profileForm.querySelector('#school-profile-description').value = data.description || ''
+  profileForm.querySelector('#school-profile-phone').value = data.contactPhone || ''
+  profileForm.querySelector('#school-profile-email').value = data.contactEmail || ''
+  profileForm.querySelector('#school-profile-address').value = data.address || ''
   profileForm.querySelector('#school-profile-features').value = (data.supportFeatures || []).join(', ')
 }
 
@@ -83,6 +86,9 @@ profileForm?.addEventListener('submit', async (event) => {
   const location = formData.get('location')?.toString().trim()
   const type = formData.get('type')?.toString().trim()
   const description = formData.get('description')?.toString().trim()
+  const contactPhone = formData.get('contactPhone')?.toString().trim()
+  const contactEmail = formData.get('contactEmail')?.toString().trim()
+  const address = formData.get('address')?.toString().trim()
   const supportFeatures = formData.get('supportFeatures')?.toString().trim()
 
   const patch = {
@@ -91,6 +97,9 @@ profileForm?.addEventListener('submit', async (event) => {
     location,
     type,
     description,
+    contactPhone,
+    contactEmail,
+    address,
     supportFeatures: supportFeatures ? supportFeatures.split(',').map((item) => item.trim()).filter(Boolean) : []
   }
 

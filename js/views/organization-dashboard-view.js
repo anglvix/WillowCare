@@ -52,6 +52,9 @@ function populateProfileForm(data) {
   profileForm.querySelector('#org-profile-initials').value = data.initials || ''
   profileForm.querySelector('#org-profile-description').value = data.description || ''
   profileForm.querySelector('#org-profile-mission').value = data.mission || ''
+  profileForm.querySelector('#org-profile-phone').value = data.contactPhone || ''
+  profileForm.querySelector('#org-profile-email').value = data.contactEmail || ''
+  profileForm.querySelector('#org-profile-address').value = data.address || ''
   profileForm.querySelector('#org-profile-services').value = (data.services || []).join(', ')
 }
 
@@ -81,6 +84,9 @@ profileForm?.addEventListener('submit', async (event) => {
   const initials = formData.get('initials')?.toString().trim()
   const description = formData.get('description')?.toString().trim()
   const mission = formData.get('mission')?.toString().trim()
+  const contactPhone = formData.get('contactPhone')?.toString().trim()
+  const contactEmail = formData.get('contactEmail')?.toString().trim()
+  const address = formData.get('address')?.toString().trim()
   const services = formData.get('services')?.toString().trim()
 
   const patch = {
@@ -88,6 +94,9 @@ profileForm?.addEventListener('submit', async (event) => {
     initials,
     description,
     mission,
+    contactPhone,
+    contactEmail,
+    address,
     services: services ? services.split(',').map((item) => item.trim()).filter(Boolean) : []
   }
 

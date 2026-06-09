@@ -164,6 +164,8 @@ const closeSettingsButton = document.querySelector('#close-settings-button');
 const cancelSettingsButton = document.querySelector('#cancel-settings-button');
 const settingsNameInput = document.querySelector('#settings-name');
 const settingsEmailInput = document.querySelector('#settings-email');
+const settingsPhoneInput = document.querySelector('#settings-phone');
+const settingsAddressInput = document.querySelector('#settings-address');
 const settingsPasswordInput = document.querySelector('#settings-password');
 
 function setSettingsStatus(message, isError = false) {
@@ -180,6 +182,8 @@ function openSettingsModal() {
   settingsOverlay.classList.remove('hidden');
   settingsNameInput.value = session.name || '';
   settingsEmailInput.value = session.email || '';
+  settingsPhoneInput.value = session.phone || '';
+  settingsAddressInput.value = session.address || '';
   settingsPasswordInput.value = '';
   setSettingsStatus('');
 }
@@ -202,11 +206,15 @@ settingsForm?.addEventListener('submit', async (event) => {
 
   const updatedName = settingsNameInput.value.trim();
   const updatedEmail = settingsEmailInput.value.trim();
+  const updatedPhone = settingsPhoneInput.value.trim();
+  const updatedAddress = settingsAddressInput.value.trim();
   const newPassword = settingsPasswordInput.value;
 
   const patch = {};
   if (updatedName && updatedName !== session.name) patch.name = updatedName;
   if (updatedEmail && updatedEmail !== session.email) patch.email = updatedEmail;
+  if (updatedPhone !== session.phone) patch.phone = updatedPhone;
+  if (updatedAddress !== session.address) patch.address = updatedAddress;
   if (newPassword) patch.password = newPassword;
 
   if (!Object.keys(patch).length) {

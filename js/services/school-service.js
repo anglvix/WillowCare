@@ -57,7 +57,10 @@ export async function createSchool(school) {
     body: JSON.stringify({
       ...school,
       initials: school.initials || (school.name || '').slice(0, 3).toUpperCase(),
-      supportFeatures: school.supportFeatures || []
+      supportFeatures: school.supportFeatures || [],
+      contactPhone: school.contactPhone || '',
+      contactEmail: school.contactEmail || '',
+      address: school.address || ''
     })
   });
 
@@ -92,7 +95,10 @@ export async function getOwnSchool(user) {
       description: '',
       type: 'public',
       ownerUserId: user.id,
-      supportFeatures: []
+      supportFeatures: [],
+      contactPhone: '',
+      contactEmail: '',
+      address: ''
     });
   }
 

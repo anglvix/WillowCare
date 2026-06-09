@@ -125,6 +125,16 @@ include '../includes/head.php';
             </div>
 
             <div class="space-y-1">
+                <label for="settings-phone" class="text-[11px] font-bold text-gray-600">Phone</label>
+                <input id="settings-phone" name="phone" type="text" class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-willow-mid" placeholder="+351 912 345 678" />
+            </div>
+
+            <div class="space-y-1">
+                <label for="settings-address" class="text-[11px] font-bold text-gray-600">Address</label>
+                <input id="settings-address" name="address" type="text" class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-willow-mid" placeholder="Street, city, postal code" />
+            </div>
+
+            <div class="space-y-1">
                 <label for="avatar-file" class="text-[11px] font-bold text-gray-600">Profile photo</label>
                 <div class="flex flex-col sm:flex-row sm:items-center gap-3">
                     <label for="avatar-file" class="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 transition cursor-pointer">

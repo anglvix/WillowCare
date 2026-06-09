@@ -34,7 +34,10 @@ export async function createOrganization(org) {
       ...org,
       initials: org.initials || (org.name || '').slice(0, 3).toUpperCase(),
       services: org.services || [],
-      ownerUserId: org.ownerUserId || null
+      ownerUserId: org.ownerUserId || null,
+      contactPhone: org.contactPhone || '',
+      contactEmail: org.contactEmail || '',
+      address: org.address || ''
     })
   })
 
@@ -68,7 +71,10 @@ export async function getOwnOrganization(user) {
       description: '',
       mission: '',
       services: [],
-      ownerUserId: user.id
+      ownerUserId: user.id,
+      contactPhone: '',
+      contactEmail: '',
+      address: ''
     })
   }
 

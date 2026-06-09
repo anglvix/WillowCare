@@ -45,12 +45,14 @@ export function logout() {
   localStorage.removeItem('user')
 }
 
-export async function register({ name, email, password, role = 'caregiver', specialty, certification }) {
+export async function register({ name, email, password, role = 'caregiver', specialty, certification, phone, address }) {
   const payload = {
     name,
     email,
     password,
-    role
+    role,
+    phone: phone || '',
+    address: address || ''
   }
 
   if (role === 'doctor') {

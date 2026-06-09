@@ -65,6 +65,22 @@ include '../includes/head.php';
                         <textarea id="org-profile-mission" name="mission" rows="4" class="w-full rounded-2xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="Your organization's mission"></textarea>
                     </div>
 
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <div class="grid gap-2">
+                            <label for="org-profile-phone" class="text-[11px] font-semibold text-gray-600">Contact phone</label>
+                            <input id="org-profile-phone" name="contactPhone" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="+351 912 345 678">
+                        </div>
+                        <div class="grid gap-2">
+                            <label for="org-profile-email" class="text-[11px] font-semibold text-gray-600">Contact email</label>
+                            <input id="org-profile-email" name="contactEmail" type="email" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="contact@organization.pt">
+                        </div>
+                    </div>
+
+                    <div class="grid gap-2">
+                        <label for="org-profile-address" class="text-[11px] font-semibold text-gray-600">Address</label>
+                        <input id="org-profile-address" name="address" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="Street, city, postal code">
+                    </div>
+
                     <button type="submit" class="inline-flex items-center justify-center rounded-xl bg-willow-dark px-5 py-3 text-sm font-semibold text-white hover:bg-willow-mid transition">Save profile</button>
                 </form>
             </article>
