@@ -46,7 +46,7 @@ function renderRoleEditor(user) {
         <div class="space-y-2">
             <label class="block text-[11px] font-semibold text-gray-500 uppercase">Role</label>
             <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
-                <select data-action="role-select" data-user-id="${user.id}" class="grow rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs text-gray-700 shadow-sm focus:border-willow-mid focus:ring-2 focus:ring-willow-100">
+                <select data-action="role-select" data-user-id="${user.id}" class="select-field grow rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs text-gray-700 shadow-sm focus:border-willow-mid focus:ring-2 focus:ring-willow-100">
                     ${roleOptions
                         .map((role) => `<option value="${role.value}" ${role.value === user.role ? 'selected' : ''}>${role.label}</option>`)
                         .join('')}

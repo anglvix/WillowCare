@@ -33,11 +33,12 @@ function updateNavbar() {
       : user.role === 'organization'
         ? 'Organization Dashboard'
         : 'My Account'
+  const showAccountName = user.role !== 'caregiver'
 
   area.innerHTML = `
     <div class="flex items-center gap-3">
       <a href="${dashboardHref}" class="border border-willow-dark/20 bg-willow-cream text-willow-dark px-4 py-1.5 rounded-full text-[12px] font-semibold hover:bg-willow-cream/80 transition">${dashboardLabel}</a>
-      <a href="account_page.php" class="text-[12px] font-medium text-willow-dark hover:opacity-80 transition">${firstName}</a>
+      ${showAccountName ? `<a href="account_page.php" class="text-[12px] font-medium text-willow-dark hover:opacity-80 transition">${firstName}</a>` : ''}
       <button id="logout-btn" class="border border-gray-300 text-gray-700 px-5 py-1.5 rounded-full text-[12px] font-medium hover:bg-gray-50 transition">
         Log out
       </button>

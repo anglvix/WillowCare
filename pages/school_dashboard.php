@@ -104,7 +104,7 @@ include '../includes/head.php';
                 <div class="grid gap-2 sm:grid-cols-2">
                     <div class="grid gap-2">
                         <label for="school-activity-type" class="text-[11px] font-semibold text-gray-600">Activity type</label>
-                        <select id="school-activity-type" name="type" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid">
+                        <select id="school-activity-type" name="type" class="select-field w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm focus:outline-none focus:border-willow-mid">
                             <option value="workshop">Workshop</option>
                             <option value="excursion">Excursion</option>
                         </select>

@@ -91,7 +91,7 @@ include '../includes/head.php';
                 <form id="activity-form" class="space-y-4">
                     <div>
                         <label class="block text-xs font-semibold text-gray-600">Activity type</label>
-                        <select name="activity-type" class="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm text-gray-800 shadow-sm">
+                        <select name="activity-type" class="select-field mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm text-gray-800 shadow-sm">
                             <option value="workshop">Workshop</option>
                             <option value="excursion">Excursion</option>
                         </select>
@@ -139,7 +139,7 @@ include '../includes/head.php';
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600">Host type</label>
-                            <select name="activity-host-type" class="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm text-gray-800 shadow-sm">
+                            <select name="activity-host-type" class="select-field mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm text-gray-800 shadow-sm">
                                 <option value="">None</option>
                                 <option value="school">School</option>
                                 <option value="organization">Organization</option>
