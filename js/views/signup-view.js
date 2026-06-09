@@ -16,7 +16,10 @@ formEl?.addEventListener('submit', async (e) => {
   const result = await register({ name, email, password })
 
   if (!result.ok) {
-    if (errorEl) errorEl.textContent = 'Erro no registo. O email pode já estar em uso.'
+    if (errorEl) {
+      const errorMsg = result.error?.message || result.error || 'Erro no registo. O email pode já estar em uso.'
+      errorEl.textContent = errorMsg
+    }
     return
   }
 
