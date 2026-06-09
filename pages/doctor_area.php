@@ -1,4 +1,3 @@
-```php
 <?php
 $page_title = 'Willow Care - Perfil Médico';
 $html_lang = 'pt';
@@ -173,4 +172,3 @@ include '../includes/head.php';
 </body>
 
 </html>
-```
