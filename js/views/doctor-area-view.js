@@ -171,6 +171,15 @@ function setupEventListeners() {
   reviewSubmitButton = document.querySelector('#review-submit')
   saveDoctorButton = document.querySelector('#btn-save-doctor-sidebar')
 
+  console.log('[doctor-area-view] setupEventListeners', {
+    id,
+    reviewButton,
+    postReviewButton,
+    reviewModal,
+    reviewForm,
+    reviewSubmitButton
+  })
+
   postReviewButton?.addEventListener('click', openReviewModal)
   reviewButton?.addEventListener('click', toggleReviewPanel)
   reviewCancel?.addEventListener('click', closeReviewModal)
@@ -254,8 +263,15 @@ function setupEventListeners() {
   })
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+function initializeDoctorArea() {
+  console.log('[doctor-area-view] initializeDoctorArea', { id, readyState: document.readyState })
   setupEventListeners()
   load()
   loadDoctorReviews()
-})
+}
+
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', initializeDoctorArea)
+} else {
+  initializeDoctorArea()
+}
