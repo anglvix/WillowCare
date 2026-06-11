@@ -64,7 +64,7 @@ async function load() {
 }
 
 // Guardar médico nos favoritos
-const saveDoctorButton = document.querySelector('#btn-save-doctor-sidebar')
+const saveDoctorButton = document.querySelector('#btn-save-doctor-sidebar') || document.querySelector('#btn-save-doctor')
 if (saveDoctorButton) {
   saveDoctorButton.addEventListener('click', async () => {
     if (!isLoggedIn()) {
@@ -77,6 +77,8 @@ if (saveDoctorButton) {
       saveDoctorButton.textContent = 'Guardado ✓'
       saveDoctorButton.disabled = true
       saveDoctorButton.classList.add('opacity-70', 'cursor-not-allowed')
+    } else {
+      console.error('Save doctor failed:', result.error)
     }
   })
 }

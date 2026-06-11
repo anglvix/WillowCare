@@ -22,7 +22,9 @@
       "password": "$2a$10$xYjZqTqvkwafR4rg2.rzheOJw2/0V7BETiXGnjD0Drs86mo235Cjy",
       "name": "joana",
       "role": "caregiver",
-      "savedDoctors": [],
+      "savedDoctors": [
+        2
+      ],
       "savedSchools": [],
       "achievements": [
         "registered"

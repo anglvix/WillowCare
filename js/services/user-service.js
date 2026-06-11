@@ -1,4 +1,4 @@
-import { getToken, getSession } from './auth-service.js'
+import { getToken, getSession, saveSessionData } from './auth-service.js'
 import Voucher from '../models/Voucher.js'
 
 const BASE = 'http://localhost:3001'
@@ -25,20 +25,33 @@ export async function getVouchers(userId) {
 
 export async function saveDoctor(doctorId) {
   const user = getSession()
-  if (!user) return { ok: false }
+  if (!user) return { ok: false, error: 'Not logged in' }
 
   const profile = await getProfile(user.id)
-  if (!profile) return { ok: false }
-  if (profile.savedDoctors.includes(doctorId)) return { ok: true }
+  if (!profile) return { ok: false, error: 'Unable to load profile' }
 
+  const savedDoctors = Array.isArray(profile.savedDoctors) ? profile.savedDoctors : []
+  if (savedDoctors.includes(doctorId)) {
+    saveSessionData({ ...user, savedDoctors })
+    return { ok: true }
+  }
+
+  const updatedSavedDoctors = Array.from(new Set([...savedDoctors, doctorId]))
   const res = await fetch(`${BASE}/users/${user.id}`, {
     method: 'PATCH',
     headers: authHeaders(),
-    body: JSON.stringify({ savedDoctors: [...profile.savedDoctors, doctorId] })
+    body: JSON.stringify({ savedDoctors: updatedSavedDoctors })
   })
 
-  if (res.ok) await unlockAchievement('saved_doctor')
-  return { ok: res.ok }
+  if (!res.ok) {
+    return { ok: false, error: 'Failed to save doctor' }
+  }
+
+  const updatedProfile = await res.json()
+  saveSessionData({ ...user, savedDoctors: updatedProfile.savedDoctors ?? updatedSavedDoctors })
+  await unlockAchievement('saved_doctor')
+
+  return { ok: true }
 }
 
 export async function saveSchool(schoolId) {
