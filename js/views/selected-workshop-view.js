@@ -39,7 +39,7 @@ async function loadWorkshop() {
 
   // META
   document.querySelector('#workshop-meta').textContent =
-    `📍 ${workshop.location || data.location} | 📅 ${formatDate(workshop.date || data.date)}`
+    ` ${workshop.location || data.location} | ${formatDate(workshop.date || data.date)}`
 
   // DESCRIPTION
   document.querySelector('#workshop-description').textContent =

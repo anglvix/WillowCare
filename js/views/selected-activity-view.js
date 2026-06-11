@@ -22,7 +22,7 @@ async function loadExcursion() {
   if (!data) return
   const excursion = Excursion.fromObject(data)
   document.querySelector('#excursion-title').textContent = excursion.title
-  document.querySelector('#excursion-meta').textContent = `📍 ${excursion.location} | 📅 ${formatDate(excursion.date)}`
+  document.querySelector('#excursion-meta').textContent = ` ${excursion.location} | ${formatDate(excursion.date)}`
   document.querySelector('#excursion-description').textContent = excursion.description
   const hostEl = document.querySelector('#excursion-host')
   if (excursion.hostName && excursion.hostId) {

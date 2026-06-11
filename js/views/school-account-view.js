@@ -19,13 +19,6 @@ const featureLabels = {
   'occupational-therapy': 'Occupational Therapy'
 }
 
-const featureIcons = {
-  'special-ed-team': '🧠',
-  'speech-therapy': '🗣️',
-  'sensory-room': '🎨',
-  'occupational-therapy': '🧩'
-}
-
 async function load() {
   const data = await getSchoolById(id)
   if (!data) {
@@ -41,7 +34,6 @@ async function load() {
 
   featuresEl.innerHTML = (school.supportFeatures || []).map((feature) => `
     <article class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm text-center">
-      <span class="text-xl">${featureIcons[feature] || '🏫'}</span>
       <h4 class="text-xs font-bold text-willow-dark mt-2 uppercase">${featureLabels[feature] || feature}</h4>
     </article>
   `).join('')

@@ -28,16 +28,6 @@ include '../includes/head.php';
 
         </section>
 
-        <!-- Mission -->
-        <section class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-4">
-            <h3 class="font-bold text-sm text-gray-800">Mission & Activities</h3>
-            <p id="org-mission" class="text-xs text-gray-600 leading-relaxed mt-2"></p>
-        </section>
-
-        <!-- Services -->
-        <section id="org-services" class="flex flex-wrap gap-3">
-        </section>
-
         <!-- Contact & Address -->
         <section class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -52,6 +42,15 @@ include '../includes/head.php';
             </div>
         </section>
 
+        <!-- Services -->
+        <section id="org-services" class="flex flex-wrap gap-3">
+        </section>
+
+        <!-- Mission -->
+        <section class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-4">
+            <h3 class="font-bold text-sm text-gray-800">Mission & Activities</h3>
+            <p id="org-mission" class="text-xs text-gray-600 leading-relaxed mt-2"></p>
+        </section>
     </main>
 
     <?php include '../includes/footer.php'; ?>

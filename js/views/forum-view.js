@@ -40,7 +40,7 @@ function renderTopicCard(topic) {
       <div class="flex justify-between items-center mt-4 text-[10px] text-gray-400">
         <span>By ${topic.authorName} • ${timeAgo(topic.createdAt)}</span>
         <div class="flex items-center gap-2">
-          <span>💬 ${topic.replyCount} replies</span>
+          <span>${topic.replyCount} replies</span>
           <button data-action="open-replies" class="text-[11px] text-willow-dark font-medium hover:underline">View replies</button>
         </div>
       </div>
