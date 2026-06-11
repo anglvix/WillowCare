@@ -23,10 +23,9 @@ function formatDate(dateStr) {
 
 async function loadWorkshop() {
   if (!id) return
-
   const data = await getWorkshopById(id)
-  if (!data) return
 
+  if (!data) return
   console.log('RAW DB DATA:', data) // debug
 
   const workshop = Workshop.fromObject(data)

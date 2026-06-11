@@ -19,12 +19,23 @@ function formatDate(dateStr) {
 async function loadExcursion() {
   if (!id) return
   const data = await getExcursionById(id)
+
   if (!data) return
   const excursion = Excursion.fromObject(data)
+
   document.querySelector('#excursion-title').textContent = excursion.title
   document.querySelector('#excursion-meta').textContent = ` ${excursion.location} | ${formatDate(excursion.date)}`
   document.querySelector('#excursion-description').textContent = excursion.description
+
+  const imageEl = document.querySelector('#excursion-image')
+  const imageSrc = excursion.image || data.image
+  if (imageEl && imageSrc) {
+    imageEl.src = imageSrc
+    imageEl.alt = excursion.title || data.title || 'Activity image'
+  }
+
   const hostEl = document.querySelector('#excursion-host')
+
   if (excursion.hostName && excursion.hostId) {
     const target = excursion.hostType === 'school' ? 'school_account.php' : 'organization_account.php'
     hostEl.innerHTML = `Hosted by <a href="${target}?id=${excursion.hostId}" class="text-willow-mid underline">${excursion.hostName}</a>`

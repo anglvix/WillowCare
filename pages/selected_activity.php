@@ -16,6 +16,7 @@ include '../includes/head.php';
 
         <div class="h-64 bg-gray-100 rounded-3xl overflow-hidden shadow-inner">
             <img
+                id="excursion-image"
                 src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1000&q=80"
                 class="w-full h-full object-cover"
                 alt="Passeio em Valongo"
