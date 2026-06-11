@@ -109,13 +109,6 @@ include '../includes/head.php';
 
             </div>
 
-            <div id="doctor-reviews-panel" class="hidden bg-white border border-gray-100 p-5 rounded-2xl shadow-sm mt-6">
-                <h3 class="font-bold text-sm text-willow-dark mb-3">Reviews</h3>
-                <div id="doctor-reviews-list" class="space-y-4 text-xs text-gray-600">
-                    <p class="text-gray-400">No reviews yet. Click "Post review" to add the first one.</p>
-                </div>
-            </div>
-
         </section>
 
     </main>

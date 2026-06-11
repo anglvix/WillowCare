@@ -39,20 +39,3 @@ export async function getLatestReviews(limit = 2) {
   if (!res.ok) return []
   return res.json()
 }
-
-export async function getReviewsByDoctorId(doctorId) {
-  const res = await fetch(`${BASE}/reviews?subjectId=${encodeURIComponent(doctorId)}&_sort=createdAt&_order=desc`)
-  if (!res.ok) return []
-  return res.json()
-}
-
-export async function createReview(reviewData) {
-  const res = await fetch(`${BASE}/reviews`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(reviewData)
-  })
-
-  if (!res.ok) return { ok: false }
-  return { ok: true, data: await res.json() }
-}
