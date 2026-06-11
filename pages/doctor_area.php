@@ -97,14 +97,9 @@ include '../includes/head.php';
 
             <div class="flex flex-wrap gap-3">
 
-                <button
-                    class="bg-willow-mid text-white text-xs font-semibold px-6 py-2.5 rounded-xl shadow hover:bg-willow-dark transition">
-                    Request Teleconsultation
-                </button>
-
-                <button id="btn-save-doctor"
+                <button id="btn-reviews"
                     class="border border-willow-mid text-willow-dark text-xs font-semibold px-6 py-2.5 rounded-xl hover:bg-willow-cream transition">
-                    Save Doctor
+                    Reviews
                 </button>
 
                 <button id="btn-post-review"
@@ -189,6 +184,66 @@ include '../includes/head.php';
                     class="bg-willow-dark text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-willow-mid transition">
                     Publish
                 </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Review Form Modal -->
+    <div id="review-modal"
+        class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4 z-[110]">
+
+        <form id="review-form"
+            class="bg-white rounded-2xl w-full max-w-lg p-6 space-y-4">
+
+            <div class="flex items-center justify-between">
+
+                <h2 class="text-lg font-serif font-bold text-willow-dark">
+                    Write a review
+                </h2>
+
+                <button type="button"
+                    id="review-cancel"
+                    class="text-xs text-gray-500 hover:text-gray-700">
+                    Close
+                </button>
+
+            </div>
+
+            <div class="grid grid-cols-1 gap-3">
+
+                <label for="review-rating" class="text-[11px] font-bold text-gray-600">Rating</label>
+                <select id="review-rating" name="rating" required class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-willow-mid">
+                    <option value="">Select rating</option>
+                    <option value="5">5 — Excellent</option>
+                    <option value="4">4 — Very good</option>
+                    <option value="3">3 — Good</option>
+                    <option value="2">2 — Fair</option>
+                    <option value="1">1 — Poor</option>
+                </select>
+
+                <label for="review-title" class="text-[11px] font-bold text-gray-600">Title (optional)</label>
+                <input id="review-title" name="title" type="text" maxlength="80" class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-willow-mid">
+
+                <label for="review-content" class="text-[11px] font-bold text-gray-600">Your review</label>
+                <textarea id="review-content" name="content" rows="5" maxlength="1000" required class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-willow-mid"></textarea>
+
+                <label class="inline-flex items-center gap-2 text-sm text-gray-600">
+                    <input id="review-anonymous" type="checkbox" class="form-checkbox">
+                    <span>Post anonymously</span>
+                </label>
+
+            </div>
+
+            <p id="review-error" class="text-xs text-red-500 hidden">Please fill in all required fields.</p>
+
+            <div class="flex justify-end gap-2">
+
+                <button type="button" id="review-cancel-secondary" class="text-xs px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-50">Cancel</button>
+
+                <button type="submit" id="review-submit" class="bg-willow-dark text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-willow-mid transition">Publish review</button>
 
             </div>
 
