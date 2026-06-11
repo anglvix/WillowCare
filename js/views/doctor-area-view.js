@@ -1,6 +1,6 @@
 import Doctor from '../models/Doctor.js'
 import { getDoctorById } from '../services/doctor-service.js'
-import { saveDoctor } from '../services/user-service.js'
+import { getProfile, saveDoctor } from '../services/user-service.js'
 import { getSession, isLoggedIn } from '../services/auth-service.js'
 
 const id = new URLSearchParams(location.search).get('id')
@@ -26,6 +26,7 @@ async function load() {
   if (!data) return
 
   const doctor = Doctor.fromObject(data)
+  await updateSaveButtonState(Number(id))
 
   document.querySelector('#doctor-name')?.replaceWith(
     Object.assign(document.createElement('h1'), {
@@ -63,6 +64,31 @@ async function load() {
   }
 }
 
+async function updateSaveButtonState(doctorId) {
+  const button = document.querySelector('#btn-save-doctor-sidebar') || document.querySelector('#btn-save-doctor')
+  if (!button) return
+
+  if (!isLoggedIn()) {
+    button.textContent = 'Save Doctor'
+    button.disabled = false
+    button.classList.remove('opacity-70', 'cursor-not-allowed')
+    return
+  }
+
+  const session = getSession()
+  const profile = await getProfile(session.id)
+  const savedDoctors = Array.isArray(profile?.savedDoctors) ? profile.savedDoctors : []
+  if (savedDoctors.includes(doctorId)) {
+    button.textContent = 'Saved'
+    button.disabled = true
+    button.classList.add('opacity-70', 'cursor-not-allowed')
+  } else {
+    button.textContent = 'Save Doctor'
+    button.disabled = false
+    button.classList.remove('opacity-70', 'cursor-not-allowed')
+  }
+}
+
 // Guardar médico nos favoritos
 const saveDoctorButton = document.querySelector('#btn-save-doctor-sidebar') || document.querySelector('#btn-save-doctor')
 if (saveDoctorButton) {
@@ -74,7 +100,7 @@ if (saveDoctorButton) {
 
     const result = await saveDoctor(Number(id))
     if (result.ok) {
-      saveDoctorButton.textContent = 'Guardado ✓'
+      saveDoctorButton.textContent = 'Saved'
       saveDoctorButton.disabled = true
       saveDoctorButton.classList.add('opacity-70', 'cursor-not-allowed')
     } else {
