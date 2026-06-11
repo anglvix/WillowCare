@@ -36,7 +36,21 @@ include '../includes/head.php';
         </div>
 
         <hr class="border-gray-100">
-
+        
+        <!-- Contact & Address -->
+        <section class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-bold text-sm text-gray-800 mb-2">Contact</h3>
+                    <p id="school-contact" class="text-xs text-gray-600">-</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-sm text-gray-800 mb-2">Address</h3>
+                    <p id="school-address" class="text-xs text-gray-600">-</p>
+                </div>
+            </div>
+        </section>
+        
         <!-- Infrastructure -->
         <section class="max-w-xl bg-willow-cream/20 border border-willow-cream rounded-2xl p-5">
 

@@ -12,6 +12,16 @@ export default class Doctor {
     this.#rating = rating
     this.highlights = []
     this.photo = ''
+    this.contactPhone = ''
+    this.contactEmail = ''
+    this.address = ''
+  }
+
+  get contact() {
+    const parts = []
+    if (this.contactPhone) parts.push(this.contactPhone)
+    if (this.contactEmail) parts.push(this.contactEmail)
+    return parts.join(' | ')
   }
 
   get rating() {
@@ -36,6 +46,9 @@ export default class Doctor {
     d.id = obj.id
     d.highlights = obj.highlights ?? []
     d.photo = obj.photo ?? ''
+    d.contactPhone = obj.contactPhone ?? ''
+    d.contactEmail = obj.contactEmail ?? ''
+    d.address = obj.address ?? ''
     return d
   }
 }

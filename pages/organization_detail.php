@@ -38,6 +38,20 @@ include '../includes/head.php';
         <section id="org-services" class="flex flex-wrap gap-3">
         </section>
 
+        <!-- Contact & Address -->
+        <section class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-bold text-sm text-gray-800 mb-2">Contact</h3>
+                    <p id="org-contact" class="text-xs text-gray-600">-</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-sm text-gray-800 mb-2">Address</h3>
+                    <p id="org-address" class="text-xs text-gray-600">-</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <?php include '../includes/footer.php'; ?>

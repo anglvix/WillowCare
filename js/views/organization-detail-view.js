@@ -35,6 +35,12 @@ async function load() {
       </span>
     `).join('')
   }
+
+  const contactEl = document.querySelector('#org-contact')
+  if (contactEl && org.contact) contactEl.textContent = org.contact
+
+  const addressEl = document.querySelector('#org-address')
+  if (addressEl && org.address) addressEl.textContent = org.address
 }
 
 load()

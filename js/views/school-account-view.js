@@ -45,6 +45,12 @@ async function load() {
       <h4 class="text-xs font-bold text-willow-dark mt-2 uppercase">${featureLabels[feature] || feature}</h4>
     </article>
   `).join('')
+
+  const contactEl = document.querySelector('#school-contact')
+  if (contactEl && school.contact) contactEl.textContent = school.contact
+
+  const addressEl = document.querySelector('#school-address')
+  if (addressEl && school.address) addressEl.textContent = school.address
 }
 
 load()

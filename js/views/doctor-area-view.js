@@ -46,6 +46,12 @@ async function load() {
   const bioEl = document.querySelector('#doctor-bio')
   if (bioEl) bioEl.textContent = doctor.bio
 
+  const contactEl = document.querySelector('#doctor-contact')
+  if (contactEl && doctor.contact) contactEl.textContent = doctor.contact
+
+  const addressEl = document.querySelector('#doctor-address')
+  if (addressEl && doctor.address) addressEl.textContent = doctor.address
+
   const highlightsEl = document.querySelector('#doctor-highlights')
   if (highlightsEl && doctor.highlights.length) {
     highlightsEl.innerHTML = doctor.highlights.map(h => `<li>• ${h}</li>`).join('')

@@ -65,6 +65,20 @@ include '../includes/head.php';
 
             </div>
 
+            <div class="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm space-y-4">
+
+                <div>
+                    <h3 class="font-bold text-sm text-willow-dark mb-2">Contact</h3>
+                    <p id="doctor-contact" class="text-xs text-gray-600">-</p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-sm text-willow-dark mb-2">Address</h3>
+                    <p id="doctor-address" class="text-xs text-gray-600">-</p>
+                </div>
+
+            </div>
+
             <div class="flex flex-wrap gap-3">
 
                 <button
