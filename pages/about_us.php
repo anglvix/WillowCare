@@ -43,7 +43,7 @@ include '../includes/head.php';
                 Official sources
             </h2>
 
-            <p class="text-xs text-gray-400 mt-2">Authoritative resources for Williams syndrome:</p>
+            <p class="text-xs text-gray-400 mt-2">Official resources for Williams syndrome:</p>
 
         </div>
 
