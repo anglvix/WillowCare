@@ -28,9 +28,7 @@ include '../includes/head.php';
         <section class="bg-willow-cream/20 border border-willow-cream rounded-3xl p-8 shadow-sm">
 
             <p class="text-sm text-gray-600 leading-relaxed text-center max-w-xl mx-auto">
-                O Willow Care nasceu da necessidade de centralizar caminhos clínicos,
-                workshops lúdicos e partilha de experiências para cuidadores de pessoas
-                diagnosticadas com a Síndrome de Williams.
+Willow Care was created to bring together clinical care pathways, recreational workshops, and experience-sharing for caregivers of people diagnosed with Williams syndrome.
             </p>
 
         </section>
