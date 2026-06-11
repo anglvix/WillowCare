@@ -5,16 +5,19 @@ import { getSession, isLoggedIn } from '../services/auth-service.js'
 
 const id = new URLSearchParams(location.search).get('id')
 const session = getSession()
-const reviewButton = document.querySelector('#btn-reviews')
-const postReviewButton = document.querySelector('#btn-post-review')
-const doctorReviewsPanel = document.querySelector('#doctor-reviews-panel')
-const doctorReviewsList = document.querySelector('#doctor-reviews-list')
-const reviewModal = document.querySelector('#review-modal')
-const reviewForm = document.querySelector('#review-form')
-const reviewCancel = document.querySelector('#review-cancel')
-const reviewCancelSecondary = document.querySelector('#review-cancel-secondary')
-const reviewError = document.querySelector('#review-error')
-const reviewSubmitButton = document.querySelector('#review-submit')
+let reviewButton
+let postReviewButton
+let doctorReviewsPanel
+let doctorReviewsList
+let doctorRatingStars
+let doctorRatingValue
+let reviewModal
+let reviewForm
+let reviewCancel
+let reviewCancelSecondary
+let reviewError
+let reviewSubmitButton
+let saveDoctorButton
 
 if (session?.role === 'doctor' && (session.approvalStatus || 'approved') === 'pending') {
   const alertBox = document.querySelector('#doctor-review-alert')
@@ -103,13 +106,28 @@ async function load() {
 
 async function loadDoctorReviews() {
   if (!id) return
+  const doctorData = await getDoctorById(id)
   const reviews = await getReviewsByDoctorId(id)
   if (!doctorReviewsList) return
 
   if (!reviews.length) {
+    if (doctorData && doctorData.rating) {
+      const rating = Number(doctorData.rating)
+      if (doctorRatingStars) doctorRatingStars.textContent = '★'.repeat(rating) + '☆'.repeat(5 - rating)
+      if (doctorRatingValue) doctorRatingValue.textContent = `${rating.toFixed(1)} • doctor profile rating`
+    } else {
+      if (doctorRatingStars) doctorRatingStars.textContent = '☆☆☆☆☆'
+      if (doctorRatingValue) doctorRatingValue.textContent = 'No reviews yet'
+    }
     doctorReviewsList.innerHTML = '<p class="text-gray-400">No reviews yet. Click "Post review" to add the first one.</p>'
     return
   }
+
+  const averageRating = reviews.reduce((sum, review) => sum + Number(review.rating || 0), 0) / reviews.length
+  const rounded = Math.round(averageRating * 10) / 10
+  const fullStars = Math.round(averageRating)
+  if (doctorRatingStars) doctorRatingStars.textContent = '★'.repeat(fullStars) + '☆'.repeat(5 - fullStars)
+  if (doctorRatingValue) doctorRatingValue.textContent = `${rounded.toFixed(1)} • ${reviews.length} review${reviews.length === 1 ? '' : 's'}`
 
   doctorReviewsList.innerHTML = reviews.map(review => `
     <article class="border border-gray-100 rounded-2xl p-4 bg-willow-cream/50">
@@ -138,90 +156,106 @@ function getAuthorInitials(fullName) {
     .slice(0, 2)
 }
 
-postReviewButton?.addEventListener('click', openReviewModal)
-reviewButton?.addEventListener('click', toggleReviewPanel)
-reviewCancel?.addEventListener('click', closeReviewModal)
-reviewCancelSecondary?.addEventListener('click', closeReviewModal)
-reviewModal?.addEventListener('click', (event) => {
-  if (event.target === reviewModal) closeReviewModal()
-})
+function setupEventListeners() {
+  reviewButton = document.querySelector('#btn-reviews')
+  postReviewButton = document.querySelector('#btn-post-review')
+  doctorReviewsPanel = document.querySelector('#doctor-reviews-panel')
+  doctorReviewsList = document.querySelector('#doctor-reviews-list')
+  doctorRatingStars = document.querySelector('#doctor-rating-stars')
+  doctorRatingValue = document.querySelector('#doctor-rating-value')
+  reviewModal = document.querySelector('#review-modal')
+  reviewForm = document.querySelector('#review-form')
+  reviewCancel = document.querySelector('#review-cancel')
+  reviewCancelSecondary = document.querySelector('#review-cancel-secondary')
+  reviewError = document.querySelector('#review-error')
+  reviewSubmitButton = document.querySelector('#review-submit')
+  saveDoctorButton = document.querySelector('#btn-save-doctor-sidebar')
 
-document.addEventListener('keydown', (event) => {
-  if (event.key !== 'Escape') return
-  if (reviewModal && !reviewModal.classList.contains('hidden')) {
+  postReviewButton?.addEventListener('click', openReviewModal)
+  reviewButton?.addEventListener('click', toggleReviewPanel)
+  reviewCancel?.addEventListener('click', closeReviewModal)
+  reviewCancelSecondary?.addEventListener('click', closeReviewModal)
+  reviewModal?.addEventListener('click', (event) => {
+    if (event.target === reviewModal) closeReviewModal()
+  })
+  saveDoctorButton?.addEventListener('click', async () => {
+    if (!isLoggedIn()) {
+      window.location.href = 'login.php'
+      return
+    }
+    const result = await saveDoctor(Number(id))
+    if (result.ok) {
+      saveDoctorButton.textContent = 'Guardado ✓'
+    }
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return
+    if (reviewModal && !reviewModal.classList.contains('hidden')) {
+      closeReviewModal()
+    }
+  })
+
+  reviewForm?.addEventListener('submit', async (event) => {
+    event.preventDefault()
+    if (!id || !reviewForm || !reviewSubmitButton) return
+
+    const rating = Number(reviewForm.querySelector('[name="rating"]').value)
+    const title = reviewForm.querySelector('[name="title"]').value.trim()
+    const content = reviewForm.querySelector('[name="content"]').value.trim()
+    const anonymous = reviewForm.querySelector('#review-anonymous').checked
+
+    if (!rating || !content) {
+      reviewError?.classList.remove('hidden')
+      return
+    }
+
+    if (!isLoggedIn()) {
+      window.location.href = 'login.php'
+      return
+    }
+
+    const result = await getDoctorById(id)
+    const doctor = result ? Doctor.fromObject(result) : null
+    if (!doctor) {
+      reviewError?.classList.remove('hidden')
+      return
+    }
+
+    reviewSubmitButton.disabled = true
+    reviewSubmitButton.textContent = 'Posting...'
+    reviewError?.classList.add('hidden')
+
+    const reviewData = {
+      subjectId: Number(id),
+      subjectName: doctor.name,
+      subjectPhoto: doctor.photo || '',
+      rating,
+      title,
+      text: content,
+      authorInitials: anonymous ? 'Anonymous' : getAuthorInitials(session?.name),
+      createdAt: new Date().toISOString()
+    }
+
+    const response = await createReview(reviewData)
+    reviewSubmitButton.disabled = false
+    reviewSubmitButton.textContent = 'Publish review'
+
+    if (!response.ok) {
+      reviewError?.classList.remove('hidden')
+      return
+    }
+
     closeReviewModal()
-  }
+    await loadDoctorReviews()
+    if (doctorReviewsPanel?.classList.contains('hidden')) {
+      doctorReviewsPanel.classList.remove('hidden')
+    }
+  })
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  setupEventListeners()
+  load()
+  loadDoctorReviews()
 })
-
-reviewForm?.addEventListener('submit', async (event) => {
-  event.preventDefault()
-  if (!id || !reviewForm || !reviewSubmitButton) return
-
-  const rating = Number(reviewForm.querySelector('[name="rating"]').value)
-  const title = reviewForm.querySelector('[name="title"]').value.trim()
-  const content = reviewForm.querySelector('[name="content"]').value.trim()
-  const anonymous = reviewForm.querySelector('#review-anonymous').checked
-
-  if (!rating || !content) {
-    reviewError?.classList.remove('hidden')
-    return
-  }
-
-  if (!isLoggedIn()) {
-    window.location.href = 'login.php'
-    return
-  }
-
-  const result = await getDoctorById(id)
-  const doctor = result ? Doctor.fromObject(result) : null
-  if (!doctor) {
-    reviewError?.classList.remove('hidden')
-    return
-  }
-
-  reviewSubmitButton.disabled = true
-  reviewSubmitButton.textContent = 'Posting...'
-  reviewError?.classList.add('hidden')
-
-  const reviewData = {
-    subjectId: Number(id),
-    subjectName: doctor.name,
-    subjectPhoto: doctor.photo || '',
-    rating,
-    title,
-    text: content,
-    authorInitials: anonymous ? 'Anonymous' : getAuthorInitials(session?.name),
-    createdAt: new Date().toISOString()
-  }
-
-  const response = await createReview(reviewData)
-  reviewSubmitButton.disabled = false
-  reviewSubmitButton.textContent = 'Publish review'
-
-  if (!response.ok) {
-    reviewError?.classList.remove('hidden')
-    return
-  }
-
-  closeReviewModal()
-  await loadDoctorReviews()
-  if (doctorReviewsPanel?.classList.contains('hidden')) {
-    doctorReviewsPanel.classList.remove('hidden')
-  }
-})
-
-// Guardar médico nos favoritos
-document.querySelector('#btn-save-doctor')?.addEventListener('click', async () => {
-  if (!isLoggedIn()) {
-    window.location.href = 'login.php'
-    return
-  }
-  const result = await saveDoctor(Number(id))
-  if (result.ok) {
-    const btn = document.querySelector('#btn-save-doctor')
-    if (btn) btn.textContent = 'Guardado ✓'
-  }
-})
-
-load()
-loadDoctorReviews()
