@@ -2,7 +2,16 @@ import { isLoggedIn, getSession, logout, isAdmin } from './services/auth-service
 
 function updateNavbar() {
   const area = document.getElementById('nav-auth-area')
-  if (!area || !isLoggedIn()) return
+  if (!area) return
+
+  if (!isLoggedIn()) {
+    area.innerHTML = `
+      <div class="flex items-center gap-3">
+        <a href="doctor_login.php" class="border border-willow-dark/20 bg-willow-cream text-willow-dark px-4 py-1.5 rounded-full text-[12px] font-semibold hover:bg-willow-cream/80 transition">Doctor Login</a>
+        <a href="login.php" class="text-[12px] font-medium text-willow-dark hover:opacity-80 transition">Log in</a>
+      </div>`
+    return
+  }
 
   const existingContent = area.innerHTML.trim()
   if (existingContent) {
