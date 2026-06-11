@@ -64,16 +64,21 @@ async function load() {
 }
 
 // Guardar médico nos favoritos
-document.querySelector('#btn-save-doctor')?.addEventListener('click', async () => {
-  if (!isLoggedIn()) {
-    window.location.href = 'login.php'
-    return
-  }
-  const result = await saveDoctor(Number(id))
-  if (result.ok) {
-    const btn = document.querySelector('#btn-save-doctor')
-    if (btn) btn.textContent = 'Guardado ✓'
-  }
-})
+const saveDoctorButton = document.querySelector('#btn-save-doctor-sidebar')
+if (saveDoctorButton) {
+  saveDoctorButton.addEventListener('click', async () => {
+    if (!isLoggedIn()) {
+      window.location.href = 'login.php'
+      return
+    }
+
+    const result = await saveDoctor(Number(id))
+    if (result.ok) {
+      saveDoctorButton.textContent = 'Guardado ✓'
+      saveDoctorButton.disabled = true
+      saveDoctorButton.classList.add('opacity-70', 'cursor-not-allowed')
+    }
+  })
+}
 
 load()

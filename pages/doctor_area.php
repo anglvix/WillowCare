@@ -39,12 +39,6 @@ include '../includes/head.php';
 
                 <div class="mt-4 flex flex-col items-center gap-3">
 
-                    <button
-                        id="btn-teleconsult"
-                        class="bg-willow-mid text-white text-xs font-semibold px-4 py-2 rounded-xl shadow hover:bg-willow-dark transition">
-                        Request Teleconsultation
-                    </button>
-
                     <button id="btn-save-doctor-sidebar"
                         class="border border-willow-mid text-willow-dark text-xs font-semibold px-4 py-2 rounded-xl hover:bg-willow-cream transition">
                         Save Doctor
