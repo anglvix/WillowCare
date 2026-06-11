@@ -29,11 +29,6 @@ include '../includes/head.php';
 
                 <h1 id="doctor-name" class="text-xl font-serif font-bold text-willow-dark">-</h1>
 
-                <div id="doctor-rating" class="mt-3 flex items-center justify-center gap-2 text-sm text-willow-dark">
-                    <span id="doctor-rating-stars">☆☆☆☆☆</span>
-                    <span id="doctor-rating-value" class="text-[11px] text-gray-500">No reviews yet</span>
-                </div>
-
                 <p class="text-xs text-gray-400 mt-1">Specialist</p>
 
                 <span id="doctor-specialty"
