@@ -98,11 +98,14 @@
       "password": "$2a$10$6RkhBDTH.MxUMjctTQSuw.DgA9a9NTdDCgEST503Y6sM4I8rblJLO",
       "name": "adriana",
       "role": "caregiver",
-      "savedDoctors": [],
+      "savedDoctors": [
+        1
+      ],
       "savedSchools": [],
       "achievements": [
         "registered",
-        "first_booking"
+        "first_booking",
+        "saved_doctor"
       ],
       "id": 11
     }
@@ -112,7 +115,7 @@
       "id": 1,
       "name": "Dra. Diana Sousa",
       "specialty": "Pediatrics",
-      "bio": "Consultora com 10+ anos dedicados à Síndrome de Williams. Especializada em desenvolvimento infantil e neurologia pediátrica.",
+      "bio": "Consultant with over 10 years' experience working with Williams syndrome, specializing in child development and pediatric neurology.",
       "highlights": [
         "Williams Syndrome expert",
         "Teleconsultation available",
@@ -129,7 +132,7 @@
       "id": 2,
       "name": "Dr. Rui Fernandes",
       "specialty": "Cardiology",
-      "bio": "Cardiologista com experiência em anomalias cardíacas associadas à Síndrome de Williams.",
+      "bio": "Cardiologist with experience in cardiac anomalies associated with Williams syndrome.",
       "highlights": [
         "Congenital heart disease",
         "Williams Syndrome cardiology"
@@ -145,7 +148,7 @@
       "id": 3,
       "name": "Dra. Sofia Alves",
       "specialty": "Neurology",
-      "bio": "Neurologista pediátrica especializada em perturbações do neurodesenvolvimento.",
+      "bio": "Pediatric neurologist specializing in neurodevelopmental disorders.",
       "highlights": [
         "Neurodevelopment specialist",
         "Cognitive assessment"
@@ -164,7 +167,7 @@
       "name": "Escola EB1 da Maia",
       "location": "Maia",
       "district": "Porto",
-      "description": "Escola pública com unidade de apoio especializado para alunos com necessidades educativas.",
+      "description": "Public school with a specialized support unit for students with special educational needs.",
       "type": "public",
       "supportFeatures": [
         "special-ed-team",
@@ -180,7 +183,7 @@
       "name": "Colégio Inclusivo de Braga",
       "location": "Braga",
       "district": "Braga",
-      "description": "Colégio privado com programa de inclusão certificado e equipa multidisciplinar.",
+      "description": "Private school with a certified inclusion program and a multidisciplinary team.",
       "type": "private",
       "supportFeatures": [
         "special-ed-team",
@@ -197,7 +200,7 @@
       "name": "Agrupamento de Escolas de Matosinhos",
       "location": "Matosinhos",
       "district": "Porto",
-      "description": "Agrupamento público com unidade especializada de apoio à multideficiência.",
+      "description": "Public school with a specialized support unit for students with multiple disabilities.",
       "type": "public",
       "supportFeatures": [
         "special-ed-team",
