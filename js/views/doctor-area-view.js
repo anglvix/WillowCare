@@ -1,11 +1,12 @@
 import Doctor from '../models/Doctor.js'
 import { getDoctorById, getDoctorReviews, createReview } from '../services/doctor-service.js'
-import { getProfile, saveDoctor } from '../services/user-service.js'
+import { getProfile, saveDoctor, unsaveDoctor } from '../services/user-service.js'
 import { getSession, isLoggedIn } from '../services/auth-service.js'
 
 const id = new URLSearchParams(location.search).get('id')
 const session = getSession()
 let currentDoctor = null
+let isDoctorSaved = false
 
 const reviewForm = document.querySelector('#review-form')
 const reviewModal = document.querySelector('#review-modal')
@@ -167,10 +168,12 @@ async function updateSaveButtonState(doctorId) {
   const sessionData = getSession()
   const profile = await getProfile(sessionData.id)
   const savedDoctors = Array.isArray(profile?.savedDoctors) ? profile.savedDoctors : []
-  if (savedDoctors.includes(doctorId)) {
-    button.textContent = 'Saved'
-    button.disabled = true
-    button.classList.add('opacity-70', 'cursor-not-allowed')
+  isDoctorSaved = savedDoctors.includes(doctorId)
+
+  if (isDoctorSaved) {
+    button.textContent = 'Unsave Doctor'
+    button.disabled = false
+    button.classList.remove('opacity-70', 'cursor-not-allowed')
   } else {
     button.textContent = 'Save Doctor'
     button.disabled = false
@@ -258,11 +261,15 @@ if (saveDoctorButton) {
       return
     }
 
-    const result = await saveDoctor(Number(id))
+    let result
+    if (isDoctorSaved) {
+      result = await unsaveDoctor(Number(id))
+    } else {
+      result = await saveDoctor(Number(id))
+    }
+
     if (result.ok) {
-      saveDoctorButton.textContent = 'Saved'
-      saveDoctorButton.disabled = true
-      saveDoctorButton.classList.add('opacity-70', 'cursor-not-allowed')
+      await updateSaveButtonState(Number(id))
     } else {
       console.error('Save doctor failed:', result.error)
     }

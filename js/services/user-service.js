@@ -54,6 +54,35 @@ export async function saveDoctor(doctorId) {
   return { ok: true }
 }
 
+export async function unsaveDoctor(doctorId) {
+  const user = getSession()
+  if (!user) return { ok: false, error: 'Not logged in' }
+
+  const profile = await getProfile(user.id)
+  if (!profile) return { ok: false, error: 'Unable to load profile' }
+
+  const savedDoctors = Array.isArray(profile.savedDoctors) ? profile.savedDoctors : []
+  if (!savedDoctors.includes(doctorId)) {
+    saveSessionData({ ...user, savedDoctors })
+    return { ok: true }
+  }
+
+  const updatedSavedDoctors = savedDoctors.filter(id => id !== doctorId)
+  const res = await fetch(`${BASE}/users/${user.id}`, {
+    method: 'PATCH',
+    headers: authHeaders(),
+    body: JSON.stringify({ savedDoctors: updatedSavedDoctors })
+  })
+
+  if (!res.ok) {
+    return { ok: false, error: 'Failed to unsave doctor' }
+  }
+
+  const updatedProfile = await res.json()
+  saveSessionData({ ...user, savedDoctors: updatedProfile.savedDoctors ?? updatedSavedDoctors })
+  return { ok: true }
+}
+
 export async function saveSchool(schoolId) {
   const user = getSession()
   if (!user) return { ok: false }
