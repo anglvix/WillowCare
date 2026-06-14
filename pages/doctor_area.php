@@ -15,7 +15,7 @@ include '../includes/head.php';
         <!-- Doctor Sidebar -->
         <aside class="text-center space-y-4">
 
-            <div
+            <div id="doctor-photo"
                 class="w-32 h-32 bg-gray-100 rounded-full mx-auto bg-cover bg-center shadow-sm border border-gray-200"
                 style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80');">
             </div>
@@ -36,6 +36,11 @@ include '../includes/head.php';
                     -
                 </span>
 
+                <div class="mt-3 text-center space-y-1">
+                    <div id="doctor-rating-stars" class="text-willow-dark text-lg leading-none">☆☆☆☆☆</div>
+                    <div id="doctor-rating-value" class="text-[11px] text-gray-500">No rating yet</div>
+                    <div id="doctor-rating-count" class="text-[11px] text-gray-500">0 reviews</div>
+                </div>
 
                 <div class="mt-4 flex flex-col items-center gap-3">
 
@@ -187,7 +192,7 @@ include '../includes/head.php';
 
     <!-- Review Form Modal -->
     <div id="review-modal"
-        class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4 z-[110]">
+        class="fixed inset-0 bg-black/40 hidden flex items-center justify-center p-4 z-[110]">
 
         <form id="review-form"
             class="bg-white rounded-2xl w-full max-w-lg p-6 space-y-4">
@@ -243,6 +248,28 @@ include '../includes/head.php';
 
         </form>
 
+    </div>
+
+    <!-- Doctor Reviews Modal -->
+    <div id="reviews-modal"
+        class="fixed inset-0 bg-black/40 hidden flex items-center justify-center p-4 z-[115]">
+
+        <div class="bg-white rounded-2xl w-full max-w-3xl p-6 space-y-4">
+
+            <div class="flex items-center justify-between">
+                <h2 class="text-lg font-serif font-bold text-willow-dark">Doctor reviews</h2>
+                <button type="button" id="reviews-close" class="text-xs text-gray-500 hover:text-gray-700">Close</button>
+            </div>
+
+            <div id="reviews-list" class="space-y-4 min-h-[120px] text-sm text-gray-600">
+                <p class="text-gray-500">Loading reviews…</p>
+            </div>
+
+            <div class="flex justify-end gap-2">
+                <button type="button" id="reviews-close-secondary" class="text-xs px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-50">Close</button>
+            </div>
+
+        </div>
     </div>
 
     <?php include '../includes/footer.php'; ?>

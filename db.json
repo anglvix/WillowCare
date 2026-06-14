@@ -23,11 +23,13 @@
       "name": "joana",
       "role": "caregiver",
       "savedDoctors": [
-        2
+        2,
+        1
       ],
       "savedSchools": [],
       "achievements": [
-        "registered"
+        "registered",
+        "saved_doctor"
       ],
       "id": 5
     },
