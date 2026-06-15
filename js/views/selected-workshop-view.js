@@ -61,7 +61,7 @@ async function loadWorkshop() {
     const target =
       workshop.hostType === 'school'
         ? 'school_account.php'
-        : 'organization_account.php'
+        : 'organization_detail.php'
 
     hostEl.innerHTML =
       `Hosted by <a href="${target}?id=${workshop.hostId}" class="text-willow-mid underline">${workshop.hostName}</a>`

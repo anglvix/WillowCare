@@ -37,7 +37,7 @@ async function loadExcursion() {
   const hostEl = document.querySelector('#excursion-host')
 
   if (excursion.hostName && excursion.hostId) {
-    const target = excursion.hostType === 'school' ? 'school_account.php' : 'organization_account.php'
+    const target = excursion.hostType === 'school' ? 'school_account.php' : 'organization_detail.php'
     hostEl.innerHTML = `Hosted by <a href="${target}?id=${excursion.hostId}" class="text-willow-mid underline">${excursion.hostName}</a>`
   } else {
     hostEl.textContent = 'Hosted by Willow Care'
