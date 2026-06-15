@@ -50,6 +50,22 @@ include '../includes/head.php';
 
                 </a>
 
+                <a
+                    href="saved_schools.php"
+                    class="block bg-white p-3 rounded-xl border border-gray-200 text-gray-600 font-medium hover:border-willow-mid hover:text-willow-dark transition">
+
+                    Saved Schools
+
+                </a>
+
+                <a
+                    href="saved_organizations.php"
+                    class="block bg-white p-3 rounded-xl border border-gray-200 text-gray-600 font-medium hover:border-willow-mid hover:text-willow-dark transition">
+
+                    Saved Organizations
+
+                </a>
+
                 <button
                     id="open-settings-button"
                     type="button"
@@ -87,6 +103,16 @@ include '../includes/head.php';
                 <div class="border border-gray-100 p-5 rounded-xl shadow-sm text-center bg-white">
                     <span id="stat-doctors" class="text-2xl font-bold text-willow-mid">-</span>
                     <p class="text-[10px] text-gray-400 mt-1 uppercase font-bold">Saved Doctors</p>
+                </div>
+
+                <div class="border border-gray-100 p-5 rounded-xl shadow-sm text-center bg-white">
+                    <span id="stat-schools" class="text-2xl font-bold text-willow-mid">-</span>
+                    <p class="text-[10px] text-gray-400 mt-1 uppercase font-bold">Saved Schools</p>
+                </div>
+
+                <div class="border border-gray-100 p-5 rounded-xl shadow-sm text-center bg-white">
+                    <span id="stat-organizations" class="text-2xl font-bold text-willow-mid">-</span>
+                    <p class="text-[10px] text-gray-400 mt-1 uppercase font-bold">Saved Organizations</p>
                 </div>
 
             </div>

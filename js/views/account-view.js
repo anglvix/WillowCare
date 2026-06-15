@@ -132,6 +132,22 @@ async function loadDashboard() {
     }),
   );
 
+  document.querySelector("#stat-schools")?.replaceWith(
+    Object.assign(document.createElement("span"), {
+      id: "stat-schools",
+      className: "text-2xl font-bold text-willow-mid",
+      textContent: profile.savedSchools?.length ?? 0,
+    }),
+  );
+
+  document.querySelector("#stat-organizations")?.replaceWith(
+    Object.assign(document.createElement("span"), {
+      id: "stat-organizations",
+      className: "text-2xl font-bold text-willow-mid",
+      textContent: profile.savedOrganizations?.length ?? 0,
+    }),
+  );
+
   // Conquistas
   const achievementsEl = document.querySelector("#achievements-list");
   if (achievementsEl && profile.achievements.length) {
@@ -139,6 +155,8 @@ async function loadDashboard() {
       registered: "Conta criada",
       first_booking: "Primeira inscrição",
       saved_doctor: "Médico guardado",
+      saved_school: "Escola guardada",
+      saved_organization: "Organização guardada",
       first_review: "Avaliação submetida",
     };
     achievementsEl.innerHTML = profile.achievements

@@ -85,19 +85,122 @@ export async function unsaveDoctor(doctorId) {
 
 export async function saveSchool(schoolId) {
   const user = getSession()
-  if (!user) return { ok: false }
+  if (!user) return { ok: false, error: 'Not logged in' }
 
   const profile = await getProfile(user.id)
-  if (!profile) return { ok: false }
-  if (profile.savedSchools.includes(schoolId)) return { ok: true }
+  if (!profile) return { ok: false, error: 'Unable to load profile' }
 
+  const savedSchools = Array.isArray(profile.savedSchools) ? profile.savedSchools : []
+  if (savedSchools.includes(schoolId)) {
+    saveSessionData({ ...user, savedSchools })
+    return { ok: true }
+  }
+
+  const updatedSavedSchools = Array.from(new Set([...savedSchools, schoolId]))
   const res = await fetch(`${BASE}/users/${user.id}`, {
     method: 'PATCH',
     headers: authHeaders(),
-    body: JSON.stringify({ savedSchools: [...profile.savedSchools, schoolId] })
+    body: JSON.stringify({ savedSchools: updatedSavedSchools })
   })
 
-  return { ok: res.ok }
+  if (!res.ok) {
+    return { ok: false, error: 'Failed to save school' }
+  }
+
+  const updatedProfile = await res.json()
+  saveSessionData({ ...user, savedSchools: updatedProfile.savedSchools ?? updatedSavedSchools })
+  await unlockAchievement('saved_school')
+
+  return { ok: true }
+}
+
+export async function unsaveSchool(schoolId) {
+  const user = getSession()
+  if (!user) return { ok: false, error: 'Not logged in' }
+
+  const profile = await getProfile(user.id)
+  if (!profile) return { ok: false, error: 'Unable to load profile' }
+
+  const savedSchools = Array.isArray(profile.savedSchools) ? profile.savedSchools : []
+  if (!savedSchools.includes(schoolId)) {
+    saveSessionData({ ...user, savedSchools })
+    return { ok: true }
+  }
+
+  const updatedSavedSchools = savedSchools.filter(id => id !== schoolId)
+  const res = await fetch(`${BASE}/users/${user.id}`, {
+    method: 'PATCH',
+    headers: authHeaders(),
+    body: JSON.stringify({ savedSchools: updatedSavedSchools })
+  })
+
+  if (!res.ok) {
+    return { ok: false, error: 'Failed to unsave school' }
+  }
+
+  const updatedProfile = await res.json()
+  saveSessionData({ ...user, savedSchools: updatedProfile.savedSchools ?? updatedSavedSchools })
+  return { ok: true }
+}
+
+export async function saveOrganization(orgId) {
+  const user = getSession()
+  if (!user) return { ok: false, error: 'Not logged in' }
+
+  const profile = await getProfile(user.id)
+  if (!profile) return { ok: false, error: 'Unable to load profile' }
+
+  const savedOrganizations = Array.isArray(profile.savedOrganizations) ? profile.savedOrganizations : []
+  if (savedOrganizations.includes(orgId)) {
+    saveSessionData({ ...user, savedOrganizations })
+    return { ok: true }
+  }
+
+  const updatedSavedOrganizations = Array.from(new Set([...savedOrganizations, orgId]))
+  const res = await fetch(`${BASE}/users/${user.id}`, {
+    method: 'PATCH',
+    headers: authHeaders(),
+    body: JSON.stringify({ savedOrganizations: updatedSavedOrganizations })
+  })
+
+  if (!res.ok) {
+    return { ok: false, error: 'Failed to save organization' }
+  }
+
+  const updatedProfile = await res.json()
+  saveSessionData({ ...user, savedOrganizations: updatedProfile.savedOrganizations ?? updatedSavedOrganizations })
+  await unlockAchievement('saved_organization')
+
+  return { ok: true }
+}
+
+export async function unsaveOrganization(orgId) {
+  const user = getSession()
+  if (!user) return { ok: false, error: 'Not logged in' }
+
+  const profile = await getProfile(user.id)
+  if (!profile) return { ok: false, error: 'Unable to load profile' }
+
+  const savedOrganizations = Array.isArray(profile.savedOrganizations) ? profile.savedOrganizations : []
+  if (!savedOrganizations.includes(orgId)) {
+    saveSessionData({ ...user, savedOrganizations })
+    return { ok: true }
+  }
+
+  const updatedSavedOrganizations = savedOrganizations.filter(id => id !== orgId)
+  const res = await fetch(`${BASE}/users/${user.id}`, {
+    method: 'PATCH',
+    headers: authHeaders(),
+    body: JSON.stringify({ savedOrganizations: updatedSavedOrganizations })
+  })
+
+  if (!res.ok) {
+    return { ok: false, error: 'Failed to unsave organization' }
+  }
+
+  const updatedProfile = await res.json()
+  saveSessionData({ ...user, savedOrganizations: updatedProfile.savedOrganizations ?? updatedSavedOrganizations })
+  return { ok: true }
 }
 
 // Desbloqueia conquista se ainda não existir

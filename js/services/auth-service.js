@@ -61,10 +61,12 @@ export async function register({ name, email, password, role = 'caregiver', spec
     payload.approvalStatus = 'pending'
     payload.savedDoctors = []
     payload.savedSchools = []
+    payload.savedOrganizations = []
     payload.achievements = ['registered']
   } else {
     payload.savedDoctors = []
     payload.savedSchools = []
+    payload.savedOrganizations = []
     payload.achievements = ['registered']
   }
 
