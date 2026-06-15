@@ -30,13 +30,14 @@ export async function saveDoctor(doctorId) {
   const profile = await getProfile(user.id)
   if (!profile) return { ok: false, error: 'Unable to load profile' }
 
-  const savedDoctors = Array.isArray(profile.savedDoctors) ? profile.savedDoctors : []
-  if (savedDoctors.includes(doctorId)) {
+  const savedDoctors = Array.isArray(profile.savedDoctors) ? profile.savedDoctors.map(Number) : []
+  const normalizedDoctorId = Number(doctorId)
+  if (savedDoctors.includes(normalizedDoctorId)) {
     saveSessionData({ ...user, savedDoctors })
     return { ok: true }
   }
 
-  const updatedSavedDoctors = Array.from(new Set([...savedDoctors, doctorId]))
+  const updatedSavedDoctors = Array.from(new Set([...savedDoctors, normalizedDoctorId]))
   const res = await fetch(`${BASE}/users/${user.id}`, {
     method: 'PATCH',
     headers: authHeaders(),
@@ -48,7 +49,7 @@ export async function saveDoctor(doctorId) {
   }
 
   const updatedProfile = await res.json()
-  saveSessionData({ ...user, savedDoctors: updatedProfile.savedDoctors ?? updatedSavedDoctors })
+  saveSessionData({ ...user, savedDoctors: Array.isArray(updatedProfile.savedDoctors) ? updatedProfile.savedDoctors.map(Number) : updatedSavedDoctors })
   await unlockAchievement('saved_doctor')
 
   return { ok: true }
@@ -61,13 +62,14 @@ export async function unsaveDoctor(doctorId) {
   const profile = await getProfile(user.id)
   if (!profile) return { ok: false, error: 'Unable to load profile' }
 
-  const savedDoctors = Array.isArray(profile.savedDoctors) ? profile.savedDoctors : []
-  if (!savedDoctors.includes(doctorId)) {
+  const savedDoctors = Array.isArray(profile.savedDoctors) ? profile.savedDoctors.map(Number) : []
+  const normalizedDoctorId = Number(doctorId)
+  if (!savedDoctors.includes(normalizedDoctorId)) {
     saveSessionData({ ...user, savedDoctors })
     return { ok: true }
   }
 
-  const updatedSavedDoctors = savedDoctors.filter(id => id !== doctorId)
+  const updatedSavedDoctors = savedDoctors.filter(id => id !== normalizedDoctorId)
   const res = await fetch(`${BASE}/users/${user.id}`, {
     method: 'PATCH',
     headers: authHeaders(),
@@ -79,7 +81,7 @@ export async function unsaveDoctor(doctorId) {
   }
 
   const updatedProfile = await res.json()
-  saveSessionData({ ...user, savedDoctors: updatedProfile.savedDoctors ?? updatedSavedDoctors })
+  saveSessionData({ ...user, savedDoctors: Array.isArray(updatedProfile.savedDoctors) ? updatedProfile.savedDoctors.map(Number) : updatedSavedDoctors })
   return { ok: true }
 }
 
@@ -90,13 +92,14 @@ export async function saveSchool(schoolId) {
   const profile = await getProfile(user.id)
   if (!profile) return { ok: false, error: 'Unable to load profile' }
 
-  const savedSchools = Array.isArray(profile.savedSchools) ? profile.savedSchools : []
-  if (savedSchools.includes(schoolId)) {
+  const savedSchools = Array.isArray(profile.savedSchools) ? profile.savedSchools.map(Number) : []
+  const normalizedSchoolId = Number(schoolId)
+  if (savedSchools.includes(normalizedSchoolId)) {
     saveSessionData({ ...user, savedSchools })
     return { ok: true }
   }
 
-  const updatedSavedSchools = Array.from(new Set([...savedSchools, schoolId]))
+  const updatedSavedSchools = Array.from(new Set([...savedSchools, normalizedSchoolId]))
   const res = await fetch(`${BASE}/users/${user.id}`, {
     method: 'PATCH',
     headers: authHeaders(),
@@ -108,7 +111,7 @@ export async function saveSchool(schoolId) {
   }
 
   const updatedProfile = await res.json()
-  saveSessionData({ ...user, savedSchools: updatedProfile.savedSchools ?? updatedSavedSchools })
+  saveSessionData({ ...user, savedSchools: Array.isArray(updatedProfile.savedSchools) ? updatedProfile.savedSchools.map(Number) : updatedSavedSchools })
   await unlockAchievement('saved_school')
 
   return { ok: true }
@@ -121,13 +124,14 @@ export async function unsaveSchool(schoolId) {
   const profile = await getProfile(user.id)
   if (!profile) return { ok: false, error: 'Unable to load profile' }
 
-  const savedSchools = Array.isArray(profile.savedSchools) ? profile.savedSchools : []
-  if (!savedSchools.includes(schoolId)) {
+  const savedSchools = Array.isArray(profile.savedSchools) ? profile.savedSchools.map(Number) : []
+  const normalizedSchoolId = Number(schoolId)
+  if (!savedSchools.includes(normalizedSchoolId)) {
     saveSessionData({ ...user, savedSchools })
     return { ok: true }
   }
 
-  const updatedSavedSchools = savedSchools.filter(id => id !== schoolId)
+  const updatedSavedSchools = savedSchools.filter(id => id !== normalizedSchoolId)
   const res = await fetch(`${BASE}/users/${user.id}`, {
     method: 'PATCH',
     headers: authHeaders(),
@@ -139,7 +143,7 @@ export async function unsaveSchool(schoolId) {
   }
 
   const updatedProfile = await res.json()
-  saveSessionData({ ...user, savedSchools: updatedProfile.savedSchools ?? updatedSavedSchools })
+  saveSessionData({ ...user, savedSchools: Array.isArray(updatedProfile.savedSchools) ? updatedProfile.savedSchools.map(Number) : updatedSavedSchools })
   return { ok: true }
 }
 
@@ -150,13 +154,14 @@ export async function saveOrganization(orgId) {
   const profile = await getProfile(user.id)
   if (!profile) return { ok: false, error: 'Unable to load profile' }
 
-  const savedOrganizations = Array.isArray(profile.savedOrganizations) ? profile.savedOrganizations : []
-  if (savedOrganizations.includes(orgId)) {
+  const savedOrganizations = Array.isArray(profile.savedOrganizations) ? profile.savedOrganizations.map(Number) : []
+  const normalizedOrgId = Number(orgId)
+  if (savedOrganizations.includes(normalizedOrgId)) {
     saveSessionData({ ...user, savedOrganizations })
     return { ok: true }
   }
 
-  const updatedSavedOrganizations = Array.from(new Set([...savedOrganizations, orgId]))
+  const updatedSavedOrganizations = Array.from(new Set([...savedOrganizations, normalizedOrgId]))
   const res = await fetch(`${BASE}/users/${user.id}`, {
     method: 'PATCH',
     headers: authHeaders(),
@@ -168,7 +173,7 @@ export async function saveOrganization(orgId) {
   }
 
   const updatedProfile = await res.json()
-  saveSessionData({ ...user, savedOrganizations: updatedProfile.savedOrganizations ?? updatedSavedOrganizations })
+  saveSessionData({ ...user, savedOrganizations: Array.isArray(updatedProfile.savedOrganizations) ? updatedProfile.savedOrganizations.map(Number) : updatedSavedOrganizations })
   await unlockAchievement('saved_organization')
 
   return { ok: true }
@@ -181,13 +186,14 @@ export async function unsaveOrganization(orgId) {
   const profile = await getProfile(user.id)
   if (!profile) return { ok: false, error: 'Unable to load profile' }
 
-  const savedOrganizations = Array.isArray(profile.savedOrganizations) ? profile.savedOrganizations : []
-  if (!savedOrganizations.includes(orgId)) {
+  const savedOrganizations = Array.isArray(profile.savedOrganizations) ? profile.savedOrganizations.map(Number) : []
+  const normalizedOrgId = Number(orgId)
+  if (!savedOrganizations.includes(normalizedOrgId)) {
     saveSessionData({ ...user, savedOrganizations })
     return { ok: true }
   }
 
-  const updatedSavedOrganizations = savedOrganizations.filter(id => id !== orgId)
+  const updatedSavedOrganizations = savedOrganizations.filter(id => id !== normalizedOrgId)
   const res = await fetch(`${BASE}/users/${user.id}`, {
     method: 'PATCH',
     headers: authHeaders(),
@@ -199,7 +205,7 @@ export async function unsaveOrganization(orgId) {
   }
 
   const updatedProfile = await res.json()
-  saveSessionData({ ...user, savedOrganizations: updatedProfile.savedOrganizations ?? updatedSavedOrganizations })
+  saveSessionData({ ...user, savedOrganizations: Array.isArray(updatedProfile.savedOrganizations) ? updatedProfile.savedOrganizations.map(Number) : updatedSavedOrganizations })
   return { ok: true }
 }
 
