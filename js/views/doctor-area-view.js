@@ -59,9 +59,7 @@ function getAuthorInitials(name) {
 function renderReviewCard(review) {
   const photoAttr = review.authorPhoto
     ? `style="background-image: url('${review.authorPhoto}');"`
-    : review.subjectPhoto
-      ? `style="background-image: url('${review.subjectPhoto}');"`
-      : ''
+    : ''
 
   return `
     <div class="bg-willow-cream/30 p-5 rounded-2xl border border-willow-cream/30">

@@ -77,9 +77,7 @@ async function updateSaveButtonState(schoolId) {
 function renderReviewCard(review) {
   const photoAttr = review.authorPhoto
     ? `style="background-image: url('${review.authorPhoto}');"`
-    : review.subjectPhoto
-      ? `style="background-image: url('${review.subjectPhoto}');"`
-      : ''
+    : ''
   return `
     <div class="bg-willow-cream/30 p-5 rounded-2xl border border-willow-cream/30">
       <div class="flex justify-between items-start gap-3 mb-3">
