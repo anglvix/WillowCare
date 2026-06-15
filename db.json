@@ -23,8 +23,8 @@
       "name": "joana",
       "role": "caregiver",
       "savedDoctors": [
-        1,
-        2
+        2,
+        1
       ],
       "savedSchools": [],
       "achievements": [
@@ -116,6 +116,16 @@
         "saved_doctor"
       ],
       "id": 11
+    },
+    {
+      "email": "testuser123@example.com",
+      "password": "$2a$10$5SmKRqav3QMRbeJkNTUm2.7IzwUUd/dwmcawOLcoKpHd5FMsIVMZ2",
+      "name": "Test User",
+      "role": "caregiver",
+      "id": 12,
+      "savedSchools": [
+        1
+      ]
     }
   ],
   "doctors": [

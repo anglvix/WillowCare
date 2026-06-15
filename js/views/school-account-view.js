@@ -62,8 +62,9 @@ async function updateSaveButtonState(schoolId) {
   }
 
   const profile = await getProfile(session.id)
-  const savedSchools = Array.isArray(profile?.savedSchools) ? profile.savedSchools : []
-  isSchoolSaved = savedSchools.includes(schoolId)
+  const savedSchools = Array.isArray(profile?.savedSchools) ? profile.savedSchools.map(Number) : []
+  const normalizedSchoolId = Number(schoolId)
+  isSchoolSaved = savedSchools.includes(normalizedSchoolId)
 
   if (isSchoolSaved) {
     saveButton.textContent = 'Unsave School'
@@ -142,15 +143,21 @@ async function load() {
 }
 
 saveButton?.addEventListener('click', async () => {
+  console.log('School save button clicked, isSchoolSaved=', isSchoolSaved, 'id=', id)
   if (!isLoggedIn()) {
     window.location.href = 'login.php'
     return
   }
 
+  saveButton.disabled = true
+  const previousText = saveButton.textContent
+
   let result
   if (isSchoolSaved) {
+    saveButton.textContent = 'Unsaving...'
     result = await unsaveSchool(Number(id))
   } else {
+    saveButton.textContent = 'Saving...'
     result = await saveSchool(Number(id))
   }
 
@@ -158,10 +165,15 @@ saveButton?.addEventListener('click', async () => {
     await updateSaveButtonState(Number(id))
   } else {
     console.error('Save school failed:', result.error)
+    saveButton.textContent = previousText
+    saveButton.disabled = false
   }
 })
 
-btnReviews?.addEventListener('click', () => openModal(reviewsModal))
+btnReviews?.addEventListener('click', () => {
+  console.log('School reviews button clicked')
+  openModal(reviewsModal)
+})
 btnPostReview?.addEventListener('click', () => {
   if (!isLoggedIn()) {
     window.location.href = 'login.php'
