@@ -541,6 +541,17 @@
       "text": "Extremamente profissional e atenciosa durante a consulta. Recomendo pelos seus conhecimentos e pela clareza.",
       "authorInitials": "FR",
       "createdAt": "2026-04-02"
+    },
+    {
+      "subjectId": 2,
+      "subjectName": "Dr. Rui Fernandes",
+      "subjectPhoto": "",
+      "rating": 5,
+      "title": "great",
+      "text": "very nice",
+      "authorInitials": "J",
+      "createdAt": "2026-06-15",
+      "id": 3
     }
   ],
   "vouchers": [
