@@ -161,7 +161,9 @@ async function loadDashboard() {
     };
 
     const unlocked = Array.from(new Set(profile.achievements || []));
-    const stars = unlocked.length;
+    const starsEarned = unlocked.length;
+    const starsSpent = profile.starsSpent || 0;
+    const starsAvailable = starsEarned - starsSpent;
 
     // cards for unlocked achievements
     const cards = unlocked
@@ -183,7 +185,11 @@ async function loadDashboard() {
     panel.innerHTML = `
       <div class="flex items-start justify-between mb-4">
         <h4 class="font-semibold text-sm text-willow-cream">Achievements</h4>
-        <div class="text-sm font-bold text-willow-cream">Stars: ${stars}</div>
+        <div class="text-sm font-bold text-willow-cream text-right">
+          <div>Earned: ${starsEarned}</div>
+          <div>Spent: ${starsSpent}</div>
+          <div class="text-willow-light">Available: ${starsAvailable}</div>
+        </div>
       </div>
 
       <div class="overflow-x-auto -mx-2 mb-4" style="padding-bottom:8px">
@@ -201,6 +207,13 @@ async function loadDashboard() {
 }
 
 loadDashboard();
+
+// See perks button
+document.addEventListener("click", (e) => {
+  if (e.target.id === "see-perks-button") {
+    window.location.href = "perks.php";
+  }
+});
 
 // Logout
 document.querySelector("#btn-logout")?.addEventListener("click", () => {
