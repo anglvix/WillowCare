@@ -47,8 +47,17 @@
           "starCost": 3,
           "discount": "10%",
           "type": "activity-discount"
+        },
+        {
+          "id": 1,
+          "title": "5% Off Next Activity",
+          "description": "Get 5% discount on your next activity booking",
+          "starCost": 1,
+          "discount": "5%",
+          "type": "activity-discount"
         }
-      ]
+      ],
+      "starsSpent": 1
     },
     {
       "email": "admin@gmail.com",

@@ -112,8 +112,6 @@ async function loadPerks() {
     })
   })
 }
-  })
-}
 
 loadPerks()
 
