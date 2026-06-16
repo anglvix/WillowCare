@@ -148,9 +148,9 @@ async function loadDashboard() {
     }),
   );
 
-  // Conquistas
+  // Conquistas (painel estilizado)
   const achievementsEl = document.querySelector("#achievements-list");
-  if (achievementsEl && profile.achievements.length) {
+  if (achievementsEl) {
     const labels = {
       registered: "Conta criada",
       first_booking: "Primeira inscrição",
@@ -159,9 +159,50 @@ async function loadDashboard() {
       saved_organization: "Organização guardada",
       first_review: "Avaliação submetida",
     };
-    achievementsEl.innerHTML = profile.achievements
-      .map((a) => `<li>🏅 ${labels[a] ?? a}</li>`)
+
+    const allKeys = Object.keys(labels);
+    const unlocked = new Set(profile.achievements || []);
+    const stars = unlocked.size;
+    const total = allKeys.length || 1;
+    const percent = Math.round((stars / total) * 100);
+
+    // Build cards for each possible achievement (no emojis) — horizontal row
+    const cards = allKeys
+      .map((key) => {
+        const achieved = unlocked.has(key);
+        const starSvg = achieved
+          ? `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-8 h-8 text-willow-dark\" viewBox=\"0 0 24 24\" fill=\"currentColor\"> <path d=\"M12 .587l3.668 7.431L24 9.748l-6 5.847L19.335 24 12 19.897 4.665 24 6 15.595 0 9.748l8.332-1.73L12 .587z\"/></svg>`
+          : `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-8 h-8 text-willow-dark\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"> <path d=\"M12 17.3 7.3 20l1.1-5.4L4 11.6l5.5-.8L12 6l2.5 4.8 5.5.8-4.4 3.1 1.1 5.4z\"/></svg>`;
+
+        return `
+          <div class="min-w-[160px] flex-none bg-willow-cream rounded-xl p-6 text-center shadow-sm flex flex-col items-center justify-between">
+            <div class="w-16 h-16 rounded-lg flex items-center justify-center border-2 border-willow-dark/30 mb-3 ${achieved ? 'bg-white' : 'bg-white/60'}">${starSvg}</div>
+            <div class="text-xs text-willow-dark/70 mb-1">+1 star</div>
+            <div class="font-semibold text-sm text-willow-dark">${labels[key]}</div>
+          </div>
+        `;
+      })
       .join("");
+
+    const panel = document.createElement('div');
+    panel.className = 'bg-willow-dark border border-willow-dark/80 rounded-2xl p-5 text-willow-cream';
+    panel.innerHTML = `
+      <div class="flex items-start justify-between mb-4">
+        <h4 class="font-semibold text-sm text-willow-cream">Conquistas</h4>
+        <div class="text-sm font-bold text-willow-cream">Stars: ${stars}</div>
+      </div>
+
+      <div class="overflow-x-auto -mx-2 mb-4" style="padding-bottom:8px">
+        <div class="flex gap-4 px-2">${cards}</div>
+      </div>
+
+      <div class="flex justify-center">
+        <button id=\"see-perks-button\" class=\"px-6 py-2 rounded-full border border-willow-dark bg-white text-willow-dark font-semibold hover:bg-willow-cream transition\">See perks</button>
+      </div>
+    `;
+
+    // Replace the original list element with the new panel
+    achievementsEl.replaceWith(panel);
   }
 }
 
