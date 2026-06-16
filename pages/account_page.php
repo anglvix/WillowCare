@@ -117,11 +117,10 @@ include '../includes/head.php';
 
             </div>
 
-            <!-- Conquistas - preenchidas pelo account-view.js -->
+            <!-- Achievements panel populated by account-view.js -->
             <div class="bg-willow-cream/20 border border-willow-cream rounded-2xl p-5">
-                <h4 class="font-semibold text-sm text-willow-dark mb-3">Conquistas</h4>
                 <ul id="achievements-list" class="space-y-2 text-sm text-gray-600">
-                    <li class="text-gray-400">A carregar...</li>
+                    <li class="text-gray-400">Loading...</li>
                 </ul>
             </div>
 
