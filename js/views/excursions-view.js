@@ -3,10 +3,12 @@ import { getExcursions } from '../services/activity-service.js'
 
 const listEl = document.querySelector('#excursion-list')
 
+// FormatDate.
 function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit', year: 'numeric' })
 }
 
+// Render the card.
 function renderCard(excursion) {
   return `
     <div class="border border-gray-100 rounded-2xl overflow-hidden shadow-sm bg-white flex flex-col justify-between">
@@ -27,6 +29,7 @@ function renderCard(excursion) {
   `
 }
 
+// Load data or initialize state for the page.
 async function load() {
   const data = await getExcursions()
   const excursions = data.map(Excursion.fromObject)

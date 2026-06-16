@@ -22,6 +22,7 @@ const roleOptions = [
     { value: 'admin', label: 'Admin' }
 ];
 
+// Render the status.
 function renderStatus(user) {
     const status = user.approvalStatus || 'approved';
     const color = status === 'pending' ? 'bg-amber-100 text-amber-700' : 'bg-emerald-100 text-emerald-700';
@@ -29,6 +30,7 @@ function renderStatus(user) {
     return `<span class="inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${color}">${status}</span>`;
 }
 
+// Render the certification.
 function renderCertification(user) {
     if (!user.certification) {
         return '<span class="text-gray-400">No image uploaded</span>';
@@ -41,6 +43,7 @@ function renderCertification(user) {
     `;
 }
 
+// Render the roleeditor.
 function renderRoleEditor(user) {
     return `
         <div class="space-y-2">
@@ -57,6 +60,7 @@ function renderRoleEditor(user) {
     `;
 }
 
+// Render the useractions.
 function renderUserActions(user) {
     const approveButton = user.role === 'doctor' && (user.approvalStatus || 'approved') === 'pending'
         ? `<button data-action="approve-doctor" data-user-id="${user.id}" class="rounded-xl bg-willow-dark px-3 py-2 text-[10px] font-semibold text-white hover:bg-willow-mid transition">Approve</button>`
@@ -77,6 +81,7 @@ function renderUserActions(user) {
     `;
 }
 
+// Show the message.
 function showMessage(element, message, isError = false) {
     if (!element) return;
     element.textContent = message;
@@ -85,23 +90,27 @@ function showMessage(element, message, isError = false) {
     element.classList.remove('hidden');
 }
 
+// Clear the message.
 function clearMessage(element) {
     if (!element) return;
     element.textContent = '';
     element.classList.add('hidden');
 }
 
+// ApproveDoctor.
 async function approveDoctor(userId) {
     await updateDoctorApproval(userId, 'approved');
     await loadUsers();
 }
 
+// Delete or remove userhandler.
 async function deleteUserHandler(userId) {
     if (!confirm('Delete this user account? This action cannot be undone.')) return;
     await deleteUser(userId);
     await loadUsers();
 }
 
+// Update an existing userrolehandler.
 async function updateUserRoleHandler(userId) {
     const select = tableBody.querySelector(`[data-action="role-select"][data-user-id="${userId}"]`);
     if (!select) return;
@@ -124,6 +133,7 @@ async function updateUserRoleHandler(userId) {
     await loadUsers();
 }
 
+// Load data or initialize state for users.
 async function loadUsers() {
     if (!session || session.role !== 'admin') {
         return;

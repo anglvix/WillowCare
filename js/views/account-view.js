@@ -35,11 +35,13 @@ document
     ),
   );
 
+// SetAvatarImage.
 function setAvatarImage(url) {
   if (!avatarContainer) return;
   avatarContainer.style.backgroundImage = `url('${url || defaultAvatarUrl}')`;
 }
 
+// Show the avatarstatus.
 function showAvatarStatus(message, isError = false) {
   if (!avatarStatus) return;
   avatarStatus.textContent = message;
@@ -48,12 +50,14 @@ function showAvatarStatus(message, isError = false) {
   avatarStatus.classList.toggle('text-emerald-600', !isError);
 }
 
+// Clear the avatarstatus.
 function clearAvatarStatus() {
   if (!avatarStatus) return;
   avatarStatus.textContent = '';
   avatarStatus.classList.add('hidden');
 }
 
+// ReadFileAsDataUrl.
 function readFileAsDataUrl(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -63,6 +67,7 @@ function readFileAsDataUrl(file) {
   });
 }
 
+// Handle avatarupload.
 async function handleAvatarUpload(event) {
   event.preventDefault();
   clearAvatarStatus();
@@ -103,6 +108,7 @@ avatarFileInput?.addEventListener('change', () => {
 
 avatarUploadButton?.addEventListener('click', handleAvatarUpload);
 
+// Load data or initialize state for dashboard.
 async function loadDashboard() {
   const profile = await getProfile(session.id);
   if (!profile) return;
@@ -234,6 +240,7 @@ const settingsPhoneInput = document.querySelector('#settings-phone');
 const settingsAddressInput = document.querySelector('#settings-address');
 const settingsPasswordInput = document.querySelector('#settings-password');
 
+// SetSettingsStatus.
 function setSettingsStatus(message, isError = false) {
   if (!settingsStatus) return;
   settingsStatus.textContent = message;
@@ -241,6 +248,7 @@ function setSettingsStatus(message, isError = false) {
   settingsStatus.classList.toggle('text-emerald-600', !isError);
 }
 
+// OpenSettingsModal.
 function openSettingsModal() {
   if (!settingsModal || !settingsOverlay) return;
   settingsModal.classList.remove('hidden');
@@ -254,6 +262,7 @@ function openSettingsModal() {
   setSettingsStatus('');
 }
 
+// CloseSettingsModal.
 function closeSettingsModal() {
   if (!settingsModal || !settingsOverlay) return;
   settingsModal.classList.add('hidden');

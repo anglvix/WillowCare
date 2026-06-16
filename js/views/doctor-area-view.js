@@ -21,11 +21,13 @@ if (session?.role === 'doctor' && (session.approvalStatus || 'approved') === 'pe
   }
 }
 
+// StarsHtml.
 function starsHtml(rating) {
   const value = Math.round(Math.max(0, Math.min(5, rating)))
   return '★'.repeat(value) + '☆'.repeat(5 - value)
 }
 
+// Update an existing doctorratingdisplay.
 function updateDoctorRatingDisplay(average, count) {
   const starsEl = document.querySelector('#doctor-rating-stars')
   const valueEl = document.querySelector('#doctor-rating-value')
@@ -36,16 +38,19 @@ function updateDoctorRatingDisplay(average, count) {
   if (countEl) countEl.textContent = `${count} review${count === 1 ? '' : 's'}`
 }
 
+// OpenModal.
 function openModal(modal) {
   if (!modal) return
   modal.classList.remove('hidden')
 }
 
+// CloseModal.
 function closeModal(modal) {
   if (!modal) return
   modal.classList.add('hidden')
 }
 
+// Retrieve authorinitials from the API or state.
 function getAuthorInitials(name) {
   if (!name) return 'AN'
   return name
@@ -56,6 +61,7 @@ function getAuthorInitials(name) {
     .join('')
 }
 
+// Render the reviewcard.
 function renderReviewCard(review) {
   const photoAttr = review.authorPhoto
     ? `style="background-image: url('${review.authorPhoto}');"`
@@ -80,6 +86,7 @@ function renderReviewCard(review) {
     </div>`
 }
 
+// Load data or initialize state for doctorreviews.
 async function loadDoctorReviews(doctor) {
   if (!doctor) return
 
@@ -99,6 +106,7 @@ async function loadDoctorReviews(doctor) {
   updateDoctorRatingDisplay(average, reviews.length)
 }
 
+// Load data or initialize state for the page.
 async function load() {
   if (!id) {
     document.querySelector('#doctor-profile')?.replaceWith(
@@ -154,6 +162,7 @@ async function load() {
   await loadDoctorReviews(doctor)
 }
 
+// Update an existing savebuttonstate.
 async function updateSaveButtonState(doctorId) {
   const button = document.querySelector('#btn-save-doctor-sidebar') || document.querySelector('#btn-save-doctor')
   if (!button) return
@@ -181,6 +190,7 @@ async function updateSaveButtonState(doctorId) {
   }
 }
 
+// Handle reviewsubmit.
 async function handleReviewSubmit(event) {
   event.preventDefault()
   if (!currentDoctor || !reviewForm) return

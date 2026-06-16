@@ -9,6 +9,7 @@ if (!isLoggedIn()) {
 
 let session = getSession()
 
+// Load data or initialize state for perks.
 async function loadPerks() {
   const profile = await getProfile(session.id)
   if (!profile) return

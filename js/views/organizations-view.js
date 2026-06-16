@@ -3,6 +3,7 @@ import { getOrganizations } from '../services/organization-service.js'
 
 const listEl = document.querySelector('#organization-list')
 
+// Render the card.
 function renderCard(org) {
   return `
     <div class="bg-willow-cream/30 border border-willow-cream rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-willow-mid transition">
@@ -25,6 +26,7 @@ function renderCard(org) {
   `
 }
 
+// Load data or initialize state for the page.
 async function load() {
   const data = await getOrganizations()
   const orgs = data.map(Organization.fromObject)

@@ -1,5 +1,6 @@
 ﻿const API_URL = 'http://localhost:3001';
 
+// RequestJson.
 async function requestJson(url, options = {}) {
     const response = await fetch(url, options);
     if (!response.ok) {
@@ -8,10 +9,12 @@ async function requestJson(url, options = {}) {
     return response.json();
 }
 
+// Retrieve users from the API or state.
 export async function getUsers() {
     return requestJson(`${API_URL}/users`);
 }
 
+// Delete or remove user.
 export async function deleteUser(userId) {
     const response = await fetch(`${API_URL}/users/${userId}`, {
         method: 'DELETE'
@@ -22,6 +25,7 @@ export async function deleteUser(userId) {
     return true;
 }
 
+// Update an existing user.
 export async function updateUser(userId, patch) {
     return requestJson(`${API_URL}/users/${userId}`, {
         method: 'PATCH',
@@ -30,10 +34,12 @@ export async function updateUser(userId, patch) {
     });
 }
 
+// Update an existing doctorapproval.
 export async function updateDoctorApproval(userId, approvalStatus) {
     return updateUser(userId, { approvalStatus });
 }
 
+// Create a new school.
 export async function createSchool(school) {
     return requestJson(`${API_URL}/schools`, {
         method: 'POST',
@@ -48,6 +54,7 @@ export async function createSchool(school) {
     });
 }
 
+// Create a new workshop.
 export async function createWorkshop(workshop) {
     return requestJson(`${API_URL}/workshops`, {
         method: 'POST',
@@ -63,6 +70,7 @@ export async function createWorkshop(workshop) {
     });
 }
 
+// Create a new excursion.
 export async function createExcursion(excursion) {
     return requestJson(`${API_URL}/excursions`, {
         method: 'POST',

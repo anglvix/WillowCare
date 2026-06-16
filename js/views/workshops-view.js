@@ -3,6 +3,7 @@ import { getWorkshops } from '../services/activity-service.js'
 
 const listEl = document.querySelector('#workshop-list')
 
+// FormatDate.
 function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString('pt-PT', { 
     day: '2-digit', 
@@ -11,6 +12,7 @@ function formatDate(dateStr) {
   })
 }
 
+// Render the card.
 function renderCard(workshop) {
   return `
     <div class="border border-gray-100 rounded-2xl overflow-hidden shadow-sm bg-white flex flex-col justify-between">
@@ -41,6 +43,7 @@ function renderCard(workshop) {
   `
 }
 
+// Load data or initialize state for the page.
 async function load() {
   try {
     const data = await getWorkshops()

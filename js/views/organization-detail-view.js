@@ -24,6 +24,7 @@ const reviewsModal = document.querySelector('#reviews-modal')
 const btnReviews = document.querySelector('#btn-reviews')
 const btnPostReview = document.querySelector('#btn-post-review')
 
+// Retrieve authorinitials from the API or state.
 function getAuthorInitials(name) {
   if (!name) return 'AN'
   return name
@@ -34,16 +35,19 @@ function getAuthorInitials(name) {
     .join('')
 }
 
+// OpenModal.
 function openModal(modal) {
   if (!modal) return
   modal.classList.remove('hidden')
 }
 
+// CloseModal.
 function closeModal(modal) {
   if (!modal) return
   modal.classList.add('hidden')
 }
 
+// Update an existing savebuttonstate.
 async function updateSaveButtonState(organizationId) {
   if (!saveButton) return
 
@@ -68,6 +72,7 @@ async function updateSaveButtonState(organizationId) {
   saveButton.classList.remove('opacity-70', 'cursor-not-allowed')
 }
 
+// Render the reviewcard.
 function renderReviewCard(review) {
   const photoAttr = review.authorPhoto
     ? `style="background-image: url('${review.authorPhoto}');"`
@@ -91,6 +96,7 @@ function renderReviewCard(review) {
     </div>`
 }
 
+// Load data or initialize state for organizationreviews.
 async function loadOrganizationReviews(org) {
   if (!org) return
 
@@ -104,6 +110,7 @@ async function loadOrganizationReviews(org) {
   }
 }
 
+// Load data or initialize state for the page.
 async function load() {
   const data = await getOrganizationById(id)
   if (!data) {

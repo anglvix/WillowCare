@@ -21,6 +21,7 @@ const activityCountEl = document.querySelector('#org-activity-count')
 
 let organization = null
 
+// Show the status.
 function showStatus(element, message, isError = false) {
   if (!element) return
   element.textContent = message
@@ -29,12 +30,14 @@ function showStatus(element, message, isError = false) {
   element.classList.toggle('text-emerald-600', !isError)
 }
 
+// Clear the status.
 function clearStatus(element) {
   if (!element) return
   element.textContent = ''
   element.classList.add('hidden')
 }
 
+// Load data or initialize state for activitycounters.
 async function loadActivityCounters() {
   if (!organization) return
   const [workshops, excursions] = await Promise.all([
@@ -47,6 +50,7 @@ async function loadActivityCounters() {
   }
 }
 
+// PopulateProfileForm.
 function populateProfileForm(data) {
   if (dashboardName) dashboardName.textContent = data.name || session.name
   if (dashboardAvatar) {
@@ -66,6 +70,7 @@ function populateProfileForm(data) {
   profileForm.querySelector('#org-profile-services').value = (data.services || []).join(', ')
 }
 
+// Load data or initialize state for dashboard.
 async function loadDashboard() {
   try {
     organization = await getOwnOrganization(session)

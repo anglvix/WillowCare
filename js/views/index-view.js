@@ -2,6 +2,7 @@ import { isLoggedIn } from '../services/auth-service.js'
 import { getWorkshops, getExcursions } from '../services/activity-service.js'
 import { getLatestReviews } from '../services/doctor-service.js'
 
+// Update an existing joincta.
 function updateJoinCTA() {
   if (isLoggedIn()) {
     document.getElementById('join-cta')?.remove()
@@ -14,6 +15,7 @@ function formatDate(dateStr) {
   return `${d}/${m}/${y}`
 }
 
+// Render the activitycard.
 function renderActivityCard(activity) {
   const imgHtml = activity.image
     ? `<img src="${activity.image}" alt="${activity.location}" class="w-full h-full object-cover">`
@@ -38,6 +40,7 @@ function renderActivityCard(activity) {
     </div>`
 }
 
+// Load data or initialize state for upcomingactivities.
 async function loadUpcomingActivities() {
   const grid = document.getElementById('upcoming-activities-grid')
   if (!grid) return
@@ -63,10 +66,12 @@ async function loadUpcomingActivities() {
   grid.innerHTML = upcoming.map(renderActivityCard).join('')
 }
 
+// StarsHtml.
 function starsHtml(rating) {
   return '★'.repeat(rating) + '☆'.repeat(5 - rating)
 }
 
+// Render the reviewcard.
 function renderReviewCard(review) {
   const photoAttr = review.authorPhoto
     ? `style="background-image: url('${review.authorPhoto}');"`
@@ -88,6 +93,7 @@ function renderReviewCard(review) {
     </div>`
 }
 
+// Load data or initialize state for latestreviews.
 async function loadLatestReviews() {
   const grid = document.getElementById('latest-reviews-grid')
   if (!grid) return

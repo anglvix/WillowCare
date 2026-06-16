@@ -1,5 +1,6 @@
 import { isLoggedIn, getSession, logout } from './services/auth-service.js'
 
+// CloseMobileMenu.
 function closeMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobileMenuCloseIcon) {
   if (!mobileMenu || !mobileMenuButton) return
   mobileMenu.classList.add('hidden')
@@ -8,6 +9,7 @@ function closeMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobil
   mobileMenuCloseIcon?.classList.add('hidden')
 }
 
+// OpenMobileMenu.
 function openMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobileMenuCloseIcon) {
   if (!mobileMenu || !mobileMenuButton) return
   mobileMenu.classList.remove('hidden')
@@ -16,6 +18,7 @@ function openMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobile
   mobileMenuCloseIcon?.classList.remove('hidden')
 }
 
+// Toggle the mobilemenu.
 function toggleMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobileMenuCloseIcon) {
   if (!mobileMenu) return
   if (mobileMenu.classList.contains('hidden')) {
@@ -25,6 +28,7 @@ function toggleMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobi
   }
 }
 
+// Attach event listeners for mobilemenutoggle.
 function attachMobileMenuToggle(mobileMenuButton, mobileMenu, mobileMenuOpenIcon, mobileMenuCloseIcon) {
   if (!mobileMenuButton || !mobileMenu) return
 
@@ -41,6 +45,7 @@ function attachMobileMenuToggle(mobileMenuButton, mobileMenu, mobileMenuOpenIcon
   })
 }
 
+// Render the authbuttons.
 function renderAuthButtons(desktopAuthArea, mobileAuthArea) {
   const user = getSession()
   const firstName = user?.name?.split(' ')[0] ?? 'Conta'
@@ -73,6 +78,7 @@ function renderAuthButtons(desktopAuthArea, mobileAuthArea) {
   attachLogoutHandler()
 }
 
+// Render the loginbuttons.
 function renderLoginButtons(desktopAuthArea, mobileAuthArea) {
   const content = `
     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
@@ -84,6 +90,7 @@ function renderLoginButtons(desktopAuthArea, mobileAuthArea) {
   if (mobileAuthArea) mobileAuthArea.innerHTML = content
 }
 
+// Attach event listeners for logouthandler.
 function attachLogoutHandler() {
   document.getElementById('logout-btn')?.addEventListener('click', () => {
     logout()
@@ -91,6 +98,7 @@ function attachLogoutHandler() {
   })
 }
 
+// Update an existing navbar.
 function updateNavbar(desktopAuthArea, mobileAuthArea) {
   if (!desktopAuthArea && !mobileAuthArea) return
 
@@ -102,6 +110,7 @@ function updateNavbar(desktopAuthArea, mobileAuthArea) {
   renderAuthButtons(desktopAuthArea, mobileAuthArea)
 }
 
+// Update an existing footer.
 function updateFooter() {
   const list = document.getElementById('footer-personal-list')
   if (!list || !isLoggedIn()) return
@@ -109,6 +118,7 @@ function updateFooter() {
   list.innerHTML = '<li><a href="account_page.php" class="text-gray-200 hover:text-white transition">My Account</a></li>'
 }
 
+// Initialize the navbar.
 function initializeNavbar() {
   const mobileMenuButton = document.getElementById('mobile-menu-button')
   const mobileMenu = document.getElementById('mobile-menu')

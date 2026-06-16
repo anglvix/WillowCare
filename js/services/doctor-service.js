@@ -2,6 +2,7 @@ import { getToken } from './auth-service.js'
 
 const BASE = 'http://localhost:3001'
 
+// AuthHeaders.
 function authHeaders() {
   const token = getToken()
   return {
@@ -10,12 +11,14 @@ function authHeaders() {
   }
 }
 
+// Retrieve doctors from the API or state.
 export async function getDoctors() {
   const res = await fetch(`${BASE}/doctors`)
   if (!res.ok) return []
   return res.json()
 }
 
+// Retrieve doctorbyid from the API or state.
 export async function getDoctorById(id) {
   const res = await fetch(`${BASE}/doctors/${id}`)
   if (!res.ok) return null
@@ -34,12 +37,14 @@ export async function searchDoctors({ specialty, region } = {}) {
   return data.filter(d => d.region.toLowerCase().includes(q))
 }
 
+// Retrieve latestreviews from the API or state.
 export async function getLatestReviews(limit = 2) {
   const res = await fetch(`${BASE}/reviews?subjectType=doctor&_sort=createdAt&_order=desc&_limit=${limit}`)
   if (!res.ok) return []
   return res.json()
 }
 
+// Retrieve doctorreviews from the API or state.
 export async function getDoctorReviews(doctorId, doctorName = '') {
   const idRes = await fetch(`${BASE}/reviews?subjectId=${doctorId}&subjectType=doctor&_sort=createdAt&_order=desc`)
   if (idRes.ok) {
@@ -53,6 +58,7 @@ export async function getDoctorReviews(doctorId, doctorName = '') {
   return nameRes.json()
 }
 
+// Create a new review.
 export async function createReview(review) {
   const res = await fetch(`${BASE}/reviews`, {
     method: 'POST',

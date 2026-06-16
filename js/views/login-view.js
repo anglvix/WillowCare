@@ -15,6 +15,7 @@ if (isLoggedIn()) {
 const formEl = document.querySelector('#login-form')
 const errorEl = document.querySelector('#login-error')
 
+// Handle standard user login form submission.
 formEl?.addEventListener('submit', async (e) => {
   e.preventDefault()
 

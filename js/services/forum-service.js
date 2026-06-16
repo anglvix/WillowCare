@@ -3,6 +3,7 @@ import ForumTopic from "../models/ForumTopic.js";
 
 const BASE = "http://localhost:3001";
 
+// AuthHeaders.
 function authHeaders() {
   const token = getToken();
   return {
@@ -11,18 +12,21 @@ function authHeaders() {
   };
 }
 
+// Retrieve topics from the API or state.
 export async function getTopics() {
   const res = await fetch(`${BASE}/forumTopics`);
   if (!res.ok) return [];
   return res.json();
 }
 
+// Retrieve topicbyid from the API or state.
 export async function getTopicById(id) {
   const res = await fetch(`${BASE}/forumTopics/${id}`);
   if (!res.ok) return null;
   return res.json();
 }
 
+// Create a new topic.
 export async function createTopic({ title, category, content }) {
   const user = getSession();
   if (!user) return { ok: false, error: "Not authenticated" };

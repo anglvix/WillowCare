@@ -30,6 +30,7 @@ const featureLabels = {
   'occupational-therapy': 'Occupational Therapy'
 }
 
+// Retrieve authorinitials from the API or state.
 function getAuthorInitials(name) {
   if (!name) return 'AN'
   return name
@@ -40,16 +41,19 @@ function getAuthorInitials(name) {
     .join('')
 }
 
+// OpenModal.
 function openModal(modal) {
   if (!modal) return
   modal.classList.remove('hidden')
 }
 
+// CloseModal.
 function closeModal(modal) {
   if (!modal) return
   modal.classList.add('hidden')
 }
 
+// Update an existing savebuttonstate.
 async function updateSaveButtonState(schoolId) {
   if (!saveButton) return
 
@@ -74,6 +78,7 @@ async function updateSaveButtonState(schoolId) {
   saveButton.classList.remove('opacity-70', 'cursor-not-allowed')
 }
 
+// Render the reviewcard.
 function renderReviewCard(review) {
   const photoAttr = review.authorPhoto
     ? `style="background-image: url('${review.authorPhoto}');"`
@@ -97,6 +102,7 @@ function renderReviewCard(review) {
     </div>`
 }
 
+// Load data or initialize state for schoolreviews.
 async function loadSchoolReviews(school) {
   if (!school) return
 
@@ -110,6 +116,7 @@ async function loadSchoolReviews(school) {
   }
 }
 
+// Load data or initialize state for the page.
 async function load() {
   const data = await getSchoolById(id)
   if (!data) {

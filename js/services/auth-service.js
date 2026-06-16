@@ -6,28 +6,34 @@ function saveSession(token, user) {
   localStorage.setItem('user', JSON.stringify(user))
 }
 
+// Retrieve token from the API or state.
 export function getToken() {
   return localStorage.getItem('token')
 }
 
+// Retrieve session from the API or state.
 export function getSession() {
   const raw = localStorage.getItem('user')
   return raw ? JSON.parse(raw) : null
 }
 
+// SaveSessionData.
 export function saveSessionData(user) {
   localStorage.setItem('user', JSON.stringify(user))
 }
 
+// IsLoggedIn.
 export function isLoggedIn() {
   return !!getToken()
 }
 
+// IsAdmin.
 export function isAdmin() {
   const user = getSession()
   return user?.role === 'admin'
 }
 
+// Retrieve rolelabel from the API or state.
 export function getRoleLabel(role) {
   const labels = {
     admin: 'Admin',
@@ -40,11 +46,13 @@ export function getRoleLabel(role) {
   return labels[role] || 'User'
 }
 
+// Logout.
 export function logout() {
   localStorage.removeItem('token')
   localStorage.removeItem('user')
 }
 
+// Register.
 export async function register({ name, email, password, role = 'caregiver', specialty, certification, phone, address }) {
   const payload = {
     name,
@@ -86,6 +94,7 @@ export async function register({ name, email, password, role = 'caregiver', spec
   return { ok: true, user: data.user }
 }
 
+// Login.
 export async function login({ email, password }) {
   const res = await fetch(`${BASE}/login`, {
     method: 'POST',
@@ -102,6 +111,7 @@ export async function login({ email, password }) {
   return { ok: true, user: data.user }
 }
 
+// LoginDoctor.
 export async function loginDoctor({ email, password }) {
   const res = await fetch(`${BASE}/login`, {
     method: 'POST',

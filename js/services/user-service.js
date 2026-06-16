@@ -3,6 +3,7 @@ import Voucher from '../models/Voucher.js'
 
 const BASE = 'http://localhost:3001'
 
+// AuthHeaders.
 function authHeaders() {
   const token = getToken()
   return {
@@ -11,18 +12,21 @@ function authHeaders() {
   }
 }
 
+// Retrieve profile from the API or state.
 export async function getProfile(userId) {
   const res = await fetch(`${BASE}/users/${userId}`, { headers: authHeaders() })
   if (!res.ok) return null
   return res.json()
 }
 
+// Retrieve vouchers from the API or state.
 export async function getVouchers(userId) {
   const res = await fetch(`${BASE}/vouchers?userId=${userId}`, { headers: authHeaders() })
   if (!res.ok) return []
   return res.json()
 }
 
+// SaveDoctor.
 export async function saveDoctor(doctorId) {
   const user = getSession()
   if (!user) return { ok: false, error: 'Not logged in' }
@@ -55,6 +59,7 @@ export async function saveDoctor(doctorId) {
   return { ok: true }
 }
 
+// UnsaveDoctor.
 export async function unsaveDoctor(doctorId) {
   const user = getSession()
   if (!user) return { ok: false, error: 'Not logged in' }
@@ -85,6 +90,7 @@ export async function unsaveDoctor(doctorId) {
   return { ok: true }
 }
 
+// SaveSchool.
 export async function saveSchool(schoolId) {
   const user = getSession()
   if (!user) return { ok: false, error: 'Not logged in' }
@@ -117,6 +123,7 @@ export async function saveSchool(schoolId) {
   return { ok: true }
 }
 
+// UnsaveSchool.
 export async function unsaveSchool(schoolId) {
   const user = getSession()
   if (!user) return { ok: false, error: 'Not logged in' }
@@ -147,6 +154,7 @@ export async function unsaveSchool(schoolId) {
   return { ok: true }
 }
 
+// SaveOrganization.
 export async function saveOrganization(orgId) {
   const user = getSession()
   if (!user) return { ok: false, error: 'Not logged in' }
@@ -179,6 +187,7 @@ export async function saveOrganization(orgId) {
   return { ok: true }
 }
 
+// UnsaveOrganization.
 export async function unsaveOrganization(orgId) {
   const user = getSession()
   if (!user) return { ok: false, error: 'Not logged in' }
@@ -224,6 +233,7 @@ export async function unlockAchievement(key) {
   })
 }
 
+// Create a new voucher.
 export async function createVoucher({ activityId, activityType, activityTitle, date, location }) {
   const user = getSession()
   if (!user) return { ok: false }
@@ -240,6 +250,7 @@ export async function createVoucher({ activityId, activityType, activityTitle, d
   return { ok: res.ok }
 }
 
+// Update an existing profile.
 export async function updateProfile(userId, patch) {
   const res = await fetch(`${BASE}/users/${userId}`, {
     method: 'PATCH',

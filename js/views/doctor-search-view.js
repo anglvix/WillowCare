@@ -4,6 +4,7 @@ import { searchDoctors } from '../services/doctor-service.js'
 const listEl = document.querySelector('#doctor-list')
 const formEl = document.querySelector('#filter-form')
 
+// Render the doctorcard.
 function renderDoctorCard(doctor) {
   return `
     <div class="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm flex gap-4 items-center group hover:border-willow-mid transition">
@@ -24,6 +25,7 @@ function renderDoctorCard(doctor) {
   `
 }
 
+// Render the list.
 function renderList(doctors) {
   if (!doctors.length) {
     listEl.innerHTML = '<p class="text-sm text-gray-400">Nenhum médico encontrado.</p>'
@@ -32,6 +34,7 @@ function renderList(doctors) {
   listEl.innerHTML = doctors.map(renderDoctorCard).join('')
 }
 
+// Load data or initialize state for the page.
 async function load(filters = {}) {
   const data = await searchDoctors(filters)
   const doctors = data.map(Doctor.fromObject)

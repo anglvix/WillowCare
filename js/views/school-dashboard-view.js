@@ -21,6 +21,7 @@ const activityCountEl = document.querySelector('#school-activity-count')
 
 let school = null
 
+// Show the status.
 function showStatus(element, message, isError = false) {
   if (!element) return
   element.textContent = message
@@ -29,12 +30,14 @@ function showStatus(element, message, isError = false) {
   element.classList.toggle('text-emerald-600', !isError)
 }
 
+// Clear the status.
 function clearStatus(element) {
   if (!element) return
   element.textContent = ''
   element.classList.add('hidden')
 }
 
+// Load data or initialize state for activitycounters.
 async function loadActivityCounters() {
   if (!school) return
   const [workshops, excursions] = await Promise.all([
@@ -47,6 +50,7 @@ async function loadActivityCounters() {
   }
 }
 
+// PopulateProfileForm.
 function populateProfileForm(data) {
   if (dashboardName) dashboardName.textContent = data.name || session.name
   if (dashboardAvatar) {
@@ -67,6 +71,7 @@ function populateProfileForm(data) {
   profileForm.querySelector('#school-profile-features').value = (data.supportFeatures || []).join(', ')
 }
 
+// Load data or initialize state for dashboard.
 async function loadDashboard() {
   try {
     school = await getOwnSchool(session)

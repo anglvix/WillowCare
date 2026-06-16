@@ -5,6 +5,7 @@ import { getSchoolById } from '../services/school-service.js'
 
 const listEl = document.querySelector('#saved-school-list')
 
+// Render the schoolcard.
 function renderSchoolCard(school) {
   return `
     <article class="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm flex flex-col gap-4 md:flex-row md:items-center group hover:border-willow-mid transition">
@@ -30,6 +31,7 @@ function renderSchoolCard(school) {
   `
 }
 
+// Render the list.
 function renderList(schools) {
   if (!schools.length) {
     listEl.innerHTML = '<p class="text-sm text-gray-400">You have not saved any schools yet.</p>'
@@ -39,6 +41,7 @@ function renderList(schools) {
   listEl.innerHTML = schools.map(renderSchoolCard).join('')
 }
 
+// Load data or initialize state for savedschools.
 async function loadSavedSchools() {
   const session = getSession()
   if (!session) {

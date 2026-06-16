@@ -12,10 +12,12 @@ const btn = document.querySelector('#book-btn')
 const errorEl = document.querySelector('#booking-error')
 const id = new URLSearchParams(window.location.search).get('id')
 
+// FormatDate.
 function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit', year: 'numeric' })
 }
 
+// Load data or initialize state for excursion.
 async function loadExcursion() {
   if (!id) return
   const data = await getExcursionById(id)

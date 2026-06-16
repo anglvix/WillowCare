@@ -9,10 +9,12 @@ if (!isLoggedIn()) {
 const listEl = document.querySelector('#voucher-list')
 const session = getSession()
 
+// FormatDate.
 function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString('pt-PT', { day: '2-digit', month: 'long', year: 'numeric' })
 }
 
+// Render the voucher.
 function renderVoucher(voucher) {
   return `
     <div class="bg-willow-cream/10 border-2 border-dashed border-willow-mid rounded-2xl p-6 flex flex-col sm:flex-row justify-between items-center gap-4 shadow-sm">
@@ -33,6 +35,7 @@ function renderVoucher(voucher) {
   `
 }
 
+// Load data or initialize state for the page.
 async function load() {
   const data = await getVouchers(session.id)
   const vouchers = data.map(Voucher.fromObject)

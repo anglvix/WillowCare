@@ -1,11 +1,13 @@
 const BASE = "http://localhost:3001";
 
+// Retrieve schools from the API or state.
 export async function getSchools() {
   const res = await fetch(`${BASE}/schools`);
   if (!res.ok) return [];
   return res.json();
 }
 
+// Retrieve schoolbyid from the API or state.
 export async function getSchoolById(id) {
   const res = await fetch(`${BASE}/schools/${id}`);
   if (!res.ok) return null;
@@ -36,6 +38,7 @@ export async function searchSchools({ district = '', features = [] } = {}) {
   );
 }
 
+// Update an existing school.
 export async function updateSchool(schoolId, patch) {
   const res = await fetch(`${BASE}/schools/${schoolId}`, {
     method: 'PATCH',
@@ -50,6 +53,7 @@ export async function updateSchool(schoolId, patch) {
   return res.json();
 }
 
+// Create a new school.
 export async function createSchool(school) {
   const res = await fetch(`${BASE}/schools`, {
     method: 'POST',
@@ -72,6 +76,7 @@ export async function createSchool(school) {
   return res.json();
 }
 
+// Retrieve ownschool from the API or state.
 export async function getOwnSchool(user) {
   const res = await fetch(`${BASE}/schools`);
   if (!res.ok) return null;
@@ -106,6 +111,7 @@ export async function getOwnSchool(user) {
   return school;
 }
 
+// Retrieve schoolreviews from the API or state.
 export async function getSchoolReviews(schoolId, schoolName = '') {
   const idRes = await fetch(`${BASE}/reviews?subjectId=${schoolId}&subjectType=school&_sort=createdAt&_order=desc`);
   if (idRes.ok) {
@@ -119,6 +125,7 @@ export async function getSchoolReviews(schoolId, schoolName = '') {
   return nameRes.json();
 }
 
+// Create a new review.
 export async function createReview(review) {
   const token = localStorage.getItem('token');
   const headers = {

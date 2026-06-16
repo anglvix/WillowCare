@@ -13,6 +13,7 @@ const errorEl = document.querySelector('#booking-error')
 
 const id = new URLSearchParams(window.location.search).get('id')
 
+// FormatDate.
 function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString('pt-PT', {
     day: '2-digit',
@@ -21,6 +22,7 @@ function formatDate(dateStr) {
   })
 }
 
+// Load data or initialize state for workshop.
 async function loadWorkshop() {
   if (!id) return
   const data = await getWorkshopById(id)

@@ -8,6 +8,7 @@ if (isLoggedIn()) {
 const formEl = document.querySelector('#doctor-login-form')
 const errorEl = document.querySelector('#doctor-login-error')
 
+// Handle doctor login form submission.
 formEl?.addEventListener('submit', async (e) => {
   e.preventDefault()
   const email = formEl.querySelector('[name="email"]').value.trim()

@@ -1,17 +1,20 @@
 const BASE = 'http://localhost:3001'
 
+// Retrieve organizations from the API or state.
 export async function getOrganizations() {
   const res = await fetch(`${BASE}/organizations`)
   if (!res.ok) return []
   return res.json()
 }
 
+// Retrieve organizationbyid from the API or state.
 export async function getOrganizationById(id) {
   const res = await fetch(`${BASE}/organizations/${id}`)
   if (!res.ok) return null
   return res.json()
 }
 
+// Update an existing organization.
 export async function updateOrganization(orgId, patch) {
   const res = await fetch(`${BASE}/organizations/${orgId}`, {
     method: 'PATCH',
@@ -26,6 +29,7 @@ export async function updateOrganization(orgId, patch) {
   return res.json()
 }
 
+// Create a new organization.
 export async function createOrganization(org) {
   const res = await fetch(`${BASE}/organizations`, {
     method: 'POST',
@@ -48,6 +52,7 @@ export async function createOrganization(org) {
   return res.json()
 }
 
+// Retrieve ownorganization from the API or state.
 export async function getOwnOrganization(user) {
   const res = await fetch(`${BASE}/organizations`)
   if (!res.ok) return null
@@ -81,6 +86,7 @@ export async function getOwnOrganization(user) {
   return organization
 }
 
+// Retrieve organizationreviews from the API or state.
 export async function getOrganizationReviews(orgId, orgName = '') {
   const idRes = await fetch(`${BASE}/reviews?subjectId=${orgId}&subjectType=organization&_sort=createdAt&_order=desc`)
   if (idRes.ok) {
@@ -94,6 +100,7 @@ export async function getOrganizationReviews(orgId, orgName = '') {
   return nameRes.json()
 }
 
+// Create a new review.
 export async function createReview(review) {
   const token = localStorage.getItem('token')
   const headers = {

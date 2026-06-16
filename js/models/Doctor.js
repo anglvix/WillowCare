@@ -1,5 +1,4 @@
 export default class Doctor {
-  // Campo privado: rating tem validação, por isso é privado
   #rating
 
   constructor(name, specialty, bio, region, yearsExperience, rating = 0) {
@@ -33,7 +32,6 @@ export default class Doctor {
     this.#rating = value
   }
 
-  // Converte objeto cru do servidor em instância, preservando o id
   static fromObject(obj) {
     const d = new Doctor(
       obj.name,

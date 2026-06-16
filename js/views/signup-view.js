@@ -7,6 +7,7 @@ if (isLoggedIn()) {
 const formEl = document.querySelector('#signup-form')
 const errorEl = document.querySelector('#signup-error')
 
+// Handle account signup form submission.
 formEl?.addEventListener('submit', async (e) => {
   e.preventDefault()
   const name = formEl.querySelector('[name="fullname"]').value.trim()

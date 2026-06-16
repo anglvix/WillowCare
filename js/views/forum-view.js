@@ -22,6 +22,7 @@ const replyCloseBtn = document.querySelector('#reply-close')
 const replyCancelBtn = document.querySelector('#reply-cancel')
 let activeTopicId = null
 
+// TimeAgo.
 function timeAgo(isoString) {
   const diff = Date.now() - new Date(isoString).getTime()
   const hours = Math.floor(diff / 3600000)
@@ -29,6 +30,7 @@ function timeAgo(isoString) {
   return `${Math.floor(hours / 24)}d ago`
 }
 
+// Render the topiccard.
 function renderTopicCard(topic) {
   return `
     <article data-topic-id="${topic.id}" class="border border-gray-100 p-5 rounded-2xl bg-white shadow-sm hover:border-willow-mid transition">
@@ -48,6 +50,7 @@ function renderTopicCard(topic) {
   `
 }
 
+// Render the replyitem.
 function renderReplyItem(reply) {
   return `
     <div class="border border-gray-100 rounded-xl p-3">
@@ -60,6 +63,7 @@ function renderReplyItem(reply) {
   `
 }
 
+// Load data or initialize state for the page.
 async function load() {
   const data = await getTopics()
   const topics = data.map(ForumTopic.fromObject)
@@ -78,6 +82,7 @@ async function load() {
   listEl.innerHTML = filtered.map(renderTopicCard).join('')
 }
 
+// OpenModal.
 function openModal() {
   if (!isLoggedIn()) {
     window.location.href = 'login.php'
@@ -90,12 +95,14 @@ function openModal() {
   document.body.classList.add('overflow-hidden')
 }
 
+// CloseModal.
 function closeModal() {
   modalEl?.classList.add('hidden')
   modalEl?.classList.remove('flex')
   document.body.classList.remove('overflow-hidden')
 }
 
+// OpenRepliesModal.
 async function openRepliesModal(topicId) {
   if (!isLoggedIn()) {
     window.location.href = 'login.php'
@@ -124,6 +131,7 @@ async function openRepliesModal(topicId) {
   replyListEl.innerHTML = topic.replies.map(renderReplyItem).join('')
 }
 
+// CloseRepliesModal.
 function closeRepliesModal() {
   replyModalEl?.classList.add('hidden')
   replyModalEl?.classList.remove('flex')

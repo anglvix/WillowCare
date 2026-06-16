@@ -11,12 +11,14 @@ const featureLabels = {
   'occupational-therapy': 'Occupational Therapy'
 }
 
+// Render the featuretags.
 function renderFeatureTags(features) {
   return features.map(f =>
     `<span class="text-[12px] bg-willow-cream text-willow-dark font-bold px-2 py-0.5 rounded">${featureLabels[f] ?? f}</span>`
   ).join(' ')
 }
 
+// Render the card.
 function renderCard(school) {
   return `
     <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden flex flex-col sm:flex-row group hover:border-willow-mid transition">
@@ -43,6 +45,7 @@ function renderCard(school) {
   `
 }
 
+// Load data or initialize state for the page.
 async function load(filters = {}) {
   const data = await searchSchools(filters)
   const schools = data.map(School.fromObject)
@@ -58,12 +61,14 @@ formEl?.addEventListener('submit', (e) => e.preventDefault())
 const districtInput = formEl?.querySelector('[name="district"]')
 const checkboxes = formEl ? [...formEl.querySelectorAll('input[type="checkbox"]')] : []
 
+// Retrieve filters from the API or state.
 function getFilters() {
   const district = districtInput?.value.trim() || ''
   const features = checkboxes.filter(cb => cb.checked).map(cb => cb.name)
   return { district, features }
 }
 
+// Debounce.
 function debounce(fn, wait = 300) {
   let t
   return (...args) => {

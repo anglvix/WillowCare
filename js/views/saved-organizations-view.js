@@ -5,6 +5,7 @@ import { getOrganizationById } from '../services/organization-service.js'
 
 const listEl = document.querySelector('#saved-organization-list')
 
+// Render the orgcard.
 function renderOrgCard(org) {
   return `
     <article class="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm flex flex-col gap-4 md:flex-row md:items-center group hover:border-willow-mid transition">
@@ -30,6 +31,7 @@ function renderOrgCard(org) {
   `
 }
 
+// Render the list.
 function renderList(orgs) {
   if (!orgs.length) {
     listEl.innerHTML = '<p class="text-sm text-gray-400">You have not saved any organizations yet.</p>'
@@ -39,6 +41,7 @@ function renderList(orgs) {
   listEl.innerHTML = orgs.map(renderOrgCard).join('')
 }
 
+// Load data or initialize state for savedorganizations.
 async function loadSavedOrganizations() {
   const session = getSession()
   if (!session) {

@@ -10,6 +10,7 @@ const errorEl = document.querySelector('#doctor-signup-error')
 const certInput = document.querySelector('[name="certification"]')
 const previewImg = document.querySelector('#cert-preview')
 
+// Read a file as a base64 data URL for preview and upload.
 const readFileAsDataURL = (file) => new Promise((resolve, reject) => {
   const reader = new FileReader()
   reader.onload = () => resolve(reader.result)
@@ -17,6 +18,7 @@ const readFileAsDataURL = (file) => new Promise((resolve, reject) => {
   reader.readAsDataURL(file)
 })
 
+// Handle certification image selection and preview.
 certInput?.addEventListener('change', async (event) => {
   const file = event.target.files?.[0]
   if (file && file.type.startsWith('image/')) {
@@ -55,6 +57,7 @@ formEl?.addEventListener('submit', async (e) => {
     address
   })
 
+  // Handle doctor signup form submission.
   if (!result.ok) {
     if (errorEl) {
       errorEl.textContent = 'Erro no registo. O email pode já estar em uso.'

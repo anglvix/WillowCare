@@ -2,6 +2,7 @@ import { getToken, getSession, saveSessionData } from './auth-service.js'
 
 const BASE = 'http://localhost:3001'
 
+// AuthHeaders.
 function authHeaders() {
   const token = getToken()
   return {
