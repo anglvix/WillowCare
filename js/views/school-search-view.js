@@ -20,8 +20,12 @@ function renderFeatureTags(features) {
 function renderCard(school) {
   return `
     <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden flex flex-col sm:flex-row group hover:border-willow-mid transition">
-      <div class="w-full sm:w-48 h-36 bg-gray-100 shrink-0 flex items-center justify-center">
-        <span class="text-2xl font-bold text-willow-dark/30">${school.name[0]}</span>
+      <div class="w-full sm:w-48 h-36 bg-gray-100 shrink-0 flex items-center justify-center overflow-hidden">
+        ${school.avatar ? `
+          <img src="${school.avatar}" alt="${school.name}" class="w-full h-36 object-cover">
+        ` : `
+          <span class="text-2xl font-bold text-willow-dark/30">${school.name[0]}</span>
+        `}
       </div>
       <div class="p-5 flex flex-col justify-between flex-grow">
         <div>

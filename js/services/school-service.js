@@ -57,6 +57,7 @@ export async function createSchool(school) {
     body: JSON.stringify({
       ...school,
       initials: school.initials || (school.name || '').slice(0, 3).toUpperCase(),
+      avatar: school.avatar || '',
       supportFeatures: school.supportFeatures || [],
       contactPhone: school.contactPhone || '',
       contactEmail: school.contactEmail || '',

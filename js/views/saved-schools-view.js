@@ -8,8 +8,12 @@ const listEl = document.querySelector('#saved-school-list')
 function renderSchoolCard(school) {
   return `
     <article class="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm flex flex-col gap-4 md:flex-row md:items-center group hover:border-willow-mid transition">
-      <div class="w-16 h-16 rounded-full bg-willow-cream text-willow-dark grid place-items-center font-bold text-xl shrink-0">
-        ${school.name[0] || 'S'}
+      <div class="w-16 h-16 rounded-full shrink-0 overflow-hidden flex items-center justify-center">
+        ${school.avatar ? `
+          <img src="${school.avatar}" alt="${school.name}" class="w-16 h-16 object-cover">
+        ` : `
+          <div class="w-16 h-16 rounded-full bg-willow-cream text-willow-dark grid place-items-center font-bold text-xl">${school.name[0] || 'S'}</div>
+        `}
       </div>
 
       <div class="flex-grow min-w-0">

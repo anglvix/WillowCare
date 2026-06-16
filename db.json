@@ -4,7 +4,7 @@
       "email": "misha@gmail.com",
       "password": "$2a$10$jb6mRDa4fHIXFB2KksXNNe9b1gMVzFvbZX0zlC14h93no6LAAEn2q",
       "name": "Misha Santos",
-      "role": "organization",
+      "role": "school",
       "savedDoctors": [
         1
       ],
@@ -78,42 +78,6 @@
       "address": ""
     },
     {
-      "email": "doctor@willowcare.com",
-      "password": "$2a$10$BeiVszPLOWpXP4drLUW/heezspxaVKOVtKPyL2lpv2Y6OoknHCi.y",
-      "name": "Dr. Sample Doctor",
-      "role": "doctor",
-      "savedDoctors": [],
-      "savedSchools": [],
-      "achievements": [
-        "registered"
-      ],
-      "id": 7
-    },
-    {
-      "email": "school@willowcare.com",
-      "password": "$2a$10$PsqnTUV/T/rrz.0XfzOuour8TEqsjmts.z5XJ5/thELdQjokpDVJq",
-      "name": "Sample School",
-      "role": "school",
-      "savedDoctors": [],
-      "savedSchools": [],
-      "achievements": [
-        "registered"
-      ],
-      "id": 8
-    },
-    {
-      "email": "organization@willowcare.com",
-      "password": "$2a$10$q0MhenMXsk5xZ1ZY2aOeGei4.4/jLGzK5c4n.LtdtF4/GZ/nGLRru",
-      "name": "Sample Organization",
-      "role": "organization",
-      "savedDoctors": [],
-      "savedSchools": [],
-      "achievements": [
-        "registered"
-      ],
-      "id": 9
-    },
-    {
       "email": "1234@gmail.com",
       "password": "$2a$10$QqnrA0IAcfO7xbJQln28r.AMBkOWBCH.jrFqH.QQ10wbCbj/V/v.6",
       "name": "dr. Ana castro",
@@ -138,16 +102,6 @@
         "saved_doctor"
       ],
       "id": 11
-    },
-    {
-      "email": "testuser123@example.com",
-      "password": "$2a$10$5SmKRqav3QMRbeJkNTUm2.7IzwUUd/dwmcawOLcoKpHd5FMsIVMZ2",
-      "name": "Test User",
-      "role": "caregiver",
-      "id": 12,
-      "savedSchools": [
-        1
-      ]
     }
   ],
   "doctors": [
@@ -204,7 +158,7 @@
   "schools": [
     {
       "id": 1,
-      "name": "Escola EB1 da Maia",
+      "name": "Escola EB1/JI D. Manuel II",
       "location": "Maia",
       "district": "Porto",
       "description": "Public school with a specialized support unit for students with special educational needs.",
@@ -214,9 +168,10 @@
         "speech-therapy",
         "sensory-room"
       ],
-      "contactPhone": "+351 22 9876 543",
-      "contactEmail": "info@eb1maia.pt",
-      "address": "Rua da Escola, 15, Maia, Porto"
+      "contactPhone": "+351 22 948 3652",
+      "contactEmail": "info@eb1dmanuel.pt",
+      "address": "Av. D Manuel II 1573, Maia",
+      "avatar": "https://apeedmanuel.weebly.com/uploads/1/2/6/7/12671510/8072813.jpg?470"
     },
     {
       "id": 2,
@@ -233,7 +188,8 @@
       ],
       "contactPhone": "+351 25 3210 987",
       "contactEmail": "contacto@colegioinclusivo.pt",
-      "address": "Av. Central, 500, Braga"
+      "address": "Av. Central, 500, Braga",
+      "avatar": "https://imagens.bragatv.pt/wp-content/uploads/2022/03/22171702/inclusao.jpg"
     },
     {
       "id": 3,
@@ -248,7 +204,8 @@
       ],
       "contactPhone": "+351 22 5555 666",
       "contactEmail": "secretaria@aematosinho.pt",
-      "address": "Rua de São João, 200, Matosinhos"
+      "address": "Rua de São João, 200, Matosinhos",
+      "avatar": "https://www.cm-matosinhos.pt/imgcrop/cmmatosinhos/uploads/poi/thumbnail/8031/foto_eb_de_matosinhos_1_600_365.jpg"
     }
   ],
   "workshops": [
@@ -523,18 +480,6 @@
       "contactEmail": "president@eurowilliams.org",
       "address": "Tervuursesteenweg 30, 3001 Heverlee, Belgium",
       "avatar": "https://eurowilliams.org/wp-content/uploads/2026/05/Fewslogoblue100x80.png"
-    },
-    {
-      "name": "Misha Santos",
-      "initials": "MIS",
-      "description": "",
-      "mission": "",
-      "services": [],
-      "ownerUserId": 4,
-      "contactPhone": "",
-      "contactEmail": "",
-      "address": "",
-      "id": 4
     }
   ],
   "forumTopics": [

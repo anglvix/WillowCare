@@ -1,11 +1,12 @@
 export default class School {
-  constructor(name, location, district, description, type = 'public') {
+  constructor(name, location, district, description, type = 'public', avatar = '') {
     this.id = crypto.randomUUID()
     this.name = name
     this.location = location
     this.district = district
     this.description = description
     this.type = type
+    this.avatar = avatar
     this.supportFeatures = []
     this.contactPhone = ''
     this.contactEmail = ''
@@ -24,12 +25,13 @@ export default class School {
   }
 
   static fromObject(obj) {
-    const s = new School(obj.name, obj.location, obj.district, obj.description, obj.type)
+    const s = new School(obj.name, obj.location, obj.district, obj.description, obj.type, obj.avatar ?? '')
     s.id = obj.id
     s.supportFeatures = obj.supportFeatures ?? []
     s.contactPhone = obj.contactPhone ?? ''
     s.contactEmail = obj.contactEmail ?? ''
     s.address = obj.address ?? ''
+    s.avatar = obj.avatar ?? s.avatar
     return s
   }
 }
