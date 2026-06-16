@@ -80,3 +80,33 @@ export async function getOwnOrganization(user) {
 
   return organization
 }
+
+export async function getOrganizationReviews(orgId, orgName = '') {
+  const idRes = await fetch(`${BASE}/reviews?subjectId=${orgId}&subjectType=organization&_sort=createdAt&_order=desc`)
+  if (idRes.ok) {
+    const reviews = await idRes.json()
+    if (reviews.length) return reviews
+  }
+
+  if (!orgName) return []
+  const nameRes = await fetch(`${BASE}/reviews?subjectName=${encodeURIComponent(orgName)}&subjectType=organization&_sort=createdAt&_order=desc`)
+  if (!nameRes.ok) return []
+  return nameRes.json()
+}
+
+export async function createReview(review) {
+  const token = localStorage.getItem('token')
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+  }
+  
+  const res = await fetch(`${BASE}/reviews`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(review)
+  })
+
+  if (!res.ok) return null
+  return res.json()
+}

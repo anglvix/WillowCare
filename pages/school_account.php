@@ -25,23 +25,23 @@ include '../includes/head.php';
         <!-- School Header -->
         <div>
 
-            <span class="text-[9px] font-bold bg-willow-cream text-willow-dark px-2 py-0.5 rounded uppercase tracking-wide">
+            <span class="text-[11px] font-bold bg-willow-cream text-willow-dark px-2 py-0.5 rounded uppercase tracking-wide">
                 Public Institution
             </span>
 
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-2">
                 <div>
                     <h1 id="school-name" class="text-2xl font-serif font-bold text-willow-dark">A carregar...</h1>
-                    <p id="school-location" class="text-xs text-gray-400 mt-1">A carregar...</p>
+                    <p id="school-location" class="text-sm font-bold text-gray-700 mt-1">A carregar...</p>
                 </div>
                 <div class="flex flex-wrap gap-3">
-                    <button id="btn-save-school" class="bg-willow-dark text-white text-xs font-semibold px-4 py-2 rounded-xl hover:bg-willow-mid transition">
+                    <button id="btn-save-school" class="bg-willow-dark text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-willow-mid transition">
                         Save School
                     </button>
-                    <button id="btn-post-review" class="bg-willow-dark text-white text-xs font-semibold px-4 py-2 rounded-xl shadow hover:bg-willow-mid transition">
+                    <button id="btn-post-review" class="bg-willow-dark text-white text-sm font-semibold px-4 py-2 rounded-xl shadow hover:bg-willow-mid transition">
                         Post Review
                     </button>
-                    <button id="btn-reviews" class="bg-willow-dark text-white text-xs font-semibold px-4 py-2 rounded-xl hover:bg-willow-mid transition">
+                    <button id="btn-reviews" class="bg-willow-dark text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-willow-mid transition">
                         Reviews
                     </button>
                 </div>
@@ -56,11 +56,11 @@ include '../includes/head.php';
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                     <h3 class="font-bold text-sm text-gray-800 mb-2">Contact</h3>
-                    <p id="school-contact" class="text-xs text-gray-600">-</p>
+                    <p id="school-contact" class="text-sm text-gray-600">-</p>
                 </div>
                 <div>
                     <h3 class="font-bold text-sm text-gray-800 mb-2">Address</h3>
-                    <p id="school-address" class="text-xs text-gray-600">-</p>
+                    <p id="school-address" class="text-sm text-gray-600">-</p>
                 </div>
             </div>
         </section>
@@ -72,15 +72,13 @@ include '../includes/head.php';
                 Special Education Infrastructure
             </h3>
 
-            <p id="school-description" class="text-xs text-gray-600 leading-relaxed">A carregar...</p>
+            <p id="school-description" class="text-sm text-gray-600 leading-relaxed">A carregar...</p>
 
         </section>
 
         <!-- Features -->
-        <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-
-            <div id="school-features" class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full"></div>
-
+        <section class="space-y-3">
+            <div id="school-features" class="flex flex-wrap gap-3"></div>
         </section>
 
     </main>

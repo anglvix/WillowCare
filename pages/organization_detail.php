@@ -23,15 +23,15 @@ include '../includes/head.php';
                 <h1 id="org-name" class="text-xl font-serif font-bold">
                     A carregar...
                 </h1>
-                <p id="org-description" class="text-xs text-willow-cream opacity-80 mt-1"></p>
+                <p id="org-description" class="text-xs text-white mt-1"></p>
                 <div class="mt-4 flex flex-wrap justify-center sm:justify-start gap-3">
-                    <button id="btn-save-org" class="bg-willow-dark text-white text-xs font-semibold px-4 py-2 rounded-xl hover:bg-willow-mid transition">
+                    <button id="btn-save-org" class="bg-willow-mid text-black text-xs font-semibold px-4 py-2 rounded-xl hover:bg-willow-light transition">
                         Save Organization
                     </button>
-                    <button id="btn-post-review" class="bg-willow-dark text-white text-xs font-semibold px-4 py-2 rounded-xl shadow hover:bg-willow-mid transition">
+                    <button id="btn-post-review" class="bg-willow-mid text-black text-xs font-semibold px-4 py-2 rounded-xl shadow hover:bg-willow-light transition">
                         Post Review
                     </button>
-                    <button id="btn-reviews" class="bg-willow-dark text-white text-xs font-semibold px-4 py-2 rounded-xl hover:bg-willow-mid transition">
+                    <button id="btn-reviews" class="bg-willow-mid text-black text-xs font-semibold px-4 py-2 rounded-xl hover:bg-willow-light transition">
                         Reviews
                     </button>
                 </div>

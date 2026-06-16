@@ -19,21 +19,21 @@ include '../includes/head.php';
                     Upcoming Excursions
                 </h1>
 
-                <p class="text-xs text-gray-400">
+                <p class="text-sm text-gray-700">
                     Outdoor socialization meetups.
                 </p>
             </div>
 
             <a
                 href="activity_lobby.php"
-                class="text-xs text-willow-dark underline font-medium">
+                class="text-sm text-willow-dark underline font-medium">
                 Back to Lobby
             </a>
         </div>
 
         <!-- Excursions Grid - preenchido pelo excursions-view.js -->
         <div id="excursion-list" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <p class="text-sm text-gray-400">A carregar excursões...</p>
+            <p class="text-sm text-gray-700">A carregar excursões...</p>
         </div>
     </main>
 

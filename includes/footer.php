@@ -12,12 +12,12 @@
             <a href="index.php" class="inline-flex items-center hover:opacity-90 -ml-1">
                 <img src="../images/footer_logo.png" alt="Willow Care" class="h-14 w-auto" />
             </a>
-            <p class="text-[10px] text-gray-400">© 2025 - 2026</p>
+            <p class="text-[14px] text-white">© 2025 - 2026</p>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-[11px]">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-[13px]">
             <div>
-                <h4 class="font-bold text-gray-300 uppercase tracking-wider text-[9px] mb-2 opacity-70">Personal Page</h4>
+                <h4 class="font-bold text-white uppercase tracking-wider text-[12px] mb-2 opacity-100">Personal Page</h4>
                 <ul id="footer-personal-list"><li><a href="login.php" class="text-gray-200 hover:text-white transition">Log in</a></li></ul>
             <script>
             (function () {
@@ -30,14 +30,14 @@
             </script>
             </div>
             <div>
-                <h4 class="font-bold text-gray-300 uppercase tracking-wider text-[9px] mb-2 opacity-70">Search</h4>
+                <h4 class="font-bold text-white uppercase tracking-wider text-[12px] mb-2 opacity-100">Search</h4>
                 <ul class="space-y-1">
                     <li><a href="doctor_search.php" class="text-gray-200 hover:text-white transition">Doctors</a></li>
                     <li><a href="school_search.php" class="text-gray-200 hover:text-white transition">Schools</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold text-gray-300 uppercase tracking-wider text-[9px] mb-2 opacity-70">Resources</h4>
+                <h4 class="font-bold text-white uppercase tracking-wider text-[12px] mb-2 opacity-100">Resources</h4>
                 <ul class="space-y-1">
                     <li><a href="activity_lobby.php" class="text-gray-200 hover:text-white transition">Activities</a></li>
                     <li><a href="forum.php" class="text-gray-200 hover:text-white transition">Community</a></li>
@@ -45,7 +45,7 @@
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold text-gray-300 uppercase tracking-wider text-[9px] mb-2 opacity-70">WillowCare</h4>
+                <h4 class="font-bold text-white uppercase tracking-wider text-[12px] mb-2 opacity-100">WillowCare</h4>
                 <ul><li><a href="about_us.php" class="text-gray-200 hover:text-white transition">Our Mission</a></li></ul>
             </div>
         </div>

@@ -13,7 +13,7 @@ const featureLabels = {
 
 function renderFeatureTags(features) {
   return features.map(f =>
-    `<span class="text-[9px] bg-willow-cream text-willow-dark font-bold px-2 py-0.5 rounded">${featureLabels[f] ?? f}</span>`
+    `<span class="text-[12px] bg-willow-cream text-willow-dark font-bold px-2 py-0.5 rounded">${featureLabels[f] ?? f}</span>`
   ).join(' ')
 }
 
@@ -26,12 +26,12 @@ function renderCard(school) {
       <div class="p-5 flex flex-col justify-between flex-grow">
         <div>
           <h4 class="font-serif font-bold text-lg text-willow-dark">${school.name}</h4>
-          <p class="text-[10px] text-gray-400 mb-2">${school.location}, ${school.district}</p>
+          <p class="text-[14px] text-gray-700 mb-2">${school.location}, ${school.district}</p>
           <div class="flex flex-wrap gap-1 mb-2">${renderFeatureTags(school.supportFeatures)}</div>
-          <p class="text-xs text-gray-500">${school.description}</p>
+          <p class="text-sm text-gray-500">${school.description}</p>
         </div>
         <a href="school_account.php?id=${school.id}"
-          class="text-xs font-bold text-willow-mid underline mt-4 block hover:text-willow-dark transition">
+          class="text-sm font-bold text-willow-mid underline mt-4 block hover:text-willow-dark transition">
           View Integration Profile
         </a>
       </div>

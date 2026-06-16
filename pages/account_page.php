@@ -27,12 +27,12 @@ include '../includes/head.php';
                 -
             </h2>
 
-            <p id="user-role-badge" class="text-[10px] bg-willow-light text-willow-dark px-2 py-0.5 rounded-full inline-block mt-1 font-semibold uppercase">
-                Family Member
+            <p id="user-role-badge" class="text-[13px] bg-willow-light text-black px-2 py-0.5 rounded-full inline-block mt-1 font-semibold uppercase">
+                Caregiver
             </p>
 
             <!-- Navigation -->
-            <div class="mt-6 space-y-2 text-xs text-left">
+            <div class="mt-6 space-y-2 text-sm text-left">
 
                 <a
                     href="voucher_page.php"
@@ -87,7 +87,7 @@ include '../includes/head.php';
                     Dashboard Overview
                 </h3>
 
-                <p class="text-xs text-gray-400 mt-1">
+                <p class="text-sm text-gray-700 mt-1">
                     Monitor your activity and saved healthcare resources.
                 </p>
             </div>
@@ -97,22 +97,22 @@ include '../includes/head.php';
 
                 <div class="border border-gray-100 p-5 rounded-xl shadow-sm text-center bg-white">
                     <span id="stat-bookings" class="text-2xl font-bold text-willow-dark">-</span>
-                    <p class="text-[10px] text-gray-400 mt-1 uppercase font-bold">Booked Events</p>
+                    <p class="text-[13px] text-gray-600 mt-1 uppercase font-bold">Booked Events</p>
                 </div>
 
                 <div class="border border-gray-100 p-5 rounded-xl shadow-sm text-center bg-white">
                     <span id="stat-doctors" class="text-2xl font-bold text-willow-mid">-</span>
-                    <p class="text-[10px] text-gray-400 mt-1 uppercase font-bold">Saved Doctors</p>
+                    <p class="text-[13px] text-gray-600 mt-1 uppercase font-bold">Saved Doctors</p>
                 </div>
 
                 <div class="border border-gray-100 p-5 rounded-xl shadow-sm text-center bg-white">
                     <span id="stat-schools" class="text-2xl font-bold text-willow-mid">-</span>
-                    <p class="text-[10px] text-gray-400 mt-1 uppercase font-bold">Saved Schools</p>
+                    <p class="text-[13px] text-gray-600 mt-1 uppercase font-bold">Saved Schools</p>
                 </div>
 
                 <div class="border border-gray-100 p-5 rounded-xl shadow-sm text-center bg-white">
                     <span id="stat-organizations" class="text-2xl font-bold text-willow-mid">-</span>
-                    <p class="text-[10px] text-gray-400 mt-1 uppercase font-bold">Saved Organizations</p>
+                    <p class="text-[13px] text-gray-600 mt-1 uppercase font-bold">Saved Organizations</p>
                 </div>
 
             </div>
@@ -120,7 +120,7 @@ include '../includes/head.php';
             <!-- Conquistas - preenchidas pelo account-view.js -->
             <div class="bg-willow-cream/20 border border-willow-cream rounded-2xl p-5">
                 <h4 class="font-semibold text-sm text-willow-dark mb-3">Conquistas</h4>
-                <ul id="achievements-list" class="space-y-2 text-xs text-gray-600">
+                <ul id="achievements-list" class="space-y-2 text-sm text-gray-600">
                     <li class="text-gray-400">A carregar...</li>
                 </ul>
             </div>

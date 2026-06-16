@@ -11,7 +11,7 @@ function renderCard(org) {
       </div>
       <div class="text-center sm:text-left flex-grow">
         <h3 class="font-serif font-bold text-lg text-willow-dark">${org.name}</h3>
-        <p class="text-xs text-gray-600 mt-1">${org.description}</p>
+        <p class="text-sm text-gray-700 mt-1">${org.description}</p>
       </div>
       <a href="organization_detail.php?id=${org.id}"
         class="bg-willow-dark text-white px-5 py-2 rounded-xl text-xs font-medium hover:bg-willow-mid transition shrink-0">

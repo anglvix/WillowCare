@@ -35,12 +35,12 @@ include '../includes/head.php';
             </h1>
 
             <p id="workshop-meta"
-                class="text-xs text-gray-400 flex items-center gap-1">
+                class="text-sm text-gray-700 flex items-center gap-1">
                 A carregar...
             </p>
 
             <p id="workshop-host"
-                class="text-xs text-gray-500 mt-2"></p>
+                class="text-sm text-gray-700 font-bold mt-2"></p>
         </div>
 
         <p id="workshop-description"
@@ -60,7 +60,7 @@ include '../includes/head.php';
         <form id="booking-form" class="space-y-3">
 
             <div>
-                <label class="block text-[10px] uppercase font-bold text-gray-500 mb-1">
+                <label class="block text-[12px] uppercase font-bold text-gray-700 mb-1">
                     Child's Age Group
                 </label>
 

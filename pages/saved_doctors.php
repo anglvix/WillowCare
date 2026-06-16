@@ -13,13 +13,13 @@ include '../includes/head.php';
     <main class="max-w-6xl mx-auto w-full px-6 py-12 flex-grow">
 
         <section class="mb-8">
-            <p class="text-[10px] uppercase tracking-[0.25em] text-willow-mid font-semibold">My Account</p>
+            <p class="text-[13px] uppercase tracking-[0.25em] text-willow-mid font-semibold">My Account</p>
             <h1 class="font-serif text-3xl text-willow-dark font-bold mt-2">Saved Doctors</h1>
-            <p class="text-sm text-gray-500 mt-2">These are the doctors you saved from your profile and search pages.</p>
+            <p class="text-sm text-gray-700 mt-2">These are the doctors you saved from your profile and search pages.</p>
         </section>
 
         <section id="saved-doctor-list" class="space-y-4">
-            <p class="text-sm text-gray-400">Loading your saved doctors...</p>
+            <p class="text-sm text-gray-700">Loading your saved doctors...</p>
         </section>
 
     </main>

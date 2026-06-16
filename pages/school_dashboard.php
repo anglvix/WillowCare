@@ -25,7 +25,7 @@ include '../includes/head.php';
                 <div class="grid gap-3 text-sm text-gray-600">
                     <div>
                         <p class="text-[11px] uppercase tracking-[0.2em] text-gray-500">Profile status</p>
-                        <p id="school-profile-status" class="mt-2 text-xs text-emerald-600 hidden"></p>
+                        <p id="school-profile-status" class="mt-2 text-sm text-emerald-600 hidden"></p>
                     </div>
 
                     <div>
@@ -40,49 +40,49 @@ include '../includes/head.php';
 
                 <form id="school-profile-form" class="grid gap-4">
                     <div class="grid gap-2">
-                        <label for="school-profile-name" class="text-[11px] font-semibold text-gray-600">School name</label>
+                        <label for="school-profile-name" class="text-[13px] font-semibold text-gray-600">School name</label>
                         <input id="school-profile-name" name="name" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" required>
                     </div>
 
                     <div class="grid gap-4 sm:grid-cols-2">
                         <div class="grid gap-2">
-                            <label for="school-profile-district" class="text-[11px] font-semibold text-gray-600">District</label>
+                            <label for="school-profile-district" class="text-[13px] font-semibold text-gray-600">District</label>
                             <input id="school-profile-district" name="district" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid">
                         </div>
                         <div class="grid gap-2">
-                            <label for="school-profile-location" class="text-[11px] font-semibold text-gray-600">Location</label>
+                            <label for="school-profile-location" class="text-[13px] font-semibold text-gray-600">Location</label>
                             <input id="school-profile-location" name="location" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid">
                         </div>
                     </div>
 
                     <div class="grid gap-2">
-                        <label for="school-profile-type" class="text-[11px] font-semibold text-gray-600">School type</label>
+                        <label for="school-profile-type" class="text-[13px] font-semibold text-gray-600">School type</label>
                         <input id="school-profile-type" name="type" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="e.g. Public, Private, Inclusive">
                     </div>
 
                     <div class="grid gap-2">
-                        <label for="school-profile-description" class="text-[11px] font-semibold text-gray-600">Description</label>
+                        <label for="school-profile-description" class="text-[13px] font-semibold text-gray-600">Description</label>
                         <textarea id="school-profile-description" name="description" rows="4" class="w-full rounded-2xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="A short description of the school"></textarea>
                     </div>
 
                     <div class="grid gap-4 sm:grid-cols-2">
                         <div class="grid gap-2">
-                            <label for="school-profile-phone" class="text-[11px] font-semibold text-gray-600">Contact phone</label>
+                            <label for="school-profile-phone" class="text-[13px] font-semibold text-gray-600">Contact phone</label>
                             <input id="school-profile-phone" name="contactPhone" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="+351 912 345 678">
                         </div>
                         <div class="grid gap-2">
-                            <label for="school-profile-email" class="text-[11px] font-semibold text-gray-600">Contact email</label>
+                            <label for="school-profile-email" class="text-[13px] font-semibold text-gray-600">Contact email</label>
                             <input id="school-profile-email" name="contactEmail" type="email" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="contact@school.pt">
                         </div>
                     </div>
 
                     <div class="grid gap-2">
-                        <label for="school-profile-address" class="text-[11px] font-semibold text-gray-600">Address</label>
+                        <label for="school-profile-address" class="text-[13px] font-semibold text-gray-600">Address</label>
                         <input id="school-profile-address" name="address" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="Street, city, postal code">
                     </div>
 
                     <div class="grid gap-2">
-                        <label for="school-profile-features" class="text-[11px] font-semibold text-gray-600">Support features</label>
+                        <label for="school-profile-features" class="text-[13px] font-semibold text-gray-600">Support features</label>
                         <input id="school-profile-features" name="supportFeatures" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="Separate features with commas">
                     </div>
 
@@ -103,52 +103,52 @@ include '../includes/head.php';
             <form id="school-activity-form" class="mt-6 grid gap-4">
                 <div class="grid gap-2 sm:grid-cols-2">
                     <div class="grid gap-2">
-                        <label for="school-activity-type" class="text-[11px] font-semibold text-gray-600">Activity type</label>
+                        <label for="school-activity-type" class="text-[13px] font-semibold text-gray-600">Activity type</label>
                         <select id="school-activity-type" name="type" class="select-field w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm focus:outline-none focus:border-willow-mid">
                             <option value="workshop">Workshop</option>
                             <option value="excursion">Excursion</option>
                         </select>
                     </div>
                     <div class="grid gap-2">
-                        <label for="school-activity-title" class="text-[11px] font-semibold text-gray-600">Title</label>
+                        <label for="school-activity-title" class="text-[13px] font-semibold text-gray-600">Title</label>
                         <input id="school-activity-title" name="title" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" required>
                     </div>
                 </div>
 
                 <div class="grid gap-4 sm:grid-cols-2">
                     <div class="grid gap-2">
-                        <label for="school-activity-date" class="text-[11px] font-semibold text-gray-600">Date</label>
+                        <label for="school-activity-date" class="text-[13px] font-semibold text-gray-600">Date</label>
                         <input id="school-activity-date" name="date" type="date" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" required>
                     </div>
                     <div class="grid gap-2">
-                        <label for="school-activity-location" class="text-[11px] font-semibold text-gray-600">Location</label>
+                        <label for="school-activity-location" class="text-[13px] font-semibold text-gray-600">Location</label>
                         <input id="school-activity-location" name="location" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" required>
                     </div>
                 </div>
 
                 <div class="grid gap-2">
-                    <label for="school-activity-description" class="text-[11px] font-semibold text-gray-600">Description</label>
+                    <label for="school-activity-description" class="text-[13px] font-semibold text-gray-600">Description</label>
                     <textarea id="school-activity-description" name="description" rows="4" class="w-full rounded-2xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" required></textarea>
                 </div>
 
                 <div class="grid gap-4 sm:grid-cols-2">
                     <div class="grid gap-2">
-                        <label for="school-activity-category" class="text-[11px] font-semibold text-gray-600">Category</label>
+                        <label for="school-activity-category" class="text-[13px] font-semibold text-gray-600">Category</label>
                         <input id="school-activity-category" name="category" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" required>
                     </div>
                     <div class="grid gap-2">
-                        <label for="school-activity-age-group" class="text-[11px] font-semibold text-gray-600">Age group</label>
+                        <label for="school-activity-age-group" class="text-[13px] font-semibold text-gray-600">Age group</label>
                         <input id="school-activity-age-group" name="ageGroup" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="e.g. 4-8">
                     </div>
                 </div>
 
                 <div class="grid gap-4 sm:grid-cols-2">
                     <div class="grid gap-2">
-                        <label for="school-activity-sensory-focus" class="text-[11px] font-semibold text-gray-600">Sensory focus</label>
+                        <label for="school-activity-sensory-focus" class="text-[13px] font-semibold text-gray-600">Sensory focus</label>
                         <input id="school-activity-sensory-focus" name="sensoryFocus" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="e.g. nature">
                     </div>
                     <div class="grid gap-2">
-                        <label for="school-activity-image" class="text-[11px] font-semibold text-gray-600">Image URL</label>
+                        <label for="school-activity-image" class="text-[13px] font-semibold text-gray-600">Image URL</label>
                         <input id="school-activity-image" name="image" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="Optional image URL">
                     </div>
                 </div>

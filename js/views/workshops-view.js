@@ -20,20 +20,20 @@ function renderCard(workshop) {
 
       <div class="p-4 flex-grow flex flex-col justify-between">
         <div>
-          <p class="text-[10px] text-willow-dark font-bold uppercase mb-1">
+          <p class="text-[12px] text-willow-mid font-bold uppercase mb-1">
             ${formatDate(workshop.date)} - ${workshop.location}
           </p>
           <h3 class="font-bold text-sm text-gray-800 mb-2">${workshop.title}</h3>
-          <p class="text-xs text-gray-500 line-clamp-2 mb-4">${workshop.description}</p>
+          <p class="text-sm text-gray-700 line-clamp-2 mb-4">${workshop.description}</p>
         </div>
 
         <div class="flex gap-2 mb-3">
-          ${workshop.ageGroup ? `<span class="text-[10px] bg-blue-100 text-blue-700 px-2 py-1 rounded-full">${workshop.ageGroup}</span>` : ''}
-          ${workshop.category ? `<span class="text-[10px] bg-gray-100 text-gray-600 px-2 py-1 rounded-full">${workshop.category}</span>` : ''}
+          ${workshop.ageGroup ? `<span class="text-[12px] bg-blue-100 text-blue-700 px-2 py-1 rounded-full">${workshop.ageGroup}</span>` : ''}
+          ${workshop.category ? `<span class="text-[12px] bg-gray-100 text-gray-600 px-2 py-1 rounded-full">${workshop.category}</span>` : ''}
         </div>
 
         <a href="selected_workshop.php?id=${workshop.id}"
-          class="block text-center border border-willow-dark text-willow-dark py-2 rounded-xl text-xs font-semibold hover:bg-willow-cream transition">
+          class="block text-center border border-willow-dark text-willow-dark py-2 rounded-xl text-sm font-semibold hover:bg-willow-cream transition">
           Ver Workshop
         </a>
       </div>
@@ -47,7 +47,7 @@ async function load() {
     const workshops = data.map(Workshop.fromObject)
 
     if (!workshops.length) {
-      listEl.innerHTML = '<p class="text-sm text-gray-400 col-span-3">Sem workshops disponíveis.</p>'
+      listEl.innerHTML = '<p class="text-sm text-gray-700 col-span-3">Sem workshops disponíveis.</p>'
       return
     }
 

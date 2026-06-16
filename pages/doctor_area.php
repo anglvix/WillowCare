@@ -29,23 +29,23 @@ include '../includes/head.php';
 
                 <h1 id="doctor-name" class="text-xl font-serif font-bold text-willow-dark">-</h1>
 
-                <p class="text-xs text-gray-400 mt-1">Specialist</p>
+                <p class="text-sm font-bold text-gray-700 mt-1">Specialist</p>
 
                 <span id="doctor-specialty"
-                    class="inline-block mt-3 text-[10px] bg-willow-light text-willow-dark px-3 py-1 rounded-full font-bold uppercase tracking-wide">
+                    class="inline-block mt-3 text-[10px] font-bold bg-willow-light text-willow-dark px-3 py-1 rounded-full font-bold uppercase tracking-wide">
                     -
                 </span>
 
                 <div class="mt-3 text-center space-y-1">
                     <div id="doctor-rating-stars" class="text-willow-dark text-lg leading-none">☆☆☆☆☆</div>
-                    <div id="doctor-rating-value" class="text-[11px] text-gray-500">No rating yet</div>
-                    <div id="doctor-rating-count" class="text-[11px] text-gray-500">0 reviews</div>
+                    <div id="doctor-rating-value" class="text-[14px] text-gray-700">No rating yet</div>
+                    <div id="doctor-rating-count" class="text-[14px] text-gray-700">0 reviews</div>
                 </div>
 
                 <div class="mt-4 flex flex-col items-center gap-3">
 
                     <button id="btn-save-doctor-sidebar"
-                        class="border border-willow-mid text-willow-dark text-xs font-semibold px-4 py-2 rounded-xl hover:bg-willow-cream transition">
+                        class="border border-willow-mid text-willow-dark text-sm font-semibold px-4 py-2 rounded-xl hover:bg-willow-cream transition">
                         Save Doctor
                     </button>
 
@@ -97,12 +97,12 @@ include '../includes/head.php';
             <div class="flex flex-wrap gap-3">
 
                 <button id="btn-reviews"
-                    class="border border-willow-mid text-willow-dark text-xs font-semibold px-6 py-2.5 rounded-xl hover:bg-willow-cream transition">
+                    class="border border-willow-mid text-willow-dark text-sm font-semibold px-6 py-2.5 rounded-xl hover:bg-willow-cream transition">
                     Reviews
                 </button>
 
                 <button id="btn-post-review"
-                    class="bg-willow-mid text-white text-xs font-semibold px-6 py-2.5 rounded-xl shadow hover:bg-willow-dark transition">
+                    class="bg-willow-mid text-white text-sm font-semibold px-6 py-2.5 rounded-xl shadow hover:bg-willow-dark transition">
                     Post review
                 </button>
 

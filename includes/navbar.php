@@ -10,7 +10,7 @@
             <svg id="mobile-menu-close-icon" class="hidden h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
 
-        <nav id="desktop-nav" class="hidden md:flex items-center space-x-6 text-[13px] font-medium text-gray-600">
+        <nav id="desktop-nav" class="hidden md:flex items-center space-x-6 text-[14px] font-medium text-gray-600">
           <a href="doctor_search.php" class="hover:text-willow-dark transition">Healthcare</a>
 
           <div class="relative group">
@@ -19,8 +19,8 @@
             </a>
             <div class="absolute left-0 top-full pt-3 hidden group-hover:block group-focus-within:block z-50">
               <div class="min-w-44 rounded-2xl border border-gray-100 bg-white p-2 shadow-lg shadow-gray-200/60">
-                <a href="excursions.php" class="block rounded-xl px-4 py-2 text-[13px] text-gray-600 hover:bg-willow-cream hover:text-willow-dark transition">Excursions</a>
-                <a href="workshops.php" class="block rounded-xl px-4 py-2 text-[13px] text-gray-600 hover:bg-willow-cream hover:text-willow-dark transition">Workshops</a>
+                <a href="excursions.php" class="block rounded-xl px-4 py-2 text-[14px] text-gray-600 hover:bg-willow-cream hover:text-willow-dark transition">Excursions</a>
+                <a href="workshops.php" class="block rounded-xl px-4 py-2 text-[14px] text-gray-600 hover:bg-willow-cream hover:text-willow-dark transition">Workshops</a>
               </div>
             </div>
           </div>
@@ -33,8 +33,8 @@
             </a>
             <div class="absolute left-0 top-full pt-3 hidden group-hover:block group-focus-within:block z-50">
               <div class="min-w-44 rounded-2xl border border-gray-100 bg-white p-2 shadow-lg shadow-gray-200/60">
-                <a href="forum.php" class="block rounded-xl px-4 py-2 text-[13px] text-gray-600 hover:bg-willow-cream hover:text-willow-dark transition">Forum</a>
-                <a href="organizations.php" class="block rounded-xl px-4 py-2 text-[13px] text-gray-600 hover:bg-willow-cream hover:text-willow-dark transition">Organizations</a>
+                <a href="forum.php" class="block rounded-xl px-4 py-2 text-[14px] text-gray-600 hover:bg-willow-cream hover:text-willow-dark transition">Forum</a>
+                <a href="organizations.php" class="block rounded-xl px-4 py-2 text-[14px] text-gray-600 hover:bg-willow-cream hover:text-willow-dark transition">Organizations</a>
               </div>
             </div>
           </div>

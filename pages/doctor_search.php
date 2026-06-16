@@ -22,13 +22,13 @@ include '../includes/head.php';
             <form id="filter-form" class="space-y-4">
 
                 <div>
-                    <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">
+                    <label class="block text-[13px] uppercase font-bold text-gray-700 mb-1">
                         Specialty
                     </label>
 
                     <select
                         name="specialty"
-                        class="w-full border bg-white border-gray-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-willow-mid">
+                        class="w-full border bg-white border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-willow-mid">
 
                         <option value="">All Specialties</option>
                         <option value="Pediatrics">Pediatrics</option>
@@ -39,7 +39,7 @@ include '../includes/head.php';
                 </div>
 
                 <div>
-                    <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">
+                    <label class="block text-[13px] uppercase font-bold text-gray-700 mb-1">
                         Region
                     </label>
 
@@ -47,12 +47,12 @@ include '../includes/head.php';
                         type="text"
                         name="region"
                         placeholder="e.g. Porto"
-                        class="w-full border bg-white border-gray-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-willow-mid">
+                        class="w-full border bg-white border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-willow-mid">
                 </div>
 
                 <button
                     type="submit"
-                    class="w-full bg-willow-dark text-white py-2.5 rounded-xl text-xs font-semibold hover:bg-willow-mid transition">
+                    class="w-full bg-willow-dark text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-willow-mid transition">
 
                     Search Doctors
 

@@ -104,3 +104,33 @@ export async function getOwnSchool(user) {
 
   return school;
 }
+
+export async function getSchoolReviews(schoolId, schoolName = '') {
+  const idRes = await fetch(`${BASE}/reviews?subjectId=${schoolId}&subjectType=school&_sort=createdAt&_order=desc`);
+  if (idRes.ok) {
+    const reviews = await idRes.json();
+    if (reviews.length) return reviews;
+  }
+
+  if (!schoolName) return [];
+  const nameRes = await fetch(`${BASE}/reviews?subjectName=${encodeURIComponent(schoolName)}&subjectType=school&_sort=createdAt&_order=desc`);
+  if (!nameRes.ok) return [];
+  return nameRes.json();
+}
+
+export async function createReview(review) {
+  const token = localStorage.getItem('token');
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+  };
+  
+  const res = await fetch(`${BASE}/reviews`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(review)
+  });
+
+  if (!res.ok) return null;
+  return res.json();
+}

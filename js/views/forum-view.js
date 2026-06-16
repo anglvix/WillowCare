@@ -32,16 +32,16 @@ function timeAgo(isoString) {
 function renderTopicCard(topic) {
   return `
     <article data-topic-id="${topic.id}" class="border border-gray-100 p-5 rounded-2xl bg-white shadow-sm hover:border-willow-mid transition">
-      <span class="text-[9px] bg-willow-light text-willow-dark font-bold px-2 py-0.5 rounded uppercase tracking-wide">
+      <span class="text-[12px] bg-willow-light text-willow-dark font-bold px-2 py-0.5 rounded uppercase tracking-wide">
         ${topic.category}
       </span>
       <h3 class="font-bold text-base text-gray-800 mt-2">${topic.title}</h3>
-      <p class="text-xs text-gray-500 mt-1 line-clamp-1">${topic.content}</p>
+      <p class="text-sm text-gray-500 mt-1 line-clamp-1">${topic.content}</p>
       <div class="flex justify-between items-center mt-4 text-[10px] text-gray-400">
-        <span>By ${topic.authorName} • ${timeAgo(topic.createdAt)}</span>
+        <span class="text-[13px] text-gray-500 font-medium">By ${topic.authorName} • ${timeAgo(topic.createdAt)}</span>
         <div class="flex items-center gap-2">
-          <span>${topic.replyCount} replies</span>
-          <button data-action="open-replies" class="text-[11px] text-willow-dark font-medium hover:underline">View replies</button>
+          <span class="text-[13px] text-gray-500 font-medium">${topic.replyCount} replies</span>
+          <button data-action="open-replies" class="text-[13px] text-willow-dark font-bold hover:underline">View replies</button>
         </div>
       </div>
     </article>
@@ -55,7 +55,7 @@ function renderReplyItem(reply) {
         <span>${reply.authorName}</span>
         <span>${timeAgo(reply.createdAt)}</span>
       </div>
-      <p class="text-xs text-gray-700 mt-2">${reply.content}</p>
+      <p class="text-sm text-gray-700 mt-2">${reply.content}</p>
     </div>
   `
 }

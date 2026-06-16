@@ -1,8 +1,7 @@
 import Organization from '../models/Organization.js'
-import { getOrganizationById } from '../services/organization-service.js'
+import { getOrganizationById, createReview, getOrganizationReviews } from '../services/organization-service.js'
 import { getProfile, saveOrganization, unsaveOrganization } from '../services/user-service.js'
 import { getSession, isLoggedIn } from '../services/auth-service.js'
-import { createReview } from '../services/doctor-service.js'
 
 const id = new URLSearchParams(window.location.search).get('id')
 const session = getSession()
@@ -95,8 +94,7 @@ function renderReviewCard(review) {
 async function loadOrganizationReviews(org) {
   if (!org) return
 
-  const res = await fetch(`http://localhost:3001/reviews?subjectId=${org.id}&_sort=createdAt&_order=desc`)
-  const reviews = res.ok ? await res.json() : []
+  const reviews = await getOrganizationReviews(org.id, org.name)
   const reviewsList = document.querySelector('#reviews-list')
 
   if (reviewsList) {
@@ -213,6 +211,7 @@ reviewForm?.addEventListener('submit', async (event) => {
   const reviewPayload = {
     subjectId: currentOrganization.id,
     subjectName: currentOrganization.name,
+    subjectType: 'organization',
     subjectPhoto: '',
     authorPhoto: anonymous ? '' : session?.avatar || '',
     rating,

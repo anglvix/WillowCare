@@ -213,6 +213,7 @@ async function handleReviewSubmit(event) {
   const reviewPayload = {
     subjectId: currentDoctor.id,
     subjectName: currentDoctor.name,
+    subjectType: 'doctor',
     subjectPhoto: currentDoctor.photo || '',
     authorPhoto: anonymous ? '' : user.avatar || '',
     rating,

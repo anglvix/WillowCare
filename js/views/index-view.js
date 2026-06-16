@@ -30,10 +30,10 @@ function renderActivityCard(activity) {
       <div class="h-40 overflow-hidden">${imgHtml}</div>
       <div class="bg-willow-mid p-4 text-white flex-grow flex flex-col justify-between">
         <div>
-          <p class="text-[9px] tracking-wide opacity-90 mb-1">${formatDate(activity.date)} - ${activity.location}</p>
-          <h3 class="font-bold text-[15px] mb-6">${activity.title}</h3>
+          <p class="text-[12px] tracking-wide opacity-90 mb-1">${formatDate(activity.date)} - ${activity.location}</p>
+          <h3 class="font-bold text-[18px] mb-6">${activity.title}</h3>
         </div>
-        <a href="${href}" class="text-[11px] underline font-medium opacity-90 hover:opacity-100 self-start">Learn More</a>
+        <a href="${href}" class="text-[14px] underline font-medium opacity-90 hover:opacity-100 self-start">Learn More</a>
       </div>
     </div>`
 }
@@ -77,11 +77,11 @@ function renderReviewCard(review) {
       <div class="flex justify-between items-center mb-3">
         <div class="flex items-center gap-2.5">
           <div class="w-8 h-8 rounded-full bg-gray-200 bg-cover bg-center" ${photoAttr}></div>
-          <span class="text-[12px] font-bold text-gray-900">${review.subjectName}</span>
+          <span class="text-[14px] font-bold text-gray-900">${review.subjectName}</span>
         </div>
-        <div class="text-willow-dark text-[11px]">${starsHtml(review.rating)}</div>
+        <div class="text-willow-dark text-[14px]">${starsHtml(review.rating)}</div>
       </div>
-      <div class="bg-willow-light p-4 rounded-xl text-[11px] text-gray-800 leading-normal flex flex-col justify-between min-h-[90px]">
+      <div class="bg-willow-light p-4 rounded-xl text-[14px] text-gray-800 leading-normal flex flex-col justify-between min-h-[90px]">
         <span>${review.text}</span>
         <span class="block font-bold text-willow-dark/60 text-[10px] mt-2">${review.authorInitials}</span>
       </div>

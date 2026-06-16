@@ -1,8 +1,7 @@
 import School from '../models/School.js'
-import { getSchoolById } from '../services/school-service.js'
+import { getSchoolById, createReview, getSchoolReviews } from '../services/school-service.js'
 import { getProfile, saveSchool, unsaveSchool } from '../services/user-service.js'
 import { getSession, isLoggedIn } from '../services/auth-service.js'
-import { createReview } from '../services/doctor-service.js'
 
 const id = new URLSearchParams(window.location.search).get('id')
 const session = getSession()
@@ -101,8 +100,7 @@ function renderReviewCard(review) {
 async function loadSchoolReviews(school) {
   if (!school) return
 
-  const res = await fetch(`http://localhost:3001/reviews?subjectId=${school.id}&_sort=createdAt&_order=desc`)
-  const reviews = res.ok ? await res.json() : []
+  const reviews = await getSchoolReviews(school.id, school.name)
   const reviewsList = document.querySelector('#reviews-list')
 
   if (reviewsList) {
@@ -127,9 +125,9 @@ async function load() {
   descriptionEl.textContent = school.description
 
   featuresEl.innerHTML = (school.supportFeatures || []).map((feature) => `
-    <article class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm text-center">
-      <h4 class="text-xs font-bold text-willow-dark mt-2 uppercase">${featureLabels[feature] || feature}</h4>
-    </article>
+    <span class="inline-flex items-center justify-center bg-willow-cream text-willow-dark border border-gray-200 rounded-xl px-4 py-2 text-xs font-bold uppercase shadow-sm">
+      ${featureLabels[feature] || feature}
+    </span>
   `).join('')
 
   const contactEl = document.querySelector('#school-contact')
@@ -215,6 +213,7 @@ reviewForm?.addEventListener('submit', async (event) => {
   const reviewPayload = {
     subjectId: currentSchool.id,
     subjectName: currentSchool.name,
+    subjectType: 'school',
     subjectPhoto: '',
     authorPhoto: anonymous ? '' : session?.avatar || '',
     rating,

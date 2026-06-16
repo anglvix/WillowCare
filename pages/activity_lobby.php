@@ -76,7 +76,7 @@ include '../includes/head.php';
 
                     <a
                         href="workshops.php"
-                        class="block text-center bg-willow-dark text-white py-2.5 rounded-xl text-xs font-semibold hover:bg-willow-mid transition">
+                        class="block text-center bg-willow-mid text-white py-2.5 rounded-xl text-xs font-semibold hover:bg-willow-dark transition">
                         Explore Workshops
                     </a>
                 </div>
