@@ -8,8 +8,12 @@ const listEl = document.querySelector('#saved-organization-list')
 function renderOrgCard(org) {
   return `
     <article class="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm flex flex-col gap-4 md:flex-row md:items-center group hover:border-willow-mid transition">
-      <div class="w-16 h-16 rounded-full bg-willow-cream text-willow-dark grid place-items-center font-bold text-xl shrink-0">
-        ${org.initials || org.name[0] || 'O'}
+      <div class="w-16 h-16 rounded-full shrink-0 overflow-hidden flex items-center justify-center">
+        ${org.avatar ? `
+          <img src="${org.avatar}" alt="${org.name}" class="w-16 h-16 object-cover">
+        ` : `
+          <div class="w-16 h-16 bg-willow-cream text-willow-dark grid place-items-center font-bold text-xl">${org.initials || org.name[0] || 'O'}</div>
+        `}
       </div>
 
       <div class="flex-grow min-w-0">
