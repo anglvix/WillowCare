@@ -12,6 +12,7 @@ if (!session || session.role !== 'organization') {
 }
 
 const dashboardName = document.querySelector('#org-dashboard-name')
+const dashboardAvatar = document.querySelector('#org-dashboard-avatar')
 const profileForm = document.querySelector('#org-profile-form')
 const activityForm = document.querySelector('#org-activity-form')
 const profileStatus = document.querySelector('#org-profile-status')
@@ -48,6 +49,13 @@ async function loadActivityCounters() {
 
 function populateProfileForm(data) {
   if (dashboardName) dashboardName.textContent = data.name || session.name
+  if (dashboardAvatar) {
+    if (data.avatar) {
+      dashboardAvatar.style.backgroundImage = `url('${data.avatar}')`
+    } else {
+      dashboardAvatar.style.backgroundImage = ''
+    }
+  }
   profileForm.querySelector('#org-profile-name').value = data.name || session.name
   profileForm.querySelector('#org-profile-initials').value = data.initials || ''
   profileForm.querySelector('#org-profile-description').value = data.description || ''
@@ -98,6 +106,23 @@ profileForm?.addEventListener('submit', async (event) => {
     contactEmail,
     address,
     services: services ? services.split(',').map((item) => item.trim()).filter(Boolean) : []
+  }
+
+  // If an avatar file was selected, read it as a data URL and include it in the patch
+  const avatarInput = profileForm.querySelector('#org-avatar-file')
+  if (avatarInput && avatarInput.files && avatarInput.files.length) {
+    try {
+      const file = avatarInput.files[0]
+      const dataUrl = await new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = reject
+        reader.readAsDataURL(file)
+      })
+      patch.avatar = dataUrl
+    } catch (err) {
+      console.error('Failed to read avatar file', err)
+    }
   }
 
   try {
@@ -165,3 +190,30 @@ activityForm?.addEventListener('submit', async (event) => {
 })
 
 loadDashboard()
+
+// Avatar file input UI handling
+const avatarFileInput = document.querySelector('#org-avatar-file')
+const avatarFileName = document.querySelector('#org-avatar-file-name')
+const avatarStatus = document.querySelector('#org-avatar-status')
+
+if (avatarFileInput) {
+  avatarFileInput.addEventListener('change', () => {
+    const file = avatarFileInput.files && avatarFileInput.files[0]
+    if (file) {
+      if (avatarFileName) avatarFileName.textContent = file.name
+      // preview immediately
+      const reader = new FileReader()
+      reader.onload = () => {
+        if (dashboardAvatar) dashboardAvatar.style.backgroundImage = `url('${reader.result}')`
+      }
+      reader.readAsDataURL(file)
+      if (avatarStatus) {
+        avatarStatus.textContent = ''
+        avatarStatus.classList.add('hidden')
+      }
+    } else {
+      if (avatarFileName) avatarFileName.textContent = 'No file selected'
+      if (dashboardAvatar) dashboardAvatar.style.backgroundImage = ''
+    }
+  })
+}

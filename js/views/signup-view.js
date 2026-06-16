@@ -12,8 +12,9 @@ formEl?.addEventListener('submit', async (e) => {
   const name = formEl.querySelector('[name="fullname"]').value.trim()
   const email = formEl.querySelector('[name="email"]').value.trim()
   const password = formEl.querySelector('[name="password"]').value
+  const role = formEl.querySelector('[name="role"]')?.value || 'caregiver'
 
-  const result = await register({ name, email, password })
+  const result = await register({ name, email, password, role })
 
   if (!result.ok) {
     if (errorEl) {
@@ -23,5 +24,12 @@ formEl?.addEventListener('submit', async (e) => {
     return
   }
 
-  window.location.href = 'account_page.php'
+  // Redirect depending on role
+  if (role === 'organization') {
+    window.location.href = 'organization_dashboard.php'
+  } else if (role === 'school') {
+    window.location.href = 'school_dashboard.php'
+  } else {
+    window.location.href = 'account_page.php'
+  }
 })

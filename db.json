@@ -523,6 +523,18 @@
       "contactEmail": "president@eurowilliams.org",
       "address": "Tervuursesteenweg 30, 3001 Heverlee, Belgium",
       "avatar": "https://eurowilliams.org/wp-content/uploads/2026/05/Fewslogoblue100x80.png"
+    },
+    {
+      "name": "Misha Santos",
+      "initials": "MIS",
+      "description": "",
+      "mission": "",
+      "services": [],
+      "ownerUserId": 4,
+      "contactPhone": "",
+      "contactEmail": "",
+      "address": "",
+      "id": 4
     }
   ],
   "forumTopics": [

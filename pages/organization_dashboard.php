@@ -14,7 +14,10 @@ include '../includes/head.php';
 
         <header class="rounded-3xl border border-gray-100 bg-willow-cream/30 p-6 shadow-sm">
             <p class="text-[13px] uppercase tracking-[0.3em] text-willow-dark font-semibold">Organization Dashboard</p>
-            <h1 class="mt-4 text-3xl font-serif font-bold text-willow-dark" id="org-dashboard-name">Loading...</h1>
+            <div class="mt-4 flex items-center gap-4">
+                <div id="org-dashboard-avatar" class="w-20 h-20 bg-gray-200 rounded-full bg-cover bg-center shadow-inner" style="background-image: none"></div>
+                <h1 class="text-3xl font-serif font-bold text-willow-dark" id="org-dashboard-name">Loading...</h1>
+            </div>
             <p class="mt-2 text-sm text-gray-600">Edit your organization profile and publish activities for caregivers to discover.</p>
         </header>
 
@@ -79,6 +82,16 @@ include '../includes/head.php';
                     <div class="grid gap-2">
                         <label for="org-profile-address" class="text-[13px] font-semibold text-gray-600">Address</label>
                         <input id="org-profile-address" name="address" type="text" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-willow-mid" placeholder="Street, city, postal code">
+                    </div>
+
+                    <div class="space-y-1">
+                        <label for="org-avatar-file" class="text-[13px] font-semibold text-gray-600">Organization logo / photo</label>
+                        <div class="flex items-center gap-3">
+                            <label for="org-avatar-file" class="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 transition cursor-pointer">Choose photo</label>
+                            <span id="org-avatar-file-name" class="text-sm text-gray-500 truncate">No file selected</span>
+                        </div>
+                        <input id="org-avatar-file" name="avatar-file" type="file" accept="image/*" class="hidden" />
+                        <p id="org-avatar-status" class="hidden text-[11px] text-gray-500"></p>
                     </div>
 
                     <button type="submit" class="inline-flex items-center justify-center rounded-xl bg-willow-dark px-5 py-3 text-sm font-semibold text-white hover:bg-willow-mid transition">Save profile</button>

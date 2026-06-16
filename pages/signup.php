@@ -67,6 +67,15 @@ include '../includes/head.php';
                     </div>
 
                     <div>
+                        <label class="block text-[13px] font-bold text-gray-600">Account type</label>
+                        <select name="role" class="w-full border border-gray-200 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-willow-mid">
+                            <option value="caregiver">Caregiver</option>
+                            <option value="organization">Representative of an Organization</option>
+                            <option value="school">Representative of a School</option>
+                        </select>
+                    </div>
+
+                    <div>
                         <label class="block text-[13px] font-bold text-gray-600">
                             Password
                         </label>
