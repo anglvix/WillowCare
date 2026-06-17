@@ -26,10 +26,11 @@ function closeMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobil
 
 function toggleMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobileMenuCloseIcon) {
   if (!mobileMenu) return
+  const isClosed = mobileMenu.classList.contains('hidden')
   setMobileMenuState(
     mobileMenu,
     mobileMenuButton,
-    !mobileMenu.classList.contains('hidden'),
+    isClosed,
     mobileMenuOpenIcon,
     mobileMenuCloseIcon
   )

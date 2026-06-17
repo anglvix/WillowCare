@@ -107,6 +107,10 @@ export async function login({ email, password }) {
   }
 
   const data = await res.json()
+  if (data.user.role === 'doctor') {
+    return { ok: false, error: 'Doctor accounts must log in through the doctor login page.' }
+  }
+
   saveSession(data.accessToken, data.user)
   return { ok: true, user: data.user }
 }
