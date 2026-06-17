@@ -10,12 +10,12 @@
             <svg id="mobile-menu-close-icon" class="hidden h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
 
-        <nav id="desktop-nav" class="hidden md:flex items-center space-x-6 text-[14px] font-medium text-gray-600">
+        <nav id="desktop-nav" class="hidden md:flex items-center space-x-6 text-[14px] font-medium text-gray-700">
           <a href="doctor_search.php" class="hover:text-willow-dark transition">Healthcare</a>
 
           <div class="relative group">
             <a href="activity_lobby.php" class="hover:text-willow-dark transition flex items-center gap-1 py-4">
-              Activities <span class="text-[9px] opacity-60">▼</span>
+              Activities <span class="text-[13px] opacity-90">▼</span>
             </a>
             <div class="absolute left-0 top-full pt-3 hidden group-hover:block group-focus-within:block z-50">
               <div class="min-w-44 rounded-2xl border border-gray-100 bg-white p-2 shadow-lg shadow-gray-200/60">
@@ -29,7 +29,7 @@
 
           <div class="relative group">
             <a href="forum.php" class="hover:text-willow-dark transition flex items-center gap-1 py-4">
-              Community <span class="text-[9px] opacity-60">▼</span>
+              Community <span class="text-[13px] opacity-90">▼</span>
             </a>
             <div class="absolute left-0 top-full pt-3 hidden group-hover:block group-focus-within:block z-50">
               <div class="min-w-44 rounded-2xl border border-gray-100 bg-white p-2 shadow-lg shadow-gray-200/60">

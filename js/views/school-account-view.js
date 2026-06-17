@@ -148,7 +148,6 @@ async function load() {
 }
 
 saveButton?.addEventListener('click', async () => {
-  console.log('School save button clicked, isSchoolSaved=', isSchoolSaved, 'id=', id)
   if (!isLoggedIn()) {
     window.location.href = 'login.php'
     return
@@ -176,7 +175,6 @@ saveButton?.addEventListener('click', async () => {
 })
 
 btnReviews?.addEventListener('click', () => {
-  console.log('School reviews button clicked')
   openModal(reviewsModal)
 })
 btnPostReview?.addEventListener('click', () => {

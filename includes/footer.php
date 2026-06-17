@@ -19,6 +19,7 @@
             <div>
                 <h4 class="font-bold text-white uppercase tracking-wider text-[12px] mb-2 opacity-100">Personal Page</h4>
                 <ul id="footer-personal-list"><li><a href="login.php" class="text-gray-200 hover:text-white transition">Log in</a></li></ul>
+                <ul id="footer-personal-list"><li><a href="doctor_login.php" class="text-gray-200 hover:text-white transition">Doctor Log in</a></li></ul>
             <script>
             (function () {
               const token = localStorage.getItem('token')

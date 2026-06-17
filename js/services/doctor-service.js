@@ -39,7 +39,7 @@ export async function searchDoctors({ specialty, region } = {}) {
 
 // Retrieve latestreviews from the API or state.
 export async function getLatestReviews(limit = 2) {
-  const res = await fetch(`${BASE}/reviews?subjectType=doctor&_sort=createdAt&_order=desc&_limit=${limit}`)
+  const res = await fetch(`${BASE}/reviews?_sort=createdAt&_order=desc&_limit=${limit}`)
   if (!res.ok) return []
   return res.json()
 }
