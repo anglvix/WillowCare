@@ -69,3 +69,79 @@ export async function createReview(review) {
   if (!res.ok) return null
   return res.json()
 }
+
+// Retrieve owndoctor from the API or state.
+export async function getOwnDoctor(user) {
+  const res = await fetch(`${BASE}/doctors`)
+  if (!res.ok) return null
+
+  const doctors = await res.json()
+  let doctor = doctors.find((d) => d.userId === user.id)
+
+  if (!doctor) {
+    doctor = doctors.find((d) =>
+      d.name?.trim().toLowerCase() === user.name?.trim().toLowerCase(),
+    )
+    if (doctor) {
+      doctor = await updateDoctor(doctor.id, { userId: user.id })
+    }
+  }
+
+  if (!doctor) {
+    doctor = await createDoctor({
+      name: user.name,
+      email: user.email,
+      specialty: user.specialty || '',
+      bio: '',
+      region: user.address || '',
+      yearsExperience: 0,
+      userId: user.id,
+      photo: '',
+      contactPhone: user.phone || '',
+      contactEmail: user.email,
+      address: user.address || '',
+      highlights: []
+    })
+  }
+
+  return doctor
+}
+
+// Update an existing doctor.
+export async function updateDoctor(doctorId, patch) {
+  const res = await fetch(`${BASE}/doctors/${doctorId}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(patch)
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to update doctor profile')
+  }
+
+  return res.json()
+}
+
+// Create a new doctor.
+export async function createDoctor(doctor) {
+  const res = await fetch(`${BASE}/doctors`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      ...doctor,
+      photo: doctor.photo || '',
+      contactPhone: doctor.contactPhone || '',
+      contactEmail: doctor.contactEmail || '',
+      address: doctor.address || '',
+      highlights: doctor.highlights || [],
+      rating: 0,
+      userId: doctor.userId || null
+    })
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to create doctor profile')
+  }
+
+  return res.json()
+}

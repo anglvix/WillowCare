@@ -176,6 +176,17 @@ WillowCare/
     └── workshops.php
 ```
 
+## Test Accounts
+
+The following accounts are available for testing:
+
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@gmail.com | admin |
+| Caregiver | caregiver@gmail.com | 123456 |
+| School | school@gmail.com | 123456 |
+| Doctor | doctor@gmail.com | 123456 |
+
 ## Notes
 
 - The API backend data lives in `db.json`.
