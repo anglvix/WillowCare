@@ -66,8 +66,8 @@ include '../includes/head.php';
             </div>
 
             <div id="join-cta" class="text-center mt-12 mb-14">
-                <h4 class="font-bold text-[14px] text-gray-900 mb-0.5">Start finding the right support today</h4>
-                <p class="text-[11px] text-gray-400 mb-4">Because the right help makes all the difference.</p>
+                <h4 class="font-bold text-[20px] font-bold text-gray-800 mb-0.5">Start finding the right support today</h4>
+                <p class="text-[14px] text-gray-500 mb-5 leading-relaxed">Because the right help makes all the difference.</p>
                 <a href="signup.php" class="border border-gray-400 text-gray-700 px-8 py-1.5 rounded-full text-[11px] font-semibold bg-white hover:bg-gray-50 transition">
                     Join us
                 </a>
