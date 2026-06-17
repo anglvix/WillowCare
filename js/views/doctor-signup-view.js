@@ -2,7 +2,7 @@ import { register, isLoggedIn, getSession } from '../services/auth-service.js'
 
 if (isLoggedIn()) {
   const session = getSession()
-  window.location.href = session?.role === 'doctor' ? 'doctor_area.php' : 'account_page.php'
+  window.location.href = session?.role === 'doctor' ? 'doctor_dashboard.php' : 'account_page.php'
 }
 
 const formEl = document.querySelector('#doctor-signup-form')
