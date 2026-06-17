@@ -1,0 +1,70 @@
+import { register, isLoggedIn, getSession } from '../services/auth-service.js'
+
+if (isLoggedIn()) {
+  const session = getSession()
+  window.location.href = session?.role === 'doctor' ? 'doctor_dashboard.php' : 'account_page.php'
+}
+
+const formEl = document.querySelector('#doctor-signup-form')
+const errorEl = document.querySelector('#doctor-signup-error')
+const certInput = document.querySelector('[name="certification"]')
+const previewImg = document.querySelector('#cert-preview')
+
+// Read a file as a base64 data URL for preview and upload.
+const readFileAsDataURL = (file) => new Promise((resolve, reject) => {
+  const reader = new FileReader()
+  reader.onload = () => resolve(reader.result)
+  reader.onerror = () => reject(reader.error)
+  reader.readAsDataURL(file)
+})
+
+// Handle certification image selection and preview.
+certInput?.addEventListener('change', async (event) => {
+  const file = event.target.files?.[0]
+  if (file && file.type.startsWith('image/')) {
+    const dataUrl = await readFileAsDataURL(file)
+    previewImg.src = dataUrl
+    previewImg.classList.remove('hidden')
+  } else {
+    previewImg.src = ''
+    previewImg.classList.add('hidden')
+  }
+})
+
+formEl?.addEventListener('submit', async (e) => {
+  e.preventDefault()
+  const name = formEl.querySelector('[name="fullname"]').value.trim()
+  const email = formEl.querySelector('[name="email"]').value.trim()
+  const password = formEl.querySelector('[name="password"]').value
+  const phone = formEl.querySelector('[name="phone"]').value.trim()
+  const address = formEl.querySelector('[name="address"]').value.trim()
+  const specialty = formEl.querySelector('[name="specialty"]').value.trim()
+  const certificationFile = formEl.querySelector('[name="certification"]').files?.[0]
+
+  let certification = null
+  if (certificationFile) {
+    certification = await readFileAsDataURL(certificationFile)
+  }
+
+  const result = await register({
+    name,
+    email,
+    password,
+    role: 'doctor',
+    specialty,
+    certification,
+    phone,
+    address
+  })
+
+  // Handle doctor signup form submission.
+  if (!result.ok) {
+    if (errorEl) {
+      errorEl.textContent = 'Erro no registo. O email pode já estar em uso.'
+    }
+    return
+  }
+
+  window.alert('Your doctor account has been created and is now waiting for admin verification. You will be notified once it is approved.')
+  window.location.href = 'doctor_login.php'
+})

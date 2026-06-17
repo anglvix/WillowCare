@@ -7,6 +7,7 @@ export default class User {
     this.avatar = ''
     this.savedDoctors = []
     this.savedSchools = []
+    this.savedOrganizations = []
     this.achievements = []
   }
 
@@ -26,6 +27,7 @@ export default class User {
     u.avatar = obj.avatar ?? ''
     u.savedDoctors = obj.savedDoctors ?? []
     u.savedSchools = obj.savedSchools ?? []
+    u.savedOrganizations = obj.savedOrganizations ?? []
     u.achievements = obj.achievements ?? []
     return u
   }

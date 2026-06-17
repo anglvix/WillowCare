@@ -15,11 +15,12 @@ include '../includes/head.php';
 
             <!-- Left Side -->
             <div class="bg-willow-dark hidden md:flex flex-col justify-center items-center p-12 text-center text-white">
+                <img src="../images/willowcare icon WHITE.png" alt="WillowCare Logo" class="mx-auto mb-2 w-40 h-40 object-contain">
                 <h3 class="text-2xl font-serif font-bold mb-4">
                     Start your journey with us.
                 </h3>
 
-                <p class="text-xs text-gray-300 leading-relaxed max-w-xs">
+                <p class="text-sm text-gray-300 leading-relaxed max-w-xs">
                     Access custom healthcare recommendations, community groups,
                     and adaptive learning workflows.
                 </p>
@@ -32,15 +33,15 @@ include '../includes/head.php';
                     Create Account
                 </h2>
 
-                <p class="text-xs text-gray-400 mb-6">
+                <p class="text-sm text-gray-700 mb-6">
                     Join our supportive network today.
                 </p>
 
-                <p id="signup-error" class="text-xs text-red-500"></p>
+                <p id="signup-error" class="text-sm text-red-500"></p>
                 <form id="signup-form" class="space-y-3">
 
                     <div>
-                        <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">
+                        <label class="block text-[13px] font-bold text-gray-600">
                             Full Name
                         </label>
 
@@ -53,7 +54,7 @@ include '../includes/head.php';
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">
+                        <label class="block text-[13px] font-bold text-gray-600">
                             Email Address
                         </label>
 
@@ -66,7 +67,16 @@ include '../includes/head.php';
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">
+                        <label class="block text-[13px] font-bold text-gray-600">Account type</label>
+                        <select name="role" class="w-full border border-gray-200 rounded-xl px-4 py-2 text-xs focus:outline-none focus:border-willow-mid">
+                            <option value="caregiver">Caregiver</option>
+                            <option value="organization">Representative of an Organization</option>
+                            <option value="school">Representative of a School</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-[13px] font-bold text-gray-600">
                             Password
                         </label>
 
@@ -78,7 +88,7 @@ include '../includes/head.php';
                             placeholder="••••••••">
                     </div>
 
-                    <div class="flex items-start gap-2 pt-1 text-[11px] text-gray-500">
+                    <div class="flex items-start gap-2 pt-1 text-[13px] text-gray-500">
                         <input
                             type="checkbox"
                             required
@@ -94,6 +104,7 @@ include '../includes/head.php';
                     </button>
 
                 </form>
+                <p class="text-sm text-center text-gray-500 mt-8">Already have an account? <a href="login.php" class="text-willow-mid font-bold hover:underline">Log in</a></p>
             </div>
         </div>
     </main>

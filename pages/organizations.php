@@ -19,7 +19,7 @@ include '../includes/head.php';
                 Associations & Support Groups
             </h1>
 
-            <p class="text-xs text-gray-500 mt-2">
+            <p class="text-sm text-gray-700 mt-2">
                 Connect directly with national communities.
             </p>
 

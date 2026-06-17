@@ -22,20 +22,20 @@ include '../includes/head.php';
             <form id="filter-form" class="space-y-4">
 
                 <div>
-                    <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">
+                    <label class="block text-[13px] uppercase font-bold text-gray-700 mb-1">
                         District
                     </label>
                     <input
                         type="text"
                         name="district"
                         placeholder="e.g. Porto"
-                        class="w-full border bg-white border-gray-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-willow-mid">
+                        class="w-full border bg-white border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-willow-mid">
                 </div>
 
                 <div>
-                    <p class="text-[10px] uppercase font-bold text-gray-400 mb-2">Support Features</p>
+                    <p class="text-[13px] uppercase font-bold text-gray-700 mb-2">Support Features</p>
 
-                    <label class="flex items-center gap-2 text-xs text-gray-600">
+                    <label class="flex items-center gap-2 text-sm text-gray-600">
                         <input
                             type="checkbox"
                             name="special-ed-team"
@@ -43,7 +43,7 @@ include '../includes/head.php';
                         Dedicated Special Ed. Team
                     </label>
 
-                    <label class="flex items-center gap-2 text-xs text-gray-600 mt-2">
+                    <label class="flex items-center gap-2 text-sm text-gray-700 mt-2">
                         <input
                             type="checkbox"
                             name="speech-therapy"
@@ -51,7 +51,7 @@ include '../includes/head.php';
                         Speech Therapy Support
                     </label>
 
-                    <label class="flex items-center gap-2 text-xs text-gray-600 mt-2">
+                    <label class="flex items-center gap-2 text-sm text-gray-700 mt-2">
                         <input
                             type="checkbox"
                             name="sensory-room"
@@ -59,7 +59,7 @@ include '../includes/head.php';
                         Sensory Rooms
                     </label>
 
-                    <label class="flex items-center gap-2 text-xs text-gray-600 mt-2">
+                    <label class="flex items-center gap-2 text-sm text-gray-700 mt-2">
                         <input
                             type="checkbox"
                             name="occupational-therapy"
@@ -68,12 +68,7 @@ include '../includes/head.php';
                     </label>
                 </div>
 
-                <button
-                    type="submit"
-                    class="w-full bg-willow-dark text-white py-2.5 rounded-xl text-xs font-semibold hover:bg-willow-mid transition">
-                    Search Schools
-                </button>
-
+                
             </form>
 
         </aside>

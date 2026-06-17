@@ -2,6 +2,7 @@ import { isLoggedIn } from '../services/auth-service.js'
 import { getWorkshops, getExcursions } from '../services/activity-service.js'
 import { getLatestReviews } from '../services/doctor-service.js'
 
+// Update an existing joincta.
 function updateJoinCTA() {
   if (isLoggedIn()) {
     document.getElementById('join-cta')?.remove()
@@ -14,6 +15,7 @@ function formatDate(dateStr) {
   return `${d}/${m}/${y}`
 }
 
+// Render the activitycard.
 function renderActivityCard(activity) {
   const imgHtml = activity.image
     ? `<img src="${activity.image}" alt="${activity.location}" class="w-full h-full object-cover">`
@@ -30,14 +32,15 @@ function renderActivityCard(activity) {
       <div class="h-40 overflow-hidden">${imgHtml}</div>
       <div class="bg-willow-mid p-4 text-white flex-grow flex flex-col justify-between">
         <div>
-          <p class="text-[9px] tracking-wide opacity-90 mb-1">${formatDate(activity.date)} - ${activity.location}</p>
-          <h3 class="font-bold text-[15px] mb-6">${activity.title}</h3>
+          <p class="text-[12px] tracking-wide opacity-90 mb-1">${formatDate(activity.date)} - ${activity.location}</p>
+          <h3 class="font-bold text-[18px] mb-6">${activity.title}</h3>
         </div>
-        <a href="${href}" class="text-[11px] underline font-medium opacity-90 hover:opacity-100 self-start">Learn More</a>
+        <a href="${href}" class="text-[14px] underline font-medium opacity-90 hover:opacity-100 self-start">Learn More</a>
       </div>
     </div>`
 }
 
+// Load data or initialize state for upcomingactivities.
 async function loadUpcomingActivities() {
   const grid = document.getElementById('upcoming-activities-grid')
   if (!grid) return
@@ -63,13 +66,15 @@ async function loadUpcomingActivities() {
   grid.innerHTML = upcoming.map(renderActivityCard).join('')
 }
 
+// StarsHtml.
 function starsHtml(rating) {
   return '★'.repeat(rating) + '☆'.repeat(5 - rating)
 }
 
+// Render the reviewcard.
 function renderReviewCard(review) {
-  const photoAttr = review.subjectPhoto
-    ? `style="background-image: url('${review.subjectPhoto}');"`
+  const photoAttr = review.authorPhoto
+    ? `style="background-image: url('${review.authorPhoto}');"`
     : ''
 
   return `
@@ -77,17 +82,18 @@ function renderReviewCard(review) {
       <div class="flex justify-between items-center mb-3">
         <div class="flex items-center gap-2.5">
           <div class="w-8 h-8 rounded-full bg-gray-200 bg-cover bg-center" ${photoAttr}></div>
-          <span class="text-[12px] font-bold text-gray-900">${review.subjectName}</span>
+          <span class="text-[14px] font-bold text-gray-900">${review.subjectName}</span>
         </div>
-        <div class="text-willow-dark text-[11px]">${starsHtml(review.rating)}</div>
+        <div class="text-willow-dark text-[14px]">${starsHtml(review.rating)}</div>
       </div>
-      <div class="bg-willow-light p-4 rounded-xl text-[11px] text-gray-800 leading-normal flex flex-col justify-between min-h-[90px]">
+      <div class="bg-willow-light p-4 rounded-xl text-[14px] text-gray-800 leading-normal flex flex-col justify-between min-h-[90px]">
         <span>${review.text}</span>
         <span class="block font-bold text-willow-dark/60 text-[10px] mt-2">${review.authorInitials}</span>
       </div>
     </div>`
 }
 
+// Load data or initialize state for latestreviews.
 async function loadLatestReviews() {
   const grid = document.getElementById('latest-reviews-grid')
   if (!grid) return

@@ -2,6 +2,7 @@ import { getToken, getSession } from './auth-service.js'
 
 const BASE = 'http://localhost:3001'
 
+// AuthHeaders.
 function authHeaders() {
   const token = getToken()
   return {
@@ -10,24 +11,28 @@ function authHeaders() {
   }
 }
 
+// Retrieve workshops from the API or state.
 export async function getWorkshops() {
   const res = await fetch(`${BASE}/workshops`)
   if (!res.ok) return []
   return res.json()
 }
 
+// Retrieve excursions from the API or state.
 export async function getExcursions() {
   const res = await fetch(`${BASE}/excursions`)
   if (!res.ok) return []
   return res.json()
 }
 
+// Retrieve workshopbyid from the API or state.
 export async function getWorkshopById(id) {
   const res = await fetch(`${BASE}/workshops/${id}`)
   if (!res.ok) return null
   return res.json()
 }
 
+// Retrieve excursionbyid from the API or state.
 export async function getExcursionById(id) {
   const res = await fetch(`${BASE}/excursions/${id}`)
   if (!res.ok) return null
@@ -55,4 +60,62 @@ export async function enroll(activityType, activityId) {
   })
 
   return { ok: updated.ok }
+}
+
+// Retrieve workshopsbyhost from the API or state.
+export async function getWorkshopsByHost(hostType, hostId) {
+  const res = await fetch(`${BASE}/workshops?hostType=${encodeURIComponent(hostType)}&hostId=${encodeURIComponent(hostId)}`)
+  if (!res.ok) return []
+  return res.json()
+}
+
+// Retrieve excursionsbyhost from the API or state.
+export async function getExcursionsByHost(hostType, hostId) {
+  const res = await fetch(`${BASE}/excursions?hostType=${encodeURIComponent(hostType)}&hostId=${encodeURIComponent(hostId)}`)
+  if (!res.ok) return []
+  return res.json()
+}
+
+// Create a new workshop.
+export async function createWorkshop(workshop) {
+  const res = await fetch(`${BASE}/workshops`, {
+    method: 'POST',
+    headers: authHeaders(),
+    body: JSON.stringify({
+      ...workshop,
+      enrolledUsers: [],
+      image: workshop.image || '',
+      hostName: workshop.hostName || '',
+      hostType: workshop.hostType || '',
+      hostId: workshop.hostId || null
+    })
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to create workshop')
+  }
+
+  return res.json()
+}
+
+// Create a new excursion.
+export async function createExcursion(excursion) {
+  const res = await fetch(`${BASE}/excursions`, {
+    method: 'POST',
+    headers: authHeaders(),
+    body: JSON.stringify({
+      ...excursion,
+      enrolledUsers: [],
+      image: excursion.image || '',
+      hostName: excursion.hostName || '',
+      hostType: excursion.hostType || '',
+      hostId: excursion.hostId || null
+    })
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to create excursion')
+  }
+
+  return res.json()
 }

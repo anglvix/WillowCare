@@ -13,12 +13,12 @@ include '../includes/head.php';
         <div class="mb-8 flex justify-between items-end">
             <div>
                 <h1 class="text-2xl font-serif font-bold text-willow-dark">Development Workshops</h1>
-                <p class="text-xs text-gray-400">Creative and interactive dynamic learning groups.</p>
+                <p class="text-sm text-gray-700">Creative and interactive dynamic learning groups.</p>
             </div>
-            <a href="activity_lobby.php" class="text-xs text-willow-dark underline font-medium">Back to Lobby</a>
+            <a href="activity_lobby.php" class="text-sm text-willow-dark underline font-medium">Back to Lobby</a>
         </div>
         <div id="workshop-list" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <p class="text-sm text-gray-400">A carregar workshops...</p>
+            <p class="text-sm text-gray-700">A carregar workshops...</p>
         </div>
     </main>
 

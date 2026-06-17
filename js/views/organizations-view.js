@@ -3,15 +3,20 @@ import { getOrganizations } from '../services/organization-service.js'
 
 const listEl = document.querySelector('#organization-list')
 
+// Render the card.
 function renderCard(org) {
   return `
     <div class="bg-willow-cream/30 border border-willow-cream rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 group hover:border-willow-mid transition">
-      <div class="w-16 h-16 bg-willow-mid text-white rounded-full flex items-center justify-center font-bold text-xl shrink-0">
-        ${org.initials}
+      <div class="w-16 h-16 rounded-full shrink-0 overflow-hidden flex items-center justify-center">
+        ${org.avatar ? `
+          <img src="${org.avatar}" alt="${org.name}" class="w-16 h-16 object-cover">
+        ` : `
+          <div class="w-16 h-16 bg-willow-mid text-white flex items-center justify-center font-bold text-xl">${org.initials}</div>
+        `}
       </div>
       <div class="text-center sm:text-left flex-grow">
         <h3 class="font-serif font-bold text-lg text-willow-dark">${org.name}</h3>
-        <p class="text-xs text-gray-600 mt-1">${org.description}</p>
+        <p class="text-sm text-gray-700 mt-1">${org.description}</p>
       </div>
       <a href="organization_detail.php?id=${org.id}"
         class="bg-willow-dark text-white px-5 py-2 rounded-xl text-xs font-medium hover:bg-willow-mid transition shrink-0">
@@ -21,6 +26,7 @@ function renderCard(org) {
   `
 }
 
+// Load data or initialize state for the page.
 async function load() {
   const data = await getOrganizations()
   const orgs = data.map(Organization.fromObject)

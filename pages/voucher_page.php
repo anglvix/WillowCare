@@ -19,7 +19,7 @@ include '../includes/head.php';
                 Your Activity Vouchers
             </h1>
 
-            <p class="text-xs text-gray-400 mt-1">
+            <p class="text-sm text-gray-700 mt-1">
                 Access and manage your confirmed activity bookings.
             </p>
 
@@ -27,7 +27,7 @@ include '../includes/head.php';
 
         <!-- Vouchers - preenchido pelo voucher-view.js -->
         <div id="voucher-list" class="space-y-4">
-            <p class="text-sm text-gray-400">A carregar vouchers...</p>
+            <p class="text-sm text-gray-700">A carregar vouchers...</p>
         </div>
 
     </main>

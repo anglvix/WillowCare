@@ -16,6 +16,7 @@ include '../includes/head.php';
 
         <div class="h-64 bg-gray-100 rounded-3xl overflow-hidden shadow-inner">
             <img
+                id="excursion-image"
                 src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1000&q=80"
                 class="w-full h-full object-cover"
                 alt="Passeio em Valongo"
@@ -23,37 +24,30 @@ include '../includes/head.php';
         </div>
 
         <div>
-            <span class="text-xs bg-willow-cream text-willow-dark px-3 py-1 rounded-full font-bold uppercase tracking-wider">
+            <span class="text-sm bg-willow-cream text-willow-dark px-3 py-1 rounded-full font-bold uppercase tracking-wider">
                 Excursion Plan
             </span>
 
-            <h1 class="text-3xl font-serif font-bold text-willow-dark mt-3 mb-2">
-                Passeio em Valongo
-            </h1>
+            <h1 id="excursion-title" class="text-3xl font-serif font-bold text-willow-dark mt-3 mb-2">A carregar...</h1>
 
-            <p class="text-xs text-gray-400 flex items-center gap-1">
-                📍 Valongo Nature Trails, Porto |
-                📅 14 Maio 2026
-            </p>
+            <p id="excursion-meta" class="text-sm text-gray-700 flex items-center gap-1">A carregar...</p>
+            <p id="excursion-host" class="text-sm font-bold text-gray-700 mt-2"></p>
         </div>
 
-        <p class="text-sm text-gray-600 leading-relaxed">
-            Este passeio ao ar livre foi desenhado especificamente para proporcionar
-            estímulo sensorial adaptado e socialização segura de forma calma e estruturada.
-        </p>
+        <p id="excursion-description" class="text-sm text-gray-600 leading-relaxed">A carregar...</p>
 
     </div>
 
     <div class="bg-willow-cream/40 border border-willow-cream p-6 rounded-3xl h-fit">
 
-        <h3 class="font-bold text-gray-800 text-sm mb-4">
+        <h3 class="block text-[13px] uppercase font-bold text-gray-700 mb-1">
             Register Attendance
         </h3>
 
         <form id="booking-form" class="space-y-3">
 
             <div>
-                <label class="block text-[10px] uppercase font-bold text-gray-500 mb-1">
+                <label class="block text-[12px] uppercase font-bold text-gray-700 mb-1">
                     Caregiver Name
                 </label>
 
@@ -67,7 +61,7 @@ include '../includes/head.php';
             </div>
 
             <div>
-                <label class="block text-[10px] uppercase font-bold text-gray-500 mb-1">
+                <label class="block text-[12px] uppercase font-bold text-gray-700 mb-1">
                     Number of Attendees
                 </label>
 

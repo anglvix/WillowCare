@@ -1,6 +1,17 @@
 <?php
 if (!isset($page_title)) $page_title = 'Willow Care';
 if (!isset($html_lang)) $html_lang = 'pt';
+
+// Normalize base path for assets when pages set relative values like "../"
+if (!isset($base_path) || !preg_match('/^(\/|https?:)/', $base_path)) {
+    $base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+    if (substr($base_path, -6) === '/pages') {
+        $base_path = substr($base_path, 0, -6);
+    }
+    $base_path = $base_path === '' ? '/' : $base_path . '/';
+}
+// Cache-busting for local CSS updates
+$css_version = @filemtime(__DIR__ . '/../css/style.css') ?: time();
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo htmlspecialchars($html_lang, ENT_QUOTES); ?>">
@@ -8,9 +19,14 @@ if (!isset($html_lang)) $html_lang = 'pt';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($page_title, ENT_QUOTES); ?></title>
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $base_path; ?>images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $base_path; ?>images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $base_path; ?>images/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="<?php echo $base_path; ?>images/favicon_io/site.webmanifest">
+    <meta name="theme-color" content="#465E4B">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- CSS personalizado -->
-    <link rel="stylesheet" href="<?php echo isset($base_path) ? $base_path : ''; ?>css/style.css">
+    <link rel="stylesheet" href="<?php echo $base_path; ?>css/style.css?v=<?php echo $css_version; ?>">
     <!-- Fontes Fontshare -->
     <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,401,500,501,600,601,700,701,1,2&f[]=boska@500&display=swap" rel="stylesheet">
     <!-- Configuração Tailwind -->
