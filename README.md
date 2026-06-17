@@ -87,12 +87,29 @@ http://localhost:8000
 WillowCare/
 ├── README.md
 ├── package.json
+├── package-lock.json
 ├── db.json
 ├── router.php
 ├── css/
 │   ├── navigation.css
 │   └── style.css
 ├── images/
+│   ├── banner.jpg
+│   ├── footer_logo.png
+│   ├── hand-shake.png
+│   ├── open-book.png
+│   ├── stethoscope.png
+│   ├── willowcare icon BLACK.png
+│   ├── willowcare icon WHITE.png
+│   ├── willow_care.png
+│   └── favicon_io/
+│       ├── android-chrome-192x192.png
+│       ├── android-chrome-512x512.png
+│       ├── apple-touch-icon.png
+│       ├── favicon-16x16.png
+│       ├── favicon-32x32.png
+│       ├── favicon.ico
+│       └── site.webmanifest
 ├── includes/
 │   ├── footer.php
 │   ├── head.php
@@ -124,6 +141,7 @@ WillowCare/
 │       ├── account-view.js
 │       ├── admin-view.js
 │       ├── doctor-area-view.js
+│       ├── doctor-dashboard-view.js
 │       ├── doctor-login-view.js
 │       ├── doctor-search-view.js
 │       ├── doctor-signup-view.js
@@ -152,6 +170,7 @@ WillowCare/
     ├── activity_lobby.php
     ├── admin.php
     ├── doctor_area.php
+    ├── doctor_dashboard.php
     ├── doctor_login.php
     ├── doctor_search.php
     ├── doctor_signup.php
