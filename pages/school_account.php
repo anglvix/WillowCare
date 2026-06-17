@@ -13,14 +13,7 @@ include '../includes/head.php';
     <main class="max-w-4xl mx-auto w-full px-6 py-12 flex-grow space-y-6">
 
         <!-- Banner Image -->
-        <div class="h-48 rounded-3xl bg-gray-100 overflow-hidden shadow-inner">
-
-            <img
-                src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
-                alt="Escola Básica D. Manuel II"
-                class="w-full h-full object-cover">
-
-        </div>
+        <div id="school-banner" class="h-48 rounded-3xl bg-gray-100 overflow-hidden shadow-inner bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80');"></div>
 
         <!-- School Header -->
         <div>

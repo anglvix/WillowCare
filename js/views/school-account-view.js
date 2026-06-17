@@ -22,6 +22,7 @@ const reviewModal = document.querySelector('#review-modal')
 const reviewsModal = document.querySelector('#reviews-modal')
 const btnReviews = document.querySelector('#btn-reviews')
 const btnPostReview = document.querySelector('#btn-post-review')
+const bannerEl = document.querySelector('#school-banner')
 
 const featureLabels = {
   'special-ed-team': 'Special Ed. Team',
@@ -142,6 +143,12 @@ async function load() {
 
   const addressEl = document.querySelector('#school-address')
   if (addressEl && school.address) addressEl.textContent = school.address
+
+  if (bannerEl) {
+    bannerEl.style.backgroundImage = school.avatar
+      ? `url('${school.avatar}')`
+      : `url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80')`
+  }
 
   await updateSaveButtonState(Number(id))
   await loadSchoolReviews(school)

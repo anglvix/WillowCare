@@ -15,8 +15,8 @@ include '../includes/head.php';
         <!-- Header Card -->
         <section class="flex flex-col sm:flex-row items-center gap-4 bg-willow-dark text-white p-6 rounded-2xl shadow-sm">
 
-            <div id="org-initials" class="w-16 h-16 bg-white text-willow-dark rounded-full flex items-center justify-center font-bold text-xl shrink-0">
-                ...
+            <div id="org-avatar" class="w-16 h-16 bg-white text-willow-dark rounded-full flex items-center justify-center font-bold text-xl shrink-0 bg-cover bg-center">
+                <span id="org-initials">...</span>
             </div>
 
             <div class="text-center sm:text-left">

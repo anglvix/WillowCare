@@ -13,6 +13,7 @@ if (!id) {
 }
 
 const initialsEl = document.querySelector('#org-initials')
+const orgAvatarEl = document.querySelector('#org-avatar')
 const nameEl = document.querySelector('#org-name')
 const descriptionEl = document.querySelector('#org-description')
 const missionEl = document.querySelector('#org-mission')
@@ -140,6 +141,16 @@ async function load() {
 
   const addressEl = document.querySelector('#org-address')
   if (addressEl && org.address) addressEl.textContent = org.address
+
+  if (orgAvatarEl) {
+    if (org.avatar) {
+      orgAvatarEl.style.backgroundImage = `url('${org.avatar}')`
+      initialsEl.textContent = ''
+    } else {
+      orgAvatarEl.style.backgroundImage = ''
+      initialsEl.textContent = org.initials
+    }
+  }
 
   await updateSaveButtonState(Number(id))
   await loadOrganizationReviews(org)
