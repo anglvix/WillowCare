@@ -12,14 +12,14 @@ function authHeaders() {
   }
 }
 
-// Retrieve profile from the API or state.
+// Retrieve profile from the JSON server.
 export async function getProfile(userId) {
   const res = await fetch(`${BASE}/users/${userId}`, { headers: authHeaders() })
   if (!res.ok) return null
   return res.json()
 }
 
-// Retrieve vouchers from the API or state.
+// Retrieve vouchers from the JSON server.
 export async function getVouchers(userId) {
   const res = await fetch(`${BASE}/vouchers?userId=${userId}`, { headers: authHeaders() })
   if (!res.ok) return []

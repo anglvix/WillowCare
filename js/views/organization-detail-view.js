@@ -25,7 +25,7 @@ const reviewsModal = document.querySelector('#reviews-modal')
 const btnReviews = document.querySelector('#btn-reviews')
 const btnPostReview = document.querySelector('#btn-post-review')
 
-// Retrieve authorinitials from the API or state.
+// Retrieve author initials from the JSON server.
 function getAuthorInitials(name) {
   if (!name) return 'AN'
   return name

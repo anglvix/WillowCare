@@ -61,7 +61,7 @@ formEl?.addEventListener('submit', (e) => e.preventDefault())
 const districtInput = formEl?.querySelector('[name="district"]')
 const checkboxes = formEl ? [...formEl.querySelectorAll('input[type="checkbox"]')] : []
 
-// Retrieve filters from the API or state.
+// Retrieve filters from the JSON server.
 function getFilters() {
   const district = districtInput?.value.trim() || ''
   const features = checkboxes.filter(cb => cb.checked).map(cb => cb.name)

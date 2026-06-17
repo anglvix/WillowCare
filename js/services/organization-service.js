@@ -1,13 +1,13 @@
 const BASE = 'http://localhost:3001'
 
-// Retrieve organizations from the API or state.
+// Retrieve organizations from the JSON server.
 export async function getOrganizations() {
   const res = await fetch(`${BASE}/organizations`)
   if (!res.ok) return []
   return res.json()
 }
 
-// Retrieve organizationbyid from the API or state.
+// Retrieve organization by id from the JSON server.
 export async function getOrganizationById(id) {
   const res = await fetch(`${BASE}/organizations/${id}`)
   if (!res.ok) return null
@@ -52,7 +52,7 @@ export async function createOrganization(org) {
   return res.json()
 }
 
-// Retrieve ownorganization from the API or state.
+// Retrieve own organization from the JSON server.
 export async function getOwnOrganization(user) {
   const res = await fetch(`${BASE}/organizations`)
   if (!res.ok) return null
@@ -86,7 +86,7 @@ export async function getOwnOrganization(user) {
   return organization
 }
 
-// Retrieve organizationreviews from the API or state.
+// Retrieve organization reviews from the JSON server.
 export async function getOrganizationReviews(orgId, orgName = '') {
   const idRes = await fetch(`${BASE}/reviews?subjectId=${orgId}&subjectType=organization&_sort=createdAt&_order=desc`)
   if (idRes.ok) {

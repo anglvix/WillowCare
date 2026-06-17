@@ -31,7 +31,7 @@ const featureLabels = {
   'occupational-therapy': 'Occupational Therapy'
 }
 
-// Retrieve authorinitials from the API or state.
+// Retrieve author initials from the JSON server.
 function getAuthorInitials(name) {
   if (!name) return 'AN'
   return name

@@ -9,7 +9,7 @@ async function requestJson(url, options = {}) {
     return response.json();
 }
 
-// Retrieve users from the API or state.
+// Retrieve users from the JSON server.
 export async function getUsers() {
     return requestJson(`${API_URL}/users`);
 }

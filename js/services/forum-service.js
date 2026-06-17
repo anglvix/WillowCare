@@ -12,14 +12,14 @@ function authHeaders() {
   };
 }
 
-// Retrieve topics from the API or state.
+// Retrieve topics from the JSON server.
 export async function getTopics() {
   const res = await fetch(`${BASE}/forumTopics`);
   if (!res.ok) return [];
   return res.json();
 }
 
-// Retrieve topicbyid from the API or state.
+// Retrieve topic by id from the JSON server.
 export async function getTopicById(id) {
   const res = await fetch(`${BASE}/forumTopics/${id}`);
   if (!res.ok) return null;

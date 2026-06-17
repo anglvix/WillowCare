@@ -6,12 +6,12 @@ function saveSession(token, user) {
   localStorage.setItem('user', JSON.stringify(user))
 }
 
-// Retrieve token from the API or state.
+// Retrieve token from the JSON server.
 export function getToken() {
   return localStorage.getItem('token')
 }
 
-// Retrieve session from the API or state.
+// Retrieve session from the JSON server.
 export function getSession() {
   const raw = localStorage.getItem('user')
   return raw ? JSON.parse(raw) : null
@@ -33,7 +33,7 @@ export function isAdmin() {
   return user?.role === 'admin'
 }
 
-// Retrieve rolelabel from the API or state.
+// Retrieve role label from the JSON server.
 export function getRoleLabel(role) {
   const labels = {
     admin: 'Admin',

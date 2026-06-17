@@ -11,28 +11,28 @@ function authHeaders() {
   }
 }
 
-// Retrieve workshops from the API or state.
+// Retrieve workshops from the JSON server.
 export async function getWorkshops() {
   const res = await fetch(`${BASE}/workshops`)
   if (!res.ok) return []
   return res.json()
 }
 
-// Retrieve excursions from the API or state.
+// Retrieve excursions from the JSON server.
 export async function getExcursions() {
   const res = await fetch(`${BASE}/excursions`)
   if (!res.ok) return []
   return res.json()
 }
 
-// Retrieve workshopbyid from the API or state.
+// Retrieve workshop by id from the JSON server.
 export async function getWorkshopById(id) {
   const res = await fetch(`${BASE}/workshops/${id}`)
   if (!res.ok) return null
   return res.json()
 }
 
-// Retrieve excursionbyid from the API or state.
+// Retrieve excursion by id from the JSON server.
 export async function getExcursionById(id) {
   const res = await fetch(`${BASE}/excursions/${id}`)
   if (!res.ok) return null
@@ -62,14 +62,14 @@ export async function enroll(activityType, activityId) {
   return { ok: updated.ok }
 }
 
-// Retrieve workshopsbyhost from the API or state.
+// Retrieve workshops by host from the JSON server.
 export async function getWorkshopsByHost(hostType, hostId) {
   const res = await fetch(`${BASE}/workshops?hostType=${encodeURIComponent(hostType)}&hostId=${encodeURIComponent(hostId)}`)
   if (!res.ok) return []
   return res.json()
 }
 
-// Retrieve excursionsbyhost from the API or state.
+// Retrieve excursions by host from the JSON server.
 export async function getExcursionsByHost(hostType, hostId) {
   const res = await fetch(`${BASE}/excursions?hostType=${encodeURIComponent(hostType)}&hostId=${encodeURIComponent(hostId)}`)
   if (!res.ok) return []

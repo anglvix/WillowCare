@@ -1,13 +1,13 @@
 const BASE = "http://localhost:3001";
 
-// Retrieve schools from the API or state.
+// Retrieve schools from the JSON server.
 export async function getSchools() {
   const res = await fetch(`${BASE}/schools`);
   if (!res.ok) return [];
   return res.json();
 }
 
-// Retrieve schoolbyid from the API or state.
+// Retrieve school by id from the JSON server.
 export async function getSchoolById(id) {
   const res = await fetch(`${BASE}/schools/${id}`);
   if (!res.ok) return null;
@@ -76,7 +76,7 @@ export async function createSchool(school) {
   return res.json();
 }
 
-// Retrieve ownschool from the API or state.
+// Retrieve own school from the JSON server.
 export async function getOwnSchool(user) {
   const res = await fetch(`${BASE}/schools`);
   if (!res.ok) return null;
@@ -111,7 +111,7 @@ export async function getOwnSchool(user) {
   return school;
 }
 
-// Retrieve schoolreviews from the API or state.
+// Retrieve school reviews from the JSON server.
 export async function getSchoolReviews(schoolId, schoolName = '') {
   const idRes = await fetch(`${BASE}/reviews?subjectId=${schoolId}&subjectType=school&_sort=createdAt&_order=desc`);
   if (idRes.ok) {

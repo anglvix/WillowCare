@@ -11,14 +11,14 @@ function authHeaders() {
   }
 }
 
-// Retrieve doctors from the API or state.
+// Retrieve doctors from the JSON server.
 export async function getDoctors() {
   const res = await fetch(`${BASE}/doctors`)
   if (!res.ok) return []
   return res.json()
 }
 
-// Retrieve doctorbyid from the API or state.
+// Retrieve doctor by id from the JSON server.
 export async function getDoctorById(id) {
   const res = await fetch(`${BASE}/doctors/${id}`)
   if (!res.ok) return null
@@ -44,7 +44,7 @@ export async function getLatestReviews(limit = 2) {
   return res.json()
 }
 
-// Retrieve doctorreviews from the API or state.
+// Retrieve doctor reviews from the JSON server.
 export async function getDoctorReviews(doctorId, doctorName = '') {
   const idRes = await fetch(`${BASE}/reviews?subjectId=${doctorId}&subjectType=doctor&_sort=createdAt&_order=desc`)
   if (idRes.ok) {
@@ -70,7 +70,7 @@ export async function createReview(review) {
   return res.json()
 }
 
-// Retrieve owndoctor from the API or state.
+// Retrieve own doctor from the JSON server.
 export async function getOwnDoctor(user) {
   const res = await fetch(`${BASE}/doctors`)
   if (!res.ok) return null
