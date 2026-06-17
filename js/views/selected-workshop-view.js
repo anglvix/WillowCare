@@ -28,11 +28,8 @@ async function loadWorkshop() {
   const data = await getWorkshopById(id)
 
   if (!data) return
-  console.log('RAW DB DATA:', data) // debug
 
   const workshop = Workshop.fromObject(data)
-
-  console.log('WORKSHOP OBJECT:', workshop) // debug
 
   // TITLE
   document.querySelector('#workshop-title').textContent =

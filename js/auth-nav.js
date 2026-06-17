@@ -1,31 +1,38 @@
 import { isLoggedIn, getSession, logout } from './services/auth-service.js'
 
-// CloseMobileMenu.
-function closeMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobileMenuCloseIcon) {
-  if (!mobileMenu || !mobileMenuButton) return
-  mobileMenu.classList.add('hidden')
-  mobileMenuButton.setAttribute('aria-expanded', 'false')
-  mobileMenuOpenIcon?.classList.remove('hidden')
-  mobileMenuCloseIcon?.classList.add('hidden')
+const mobileMenuStates = {
+  admin: { href: 'admin.php', label: 'Admin Dashboard' },
+  doctor: { href: 'doctor_dashboard.php', label: 'Doctor Dashboard' },
+  school: { href: 'school_dashboard.php', label: 'School Dashboard' },
+  organization: { href: 'organization_dashboard.php', label: 'Organization Dashboard' },
+  caregiver: { href: 'account_page.php', label: 'My Account' }
 }
 
-// OpenMobileMenu.
+function setMobileMenuState(mobileMenu, mobileMenuButton, isOpen, mobileMenuOpenIcon, mobileMenuCloseIcon) {
+  if (!mobileMenu || !mobileMenuButton) return
+  mobileMenu.classList.toggle('hidden', !isOpen)
+  mobileMenuButton.setAttribute('aria-expanded', String(isOpen))
+  mobileMenuOpenIcon?.classList.toggle('hidden', isOpen)
+  mobileMenuCloseIcon?.classList.toggle('hidden', !isOpen)
+}
+
 function openMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobileMenuCloseIcon) {
-  if (!mobileMenu || !mobileMenuButton) return
-  mobileMenu.classList.remove('hidden')
-  mobileMenuButton.setAttribute('aria-expanded', 'true')
-  mobileMenuOpenIcon?.classList.add('hidden')
-  mobileMenuCloseIcon?.classList.remove('hidden')
+  setMobileMenuState(mobileMenu, mobileMenuButton, true, mobileMenuOpenIcon, mobileMenuCloseIcon)
 }
 
-// Toggle the mobilemenu.
+function closeMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobileMenuCloseIcon) {
+  setMobileMenuState(mobileMenu, mobileMenuButton, false, mobileMenuOpenIcon, mobileMenuCloseIcon)
+}
+
 function toggleMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobileMenuCloseIcon) {
   if (!mobileMenu) return
-  if (mobileMenu.classList.contains('hidden')) {
-    openMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobileMenuCloseIcon)
-  } else {
-    closeMobileMenu(mobileMenu, mobileMenuButton, mobileMenuOpenIcon, mobileMenuCloseIcon)
-  }
+  setMobileMenuState(
+    mobileMenu,
+    mobileMenuButton,
+    !mobileMenu.classList.contains('hidden'),
+    mobileMenuOpenIcon,
+    mobileMenuCloseIcon
+  )
 }
 
 // Attach event listeners for mobilemenutoggle.
@@ -49,28 +56,11 @@ function attachMobileMenuToggle(mobileMenuButton, mobileMenu, mobileMenuOpenIcon
 function renderAuthButtons(desktopAuthArea, mobileAuthArea) {
   const user = getSession()
   const firstName = user?.name?.split(' ')[0] ?? 'Conta'
-  const dashboardHref = user.role === 'admin'
-    ? 'admin.php'
-    : user.role === 'doctor'
-      ? 'doctor_dashboard.php'
-      : user.role === 'school'
-        ? 'school_dashboard.php'
-        : user.role === 'organization'
-          ? 'organization_dashboard.php'
-          : 'account_page.php'
-  const dashboardLabel = user.role === 'admin'
-    ? 'Admin Dashboard'
-    : user.role === 'doctor'
-      ? 'Doctor Dashboard'
-      : user.role === 'school'
-        ? 'School Dashboard'
-        : user.role === 'organization'
-          ? 'Organization Dashboard'
-          : 'My Account'
-  const showAccountName = user.role !== 'caregiver'
+  const dashboard = mobileMenuStates[user?.role] ?? mobileMenuStates.caregiver
+  const showAccountName = user?.role !== 'caregiver'
   const content = `
     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
-      <a href="${dashboardHref}" class="inline-flex items-center justify-center border border-willow-dark/20 bg-willow-cream text-willow-dark px-4 py-1.5 rounded-full text-[12px] font-semibold hover:bg-willow-cream/80 transition">${dashboardLabel}</a>
+      <a href="${dashboard.href}" class="inline-flex items-center justify-center border border-willow-dark/20 bg-willow-cream text-willow-dark px-4 py-1.5 rounded-full text-[12px] font-semibold hover:bg-willow-cream/80 transition">${dashboard.label}</a>
       ${showAccountName ? `<a href="account_page.php" class="text-[12px] font-medium text-willow-dark hover:opacity-80 transition">${firstName}</a>` : ''}
       <button id="logout-btn" class="inline-flex items-center justify-center border border-gray-300 text-gray-700 px-5 py-1.5 rounded-full text-[12px] font-medium hover:bg-gray-50 transition">
         Log out

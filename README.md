@@ -205,6 +205,7 @@ The following accounts are available for testing:
 | Caregiver | caregiver@gmail.com | 123456 |
 | School | school@gmail.com | 123456 |
 | Doctor | doctor@gmail.com | 123456 |
+| Organization | organiztion@gmail.com | 123456 |
 
 ## Notes
 

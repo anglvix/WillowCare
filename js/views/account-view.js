@@ -1,6 +1,5 @@
 import { getSession, isLoggedIn, logout, getRoleLabel, saveSessionData } from "../services/auth-service.js";
 import { getVouchers, getProfile, updateProfile } from "../services/user-service.js";
-import Voucher from "../models/Voucher.js";
 
 // Página protegida - requer login
 if (!isLoggedIn()) {
