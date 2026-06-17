@@ -47,7 +47,23 @@ json-server --watch db.json --port 3001 --middlewares ./node_modules/json-server
 
 ## Running the PHP App
 
-You can run the app with the built-in PHP server from the project root:
+### Recommended: Using XAMPP
+
+1. Ensure the project folder (`WillowCare`) is located in your XAMPP `htdocs` directory:
+   ```text
+   C:\xampp\htdocs\WillowCare
+   ```
+
+2. Start XAMPP and enable Apache and MySQL modules.
+
+3. Open your browser and navigate to:
+   ```text
+   http://localhost/WillowCare
+   ```
+
+### Alternative: Using Built-in PHP Server
+
+If you prefer not to use XAMPP, you can run the app with the built-in PHP server from the project root:
 
 ```bash
 npm start
@@ -64,8 +80,6 @@ Then open in your browser:
 ```text
 http://localhost:8000
 ```
-
-If you use XAMPP, make sure the project folder is available under your Apache `htdocs` directory and start Apache.
 
 ## Project Layout
 
