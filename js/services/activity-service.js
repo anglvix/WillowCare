@@ -39,7 +39,7 @@ export async function getExcursionById(id) {
   return res.json()
 }
 
-// Inscreve o utilizador actual na actividade (adiciona userId ao enrolledUsers)
+// Adds user into activity (adds userId to enrolledUsers)
 export async function enroll(activityType, activityId) {
   const user = getSession()
   if (!user) return { ok: false, error: 'Não autenticado' }
