@@ -68,7 +68,7 @@ include '../includes/head.php';
             <div id="join-cta" class="text-center mt-12 mb-14">
                 <h4 class="font-bold text-[20px] font-bold text-gray-800 mb-0.5">Start finding the right support today</h4>
                 <p class="text-[14px] text-gray-500 mb-5 leading-relaxed">Because the right help makes all the difference.</p>
-                <a href="signup.php" class="border border-gray-400 text-gray-700 px-8 py-1.5 rounded-full text-[11px] font-semibold bg-white hover:bg-gray-50 transition">
+                <a href="signup.php" class="border border-gray-400 text-gray-700 px-8 py-1.5 rounded-full text-[14px] font-semibold bg-white hover:bg-willow-light transition">
                     Join us
                 </a>
             </div>
@@ -78,7 +78,9 @@ include '../includes/head.php';
         <section class="max-w-5xl mx-auto px-6 py-10">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-[17px] font-bold text-gray-800 tracking-tight">Upcoming Activities</h2>
-                <a href="activity_lobby.php" class="border border-gray-300 text-gray-500 px-3 py-0.5 rounded-full text-[12px] hover:bg-gray-50">See more...</a>
+                <a href="activity_lobby.php" class="border font-bold border-gray-300 text-gray-700 px-3 py-0.5 rounded-full text-[12px] hover:bg-willow-light transition">
+                    See more...
+                </a>
             </div>
 
             <div id="upcoming-activities-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
@@ -90,7 +92,7 @@ include '../includes/head.php';
             <p class="text-[14px] text-gray-500 mb-5 leading-relaxed">
                 Caring for someone with Williams Syndrome can be overwhelming. Finding the right support shouldn't be.
             </p>
-            <a href="about_us.php" class="border border-gray-400 text-gray-700 px-8 py-1.5 rounded-full text-[14px] font-semibold bg-white hover:bg-gray-50 transition">
+            <a href="about_us.php" class="border border-gray-400 text-gray-700 px-8 py-1.5 rounded-full text-[14px] font-semibold bg-white hover:bg-willow-light transition">
                 Our Mission
             </a>
             <hr class="border-gray-100 mt-14">
