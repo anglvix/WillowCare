@@ -2,7 +2,7 @@ import { loginDoctor, isLoggedIn, getSession } from '../services/auth-service.js
 
 if (isLoggedIn()) {
   const session = getSession()
-  window.location.href = session?.role === 'doctor' ? 'doctor_area.php' : 'account_page.php'
+  window.location.href = session?.role === 'doctor' ? 'doctor_dashboard.php' : 'account_page.php'
 }
 
 const formEl = document.querySelector('#doctor-login-form')
@@ -28,5 +28,5 @@ formEl?.addEventListener('submit', async (e) => {
     window.alert('Your doctor account is still under review by the admin team. You will be able to use the full doctor portal once it is approved.')
   }
 
-  window.location.href = 'doctor_area.php'
+  window.location.href = 'doctor_dashboard.php'
 })

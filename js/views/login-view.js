@@ -6,7 +6,7 @@ if (isLoggedIn()) {
   if (session?.role === 'admin') {
     window.location.href = 'admin.php'
   } else if (session?.role === 'doctor') {
-    window.location.href = 'doctor_area.php'
+    window.location.href = 'doctor_dashboard.php'
   } else {
     window.location.href = 'account_page.php'
   }
@@ -44,7 +44,7 @@ formEl?.addEventListener('submit', async (e) => {
     }
 
     if (result.user?.role === 'doctor') {
-      window.location.href = 'doctor_area.php'
+      window.location.href = 'doctor_dashboard.php'
       return
     }
 

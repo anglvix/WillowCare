@@ -116,6 +116,22 @@
       "rating": 5,
       "contact": "+351 25 3456 789 | sofia.alves@neuro.pt",
       "address": "Rua do Raio, 123, Braga"
+    },
+    {
+      "name": "Doctor Example",
+      "email": "doctor@gmail.com",
+      "specialty": "Cardiology",
+      "bio": "",
+      "region": "Porto",
+      "yearsExperience": 10,
+      "userId": 9,
+      "photo": "",
+      "contactPhone": "912345678",
+      "contactEmail": "doctor@gmail.com",
+      "address": "Lg. da Pedra 123",
+      "highlights": [],
+      "rating": 0,
+      "id": 4
     }
   ],
   "schools": [
